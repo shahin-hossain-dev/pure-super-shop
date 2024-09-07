@@ -1,19 +1,10 @@
 "use client";
-import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import { FaGithub, FaGoogle } from "react-icons/fa";
+import { FaFacebook, FaGoogle } from "react-icons/fa";
 
 const page = () => {
-  const handleLogin = async (event) => {
-    event.preventDefault();
-    // Add your login logic here
-    const userCredentials = {
-      email: event.target.email.value,
-      password: event.target.password.value,
-    };
-    console.log(userCredentials);
-  };
+  const handleLogin = async (event) => {};
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-white text-black">
@@ -30,12 +21,11 @@ const page = () => {
       </div>
       <div className="container mx-auto p-4 sm:p-8 lg:p-12">
         <div className="max-w-lg mx-auto border-2 p-8 sm:p-12 rounded-lg shadow-md bg-white">
-          <p className="text-4xl font-extrabold text-center mb-8 relative">
+          <p className="text-xl font-semibold text-center mb-8 relative">
             <span className="relative inline-block text-gray-900 bg-gradient-to-r from-gray-700 via-gray-900 to-gray-700 bg-clip-text text-transparent">
               Login
             </span>
             <span className="absolute inset-0 bg-gradient-to-r from-blue-500 via-teal-500 to-green-500 opacity-30 blur-lg rounded-lg"></span>
-            <span className="absolute -inset-2 border-2 border-gray-300 rounded-lg opacity-40 transition-transform duration-300 transform hover:scale-110"></span>
           </p>
 
           <form onSubmit={handleLogin} className="space-y-6">
@@ -80,17 +70,20 @@ const page = () => {
           <div className="mt-8 text-center">
             <p className="mb-4">or sign in with</p>
             <div className="flex items-center justify-center space-x-4">
-              <button className="text-2xl btn flex items-center justify-center text-green-500">
+              <button className="text-2xl btn flex items-center justify-center text-green-400">
                 <FaGoogle />
               </button>
-              <button className="text-2xl btn flex items-center justify-center text-primary">
-                <FaGithub />
+              <button className="text-2xl btn flex items-center justify-center text-green-700">
+                <FaFacebook />
               </button>
             </div>
             <p className="mt-8">
               Don't have an account?{" "}
-              <Link href="/register" className="text-primary font-semibold">
-                Sign Up
+              <Link
+                href="/register"
+                className="text-primary font-semibold underline"
+              >
+                Register Now
               </Link>
             </p>
           </div>

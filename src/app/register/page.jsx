@@ -1,17 +1,14 @@
 "use client";
 import Link from "next/link";
 import React from "react";
-import { FaGithub, FaGoogle } from "react-icons/fa";
+import { FaFacebook, FaGoogle } from "react-icons/fa";
 
 const page = () => {
-  const handleSignUp = async (event) => {
-    
-  };
+  const handleSignUp = async (event) => {};
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-white text-black">
       <div className="absolute top-[8%] right-50% flex space-x-4">
-       
         <Link href="/" className="text-blue-500 font-semibold hover:underline">
           Home
         </Link>
@@ -25,8 +22,11 @@ const page = () => {
 
       <div className="container mx-auto p-4 sm:p-8 lg:p-12">
         <div className="max-w-lg mx-auto border-2 p-8 sm:p-12 rounded-lg shadow-md bg-white">
-          <p className="text-3xl font-semibold text-primary text-center mb-8">
-            Sign Up
+          <p className="text-xl font-semibold text-center mb-8 relative">
+            <span className="relative inline-block text-gray-900 bg-gradient-to-r from-gray-700 via-gray-900 to-gray-700 bg-clip-text text-transparent">
+              Register
+            </span>
+            <span className="absolute inset-0 bg-gradient-to-r from-blue-500 via-teal-500 to-green-500 opacity-30 blur-lg rounded-lg"></span>
           </p>
 
           <form onSubmit={handleSignUp} className="space-y-6">
@@ -86,16 +86,19 @@ const page = () => {
           <div className="mt-8 text-center">
             <p className="mb-4">or sign up with</p>
             <div className="flex items-center justify-center space-x-4">
-              <button className="text-2xl btn flex items-center justify-center text-green-500">
+              <button className="text-2xl btn flex items-center justify-center text-green-400">
                 <FaGoogle />
               </button>
-              <button className="text-2xl btn flex items-center justify-center text-primary">
-                <FaGithub />
+              <button className="text-2xl btn flex items-center justify-center text-green-700">
+                <FaFacebook />
               </button>
             </div>
             <p className="mt-8">
               Already have an account?{" "}
-              <Link href="/login" className="text-primary font-semibold">
+              <Link
+                href="/login"
+                className="text-primary font-semibold underline"
+              >
                 Login
               </Link>
             </p>
