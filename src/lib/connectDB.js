@@ -1,40 +1,23 @@
 
 import { MongoClient, ServerApiVersion } from 'mongodb';
 
-const uri = process.env.NEXT_PUBLIC_MONGODB_URI; 
-
-if (!uri) {
-  throw new Error("Please add your MongoDB URI to .env.local");
-}
-
-const options = {
-  serverApi: {
-    version: ServerApiVersion.v1,
-    strict: true,
-    deprecationErrors: true,
-  },
-};
-
-let client;
-let clientPromise;
-
-if (process.env.NODE_ENV === "development") {
-
-  if (!global._mongoClientPromise) {
-    client = new MongoClient(uri, options);
-    global._mongoClientPromise = client.connect();
-  }
-  clientPromise = global._mongoClientPromise;
-} else {
- 
-  client = new MongoClient(uri, options);
-  clientPromise = client.connect();
-}
+let db;
 
 export const connectDB = async () => {
   try {
-    const client = await clientPromise;
-    return client.db('super-Shop-Data'); 
+    if(db) return db;
+    const uri = process.env.NEXT_PUBLIC_MONGODB_URI; 
+    if (!uri) {
+      throw new Error("Please add your MongoDB URI to .env.local");
+    } 
+    const client = new MongoClient(uri, {
+      serverApi: {
+        version: ServerApiVersion.v1,
+        strict: true,
+        deprecationErrors: true,
+      }
+    });
+    db = client.db('super-Shop-Data');
   } catch (error) {
     console.error("Failed to connect to MongoDB", error);
     throw new Error("Failed to connect to MongoDB");
