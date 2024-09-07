@@ -1,7 +1,6 @@
 import Category from "@/components/Homepage/Category";
-import React from "react";
 
-const page = () => {
+const DynamicPage = () => {
   return (
     <div>
       <Category />
@@ -10,4 +9,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default DynamicPage;
