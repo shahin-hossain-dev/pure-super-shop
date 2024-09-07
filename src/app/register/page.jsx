@@ -9,12 +9,12 @@ const page = () => {
   return (
     <div className="min-h-screen flex items-center justify-center bg-white text-black">
       <div className="absolute top-[8%] right-50% flex space-x-4">
-        <Link href="/" className="text-blue-500 font-semibold hover:underline">
+        <Link href="/" className="text-black font-semibold hover:underline">
           Home
         </Link>
         <Link
           href="/register"
-          className="text-black font-semibold hover:underline"
+          className="text-blue-500 font-semibold hover:underline"
         >
           Register
         </Link>
