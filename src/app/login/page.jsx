@@ -17,15 +17,33 @@ const page = () => {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-white text-black">
+      <div className="absolute top-[8%] right-50% flex space-x-4">
+        <Link href="/" className="text-blue-500 font-semibold hover:underline">
+          Home
+        </Link>
+        <Link
+          href="/login"
+          className="text-black font-semibold hover:underline"
+        >
+          Login
+        </Link>
+      </div>
       <div className="container mx-auto p-4 sm:p-8 lg:p-12">
         <div className="max-w-lg mx-auto border-2 p-8 sm:p-12 rounded-lg shadow-md bg-white">
-          <p className="text-3xl font-semibold text-primary text-center mb-8">
-            Sign In
+          <p className="text-4xl font-extrabold text-center mb-8 relative">
+            <span className="relative inline-block text-gray-900 bg-gradient-to-r from-gray-700 via-gray-900 to-gray-700 bg-clip-text text-transparent">
+              Login
+            </span>
+            <span className="absolute inset-0 bg-gradient-to-r from-blue-500 via-teal-500 to-green-500 opacity-30 blur-lg rounded-lg"></span>
+            <span className="absolute -inset-2 border-2 border-gray-300 rounded-lg opacity-40 transition-transform duration-300 transform hover:scale-110"></span>
           </p>
 
           <form onSubmit={handleLogin} className="space-y-6">
             <div>
-              <label htmlFor="email" className="block text-sm font-medium text-black">
+              <label
+                htmlFor="email"
+                className="block text-sm font-medium text-black"
+              >
                 Email
               </label>
               <input
@@ -37,7 +55,10 @@ const page = () => {
             </div>
 
             <div>
-              <label htmlFor="password" className="block text-sm font-medium text-black">
+              <label
+                htmlFor="password"
+                className="block text-sm font-medium text-black"
+              >
                 Password
               </label>
               <input

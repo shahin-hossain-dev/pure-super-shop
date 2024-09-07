@@ -1,32 +1,28 @@
 "use client";
-import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import { FaGithub, FaGoogle } from "react-icons/fa";
 
 const page = () => {
   const handleSignUp = async (event) => {
-    event.preventDefault();
-    const newUser = {
-      name: event.target.name.value,
-      email: event.target.email.value,
-      password: event.target.password.value,
-    };
-    const resp = await fetch("http://localhost:3000/signup/api", {
-      method: "POST",
-      body: JSON.stringify(newUser),
-      headers: {
-        "content-type": "application/json",
-      },
-    });
-    console.log(resp);
-    if (resp.status === 200) {
-      event.target.reset();
-    }
+    
   };
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-white text-black">
+      <div className="absolute top-[8%] right-50% flex space-x-4">
+       
+        <Link href="/" className="text-blue-500 font-semibold hover:underline">
+          Home
+        </Link>
+        <Link
+          href="/register"
+          className="text-black font-semibold hover:underline"
+        >
+          Register
+        </Link>
+      </div>
+
       <div className="container mx-auto p-4 sm:p-8 lg:p-12">
         <div className="max-w-lg mx-auto border-2 p-8 sm:p-12 rounded-lg shadow-md bg-white">
           <p className="text-3xl font-semibold text-primary text-center mb-8">
