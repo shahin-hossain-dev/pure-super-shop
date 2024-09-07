@@ -21,7 +21,6 @@ const Category = () => {
   };
   return (
     <section>
-      <div></div>
       <div className="px-5 bg-slate-400 inline-block min-h-screen">
         <h2 className="mb-6">Shop with Category</h2>
         <ul className="text-[14px] space-y-2">
@@ -148,10 +147,10 @@ const Category = () => {
               }`}
             >
               <li>
-                <Link href={"/personal-care/women"}>Women's Care</Link>
+                <Link href={"/personal-care/women"}>Women&apos;s Care</Link>
               </li>
               <li>
-                <Link href={"/personal-care/men"}>men's Care</Link>
+                <Link href={"/personal-care/men"}>men&apos;s Care</Link>
               </li>
             </ul>
           </li>
