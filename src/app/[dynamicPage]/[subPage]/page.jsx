@@ -1,7 +1,6 @@
 import Category from "@/components/Homepage/Category";
-import React from "react";
 
-const page = () => {
+const SubCategory = () => {
   return (
     <div>
       <Category />
@@ -10,4 +9,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default SubCategory;
