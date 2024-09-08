@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import { CiHeart } from "react-icons/ci";
 import { HiX } from "react-icons/hi";
 import { HiMenuAlt4 } from "react-icons/hi";
@@ -13,8 +13,10 @@ const Navbar = () => {
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center py-6">
           {/* Logo */}
-          <div className="text-2xl font-bold text-[#333]">
-            <a href="#">Pure<span className='text-[#84b93e] font-bold'>Super</span><span className='text-[#3e84b9] font-bold'>Shop</span></a>
+          <div className="text-2xl font-bold text-[#3e84b9]">
+            <a href="#">
+              Pure<span className="text-[#84b93e] font-bold">Super</span>
+            </a>
           </div>
 
           {/* Search bar and categories */}
@@ -54,7 +56,11 @@ const Navbar = () => {
           {/* Mobile menu button */}
           <div className="md:hidden">
             <button onClick={() => setIsOpen(!isOpen)}>
-              {isOpen ? <HiX className="w-8 h-8" /> : <HiMenuAlt4 className="w-8 h-8" />}
+              {isOpen ? (
+                <HiX className="w-8 h-8" />
+              ) : (
+                <HiMenuAlt4 className="w-8 h-8" />
+              )}
             </button>
           </div>
         </div>
@@ -79,7 +85,6 @@ const Navbar = () => {
                 <button className="px-4 py-3 bg-[#3e84b9] text-white rounded-r-lg hover:bg-blue-600  items-center">
                   <CiSearch />
                 </button>
-
               </div>
               <button className="px-4 py-2 bg-[#3e84b9] text-white rounded hover:bg-blue-600">
                 Login
