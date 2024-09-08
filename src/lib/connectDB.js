@@ -1,4 +1,3 @@
-
 import { MongoClient, ServerApiVersion } from 'mongodb';
 
 let db;
