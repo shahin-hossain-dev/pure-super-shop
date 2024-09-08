@@ -29,6 +29,14 @@ const ProductCard = (product) => {
             Add to Cart
           </button>
         </div>
+
+        <button
+            onClick={handleAddToCart}
+            className="w-full mt-4 bottom-2 left-2 right-2 p-1 bg-gradient-to-t from-gray-300 to-gray-50 "
+          >
+            Add to WishList
+          </button>
+        
       </div>
     </div>
   );
