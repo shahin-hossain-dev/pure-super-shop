@@ -6,16 +6,16 @@ import { FaFacebook, FaGoogle } from "react-icons/fa";
 
 const SocialSignin = () => {
     const router = useRouter();
-    const searchParams = useSearchParams();
+    // const searchParams = useSearchParams();
 
-    const path = searchParams.get("redirect");
+    // const path = searchParams.get("redirect");
 
     // const session = useSession();
 
   const handleSocialLogin = (provider) => {
     const res = signIn(provider, {
       redirect: true,
-      callbackUrl: path ? path : "/",
+      // callbackUrl: path ? path : "/",
     });
   };
 
