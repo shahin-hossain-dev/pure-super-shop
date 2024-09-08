@@ -5,17 +5,17 @@ import React from "react";
 import { FaFacebook, FaGoogle } from "react-icons/fa";
 
 const SocialSignin = () => {
-    const router = useRouter();
-    const searchParams = useSearchParams();
+    // const router = useRouter();
+    // const searchParams = useSearchParams();
 
-    const path = searchParams.get("redirect");
+    // const path = searchParams.get("redirect");
 
     // const session = useSession();
 
   const handleSocialLogin = (provider) => {
     const res = signIn(provider, {
-      redirect: true,
-      callbackUrl: path ? path : "/",
+      // redirect: true,
+      // callbackUrl: path ? path : "/",
     });
   };
 
