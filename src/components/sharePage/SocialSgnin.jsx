@@ -5,18 +5,18 @@ import React from "react";
 import { FaFacebook, FaGoogle } from "react-icons/fa";
 
 const SocialSignin = () => {
-  //   const router = useRouter();
-  //   const searchParams = useSearchParams();
+    const router = useRouter();
+    const searchParams = useSearchParams();
 
-  //   const path = searchParams.get("redirect");
+    const path = searchParams.get("redirect");
 
-  //   const session = useSession();
+    // const session = useSession();
 
   const handleSocialLogin = (provider) => {
-    // const resp = signIn(provider, {
-    //   redirect: true,
-    //   callbackUrl: path ? path : "/",
-    // });
+    const res = signIn(provider, {
+      redirect: true,
+      callbackUrl: path ? path : "/",
+    });
   };
 
   return (
@@ -29,7 +29,7 @@ const SocialSignin = () => {
       </button>
 
       <button
-        onClick={() => handleSocialLogin("github")}
+        onClick={() => handleSocialLogin("facebook")}
         className="text-2xl btn flex items-center justify-center text-green-700"
       >
         <FaFacebook />
