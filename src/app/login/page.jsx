@@ -3,6 +3,7 @@ import Link from "next/link";
 import React from "react";
 import { FaFacebook, FaGoogle } from "react-icons/fa";
 import { signIn, useSession } from "next-auth/react";
+import SocialSignin from "@/components/sharePage/SocialSgnin";
 
 const page = () => {
   const handleLogin = async (event) => {
@@ -81,14 +82,7 @@ const page = () => {
 
           <div className="mt-8 text-center">
             <p className="mb-4">or sign in with</p>
-            <div className="flex items-center justify-center space-x-4">
-              <button className="text-2xl btn flex items-center justify-center text-green-400">
-                <FaGoogle />
-              </button>
-              <button className="text-2xl btn flex items-center justify-center text-green-700">
-                <FaFacebook />
-              </button>
-            </div>
+            <SocialSignin></SocialSignin>
             <p className="mt-8">
               Don't have an account?{" "}
               <Link

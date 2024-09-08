@@ -1,4 +1,5 @@
 "use client";
+import SocialSignin from "@/components/sharePage/SocialSgnin";
 import Link from "next/link";
 import React from "react";
 import { FaFacebook, FaGoogle } from "react-icons/fa";
@@ -104,14 +105,7 @@ const page = () => {
 
           <div className="mt-8 text-center">
             <p className="mb-4">or sign up with</p>
-            <div className="flex items-center justify-center space-x-4">
-              <button className="text-2xl btn flex items-center justify-center text-green-400">
-                <FaGoogle />
-              </button>
-              <button className="text-2xl btn flex items-center justify-center text-green-700">
-                <FaFacebook />
-              </button>
-            </div>
+            <SocialSignin></SocialSignin>
             <p className="mt-8">
               Already have an account?{" "}
               <Link
