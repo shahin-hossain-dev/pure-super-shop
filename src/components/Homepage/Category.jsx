@@ -315,7 +315,7 @@ const Category = () => {
                     pathName === "/baby-care/accessories" &&
                     "text-[#84b93e] font-bold"
                   }`}
-                  href={"/baby-care/accessories"}
+                  href={"/baby-care/baby-accessories"}
                 >
                   Baby Accessories
                 </Link>
