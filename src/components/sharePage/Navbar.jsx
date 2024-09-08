@@ -5,6 +5,7 @@ import { CiHeart } from "react-icons/ci";
 import { HiX } from "react-icons/hi";
 import { HiMenuAlt4 } from "react-icons/hi";
 import { CiSearch } from "react-icons/ci";
+import Link from "next/link";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -42,12 +43,12 @@ const Navbar = () => {
 
           {/* Right-side buttons */}
           <div className="hidden md:flex items-center space-x-4">
-            <button className="px-4 py-2 bg-[#3e84b9] text-white rounded hover:bg-blue-600">
+            <Link href="/login"  className="px-4 py-2 bg-[#3e84b9] text-white rounded hover:bg-blue-600">
               Login
-            </button>
-            <button className="px-4 py-2 bg-[#84b93e] text-white rounded hover:bg-green-600">
+            </Link>
+            <Link href="/register"  className="px-4 py-2 bg-[#84b93e] text-white rounded hover:bg-green-600">
               Register
-            </button>
+            </Link >
             <button className="px-4 py-2 bg-white text-[#3e84b9] rounded  border font-medium border-[#3e84b9] flex items-center">
               <CiHeart className="mr-2" /> Wishlist
             </button>
