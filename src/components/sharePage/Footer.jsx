@@ -1,8 +1,6 @@
 "use client"
 import Image from "next/image";
 import { FaFacebook } from "react-icons/fa";
-import { Link } from "react-router-dom";
-
 
 const Footer = () => {
     return (
@@ -13,7 +11,6 @@ const Footer = () => {
                         <div>
                             <h1>logo</h1>
                         </div>
-
                         <p className="mt-4 text-center  text-gray-500">
                             <span>Always Here for You</span> <br />
                             <span>Call Us: 16469 (9am-9pm, Everyday)</span> <br />
@@ -23,11 +20,8 @@ const Footer = () => {
                        <div >
                         <Link ><Image width={50} height={0} alt="hh" src={'https://www.shwapno.com/_next/static/media/yt-icon.73c22c13.png'}> </Image></Link>
                        </div> */}
-
-
                     </div>
-                    
-
+                
                     <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:col-span-2 lg:grid-cols-3">
                         <div>
                             <p className="font-medium text-gray-900">Information</p>
@@ -55,14 +49,8 @@ const Footer = () => {
                                 <li>
                                     <a href="#" className="text-gray-700 transition hover:opacity-75"> Contact Us </a>
                                 </li>
-
-
-
-
                             </ul>
-
                         </div>
-                       
 
                         <div>
                             <p className="font-medium text-gray-900">
