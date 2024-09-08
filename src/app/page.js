@@ -11,9 +11,7 @@ export default function Home() {
           <Homepage />
         </main>
       </div>
-      <div className="fixed right-0 top-1/2 transform -translate-y-1/2">
-        <CheckOut />
-      </div>
+      <CheckOut />
     </div>
   );
 }
