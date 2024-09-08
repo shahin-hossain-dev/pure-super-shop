@@ -2,9 +2,21 @@
 import Link from "next/link";
 import React from "react";
 import { FaFacebook, FaGoogle } from "react-icons/fa";
+import { signIn, useSession } from "next-auth/react";
 
 const page = () => {
-  const handleLogin = async (event) => {};
+  const handleLogin = async (event) => {
+    event.preventDefault();
+    const email = event.target.email.value;
+    const password = event.target.password.value;
+    const res = await signIn("credentials", {
+      email,
+      password,
+      redirect: false,
+      // callbackUrl: path ? path : "/",
+    });
+    console.log(res)
+  };
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-white text-black">

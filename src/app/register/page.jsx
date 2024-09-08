@@ -4,7 +4,26 @@ import React from "react";
 import { FaFacebook, FaGoogle } from "react-icons/fa";
 
 const page = () => {
-  const handleSignUp = async (event) => {};
+  const handleSignUp = async (event) => {
+    event.preventDefault();
+    const newUser = {
+      name: event.target.name.value,
+      email: event.target.email.value,
+      password: event.target.password.value,
+    };
+    // console.log(newUser)
+    const res = await fetch('http://localhost:3000/register/api',{
+      method: "POST",
+      body: JSON.stringify(newUser),
+      headers: {
+        "content-type": "application/json",
+      },
+    })
+
+    if (res.status === 200) {
+      event.target.reset();
+    }
+  };
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-white text-black">
