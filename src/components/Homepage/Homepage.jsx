@@ -10,7 +10,6 @@ const Homepage = () => {
     <div>
       <Banner />
       <CategoryTabs />
-      {/* <Category /> */}
       <Brands/>
       <Footer />
     </div>
