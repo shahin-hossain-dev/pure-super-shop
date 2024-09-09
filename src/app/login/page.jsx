@@ -3,11 +3,10 @@ import Link from "next/link";
 import React from "react";
 import { signIn, useSession } from "next-auth/react";
 import SocialSignin from "@/components/sharePage/SocialSgnin";
-import { useRouter } from "next/router";
-import { useSearchParams } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 
 const page = () => {
-  // const router = useRouter();
+  const router = useRouter();
   // const searchParams = useSearchParams();
   // const path = searchParams.get("redirect");
 
@@ -22,8 +21,9 @@ const page = () => {
       // callbackUrl: path ? path : "/",
     });
     if (res.status === 200) {
-      event.target.reset();
-      console.log('successful')
+      // event.target.reset();
+      // console.log('successful')
+      router.push('/')
     }
     else{
       console.log('error')
@@ -31,8 +31,8 @@ const page = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-white text-black">
-      <div className="absolute top-[8%] right-50% flex space-x-4">
+    <div className="min-h-screen flex flex-col items-center justify-center bg-white text-black ">
+      <div className="flex space-x-4">
         <Link href="/" className="text-black font-semibold hover:underline">
           Home
         </Link>

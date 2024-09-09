@@ -3,9 +3,20 @@ import Image from "next/image";
 import React from "react";
 
 const ProductCard = (product) => {
-  const { productName, price, categoryName, discountPrice } = product;
+  const { id, productName, price, categoryName, discountPrice } = product;
   const handleAddToCart = (id) => {
     console.log("add to cart");
+  };
+  const handleAddToWishlist = (product) => {
+    // fakhrul islam
+    let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+    // Check if the item is already in the wishlist
+    if (!wishlist.some((item) => item.id === product.id)) {
+      wishlist.push(product); // Add the product if it's not already in the wishlist
+      localStorage.setItem("wishlist", JSON.stringify(wishlist));
+    } else {
+      alert("This item is already in your wishlist!");
+    }
   };
   const handleDetails = (id) => {
     console.log(id);
@@ -22,21 +33,21 @@ const ProductCard = (product) => {
           >
             Details
           </button>
+
           <button
-            onClick={handleAddToCart}
-            className="w-full  bottom-2 left-2 right-2 p-1 bg-gradient-to-t from-gray-300 to-gray-50 "
+            onClick={() => handleAddToWishlist(product)}
+            className="w-full bottom-2 left-2 right-2 p-1 bg-gradient-to-t from-gray-300 to-gray-50 "
           >
-            Add to Cart
+            Add to WishList
           </button>
         </div>
 
         <button
-            onClick={handleAddToCart}
-            className="w-full mt-4 bottom-2 left-2 right-2 p-1 bg-gradient-to-t from-gray-300 to-gray-50 "
-          >
-            Add to WishList
-          </button>
-        
+          onClick={handleAddToCart}
+          className="w-full mt-4 bottom-2 left-2 right-2 p-1 bg-gradient-to-t from-gray-300 to-gray-50 "
+        >
+          Add to Cart
+        </button>
       </div>
     </div>
   );

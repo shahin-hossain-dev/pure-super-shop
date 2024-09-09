@@ -6,9 +6,12 @@ import { HiX } from "react-icons/hi";
 import { HiMenuAlt4 } from "react-icons/hi";
 import { CiSearch } from "react-icons/ci";
 import Link from "next/link";
+import { signOut, useSession } from "next-auth/react";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const session = useSession();
+  console.log(session);
   return (
     <nav className="bg-white  sticky top-0 z-50">
       <div className="container mx-auto px-4">
@@ -43,15 +46,36 @@ const Navbar = () => {
 
           {/* Right-side buttons */}
           <div className="hidden md:flex items-center space-x-4">
-            <Link href="/login"  className="px-4 py-2 bg-[#3e84b9] text-white rounded hover:bg-blue-600">
-              Login
-            </Link>
-            <Link href="/register"  className="px-4 py-2 bg-[#84b93e] text-white rounded hover:bg-green-600">
+            {session?.status === "unauthenticated" && (
+              <Link
+                href="/login"
+                className="px-4 py-2 bg-[#3e84b9] text-white rounded hover:bg-blue-600"
+              >
+                Login
+              </Link>
+            )}
+            {session?.status === "authenticated" && (
+              <button
+                className="px-4 py-2 bg-[#ff1111] text-white rounded hover:bg-blue-600"
+                onClick={() => signOut()}
+              >
+                Logout
+              </button>
+            )}
+            { session?.status === "unauthenticated" && (
+              <Link
+              href="/register"
+              className="px-4 py-2 bg-[#84b93e] text-white rounded hover:bg-green-600"
+            >
               Register
-            </Link >
-            <button className="px-4 py-2 bg-white text-[#3e84b9] rounded  border font-medium border-[#3e84b9] flex items-center">
+            </Link>
+            )}
+            <Link
+              href="/wishlist"
+              className="px-4 py-2 bg-white text-[#3e84b9] rounded  border font-medium border-[#3e84b9] flex items-center"
+            >
               <CiHeart className="mr-2" /> Wishlist
-            </button>
+            </Link>
           </div>
 
           {/* Mobile menu button */}
@@ -87,15 +111,24 @@ const Navbar = () => {
                   <CiSearch />
                 </button>
               </div>
-              <button className="px-4 py-2 bg-[#3e84b9] text-white rounded hover:bg-blue-600">
+              <Link
+                href="/login"
+                className="px-4 py-2 bg-[#3e84b9] text-white rounded hover:bg-blue-600"
+              >
                 Login
-              </button>
-              <button className="px-4 py-2 bg-[#84b93e] text-white rounded hover:bg-green-600">
+              </Link>
+              <Link
+                href="/register"
+                className="px-4 py-2 bg-[#84b93e] text-white rounded hover:bg-green-600"
+              >
                 Register
-              </button>
-              <button className="px-4 py-2 bg-white text-[#3e84b9] rounded  border font-medium border-[#3e84b9] flex items-center">
+              </Link>
+              <Link
+                href="/wishlist"
+                className="px-4 py-2 bg-white text-[#3e84b9] rounded  border font-medium border-[#3e84b9] flex items-center"
+              >
                 <CiHeart className="mr-2" /> Wishlist
-              </button>
+              </Link>
             </div>
           </div>
         )}

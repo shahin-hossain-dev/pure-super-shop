@@ -28,8 +28,8 @@ const page = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-white text-black">
-      <div className="absolute top-[8%] right-50% flex space-x-4">
+    <div className="min-h-screen flex flex-col items-center justify-center bg-white text-black">
+      <div className="flex space-x-4">
         <Link href="/" className="text-black font-semibold hover:underline">
           Home
         </Link>

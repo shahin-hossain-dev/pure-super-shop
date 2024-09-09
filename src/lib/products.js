@@ -1,5 +1,6 @@
 export const products = [
   {
+    id: 1,
     productName: "Baby Lotion",
     price: 52.23,
     ImageUrl: "https://example.com/images/baby_lotion.jpg",
@@ -9,6 +10,7 @@ export const products = [
     subCategory: "baby-accessories",
   },
   {
+    id: 2,
     productName: "Shampoo",
     price: 165.94,
     ImageUrl: "https://example.com/images/shampoo.jpg",
@@ -18,6 +20,7 @@ export const products = [
     subCategory: "men",
   },
   {
+    id: 3,
     productName: "Basketball",
     price: 38.4,
     ImageUrl: "https://example.com/images/basketball.jpg",
@@ -27,6 +30,7 @@ export const products = [
     subCategory: "sports",
   },
   {
+    id: 4,
     productName: "Diapers",
     price: 15.48,
     ImageUrl: "https://example.com/images/diapers.jpg",
@@ -36,6 +40,7 @@ export const products = [
     subCategory: "baby-accessories",
   },
   {
+    id: 5,
     productName: "Mango",
     price: 65.05,
     ImageUrl: "https://example.com/images/rice.jpg",
@@ -45,6 +50,7 @@ export const products = [
     subCategory: "fruit-vegetable",
   },
   {
+    id: 6,
     productName: "Hair Dryer",
     price: 44.41,
     ImageUrl: "https://example.com/images/hair_dryer.jpg",
@@ -54,6 +60,7 @@ export const products = [
     subCategory: "men",
   },
   {
+    id: 7,
     productName: "Chocolate",
     price: 180.31,
     ImageUrl: "https://example.com/images/chocolate.jpg",
@@ -63,6 +70,7 @@ export const products = [
     subCategory: "dairy",
   },
   {
+    id: 8,
     productName: "Vacuum Cleaner",
     price: 180.85,
     ImageUrl: "https://example.com/images/vacuum_cleaner.jpg",
@@ -72,6 +80,7 @@ export const products = [
     subCategory: "cleaning-items",
   },
   {
+    id: 9,
     productName: "Bicycle",
     price: 99.91,
     ImageUrl: "https://example.com/images/bicycle.jpg",
@@ -81,6 +90,7 @@ export const products = [
     subCategory: "toy",
   },
   {
+    id: 10,
     productName: "Mixer Grinder",
     price: 101.72,
     ImageUrl: "https://example.com/images/mixer_grinder.jpg",
@@ -90,6 +100,7 @@ export const products = [
     subCategory: "kitchen",
   },
   {
+    id: 11,
     productName: "Toy Car",
     price: 25.79,
     ImageUrl: "https://example.com/images/toy_car.jpg",
@@ -99,6 +110,7 @@ export const products = [
     subCategory: "toy",
   },
   {
+    id: 12,
     productName: "Hilsa Fish",
     price: 20.14,
     ImageUrl: "https://example.com/images/pasta.jpg",
@@ -108,6 +120,7 @@ export const products = [
     subCategory: "meat-fish",
   },
   {
+    id: 13,
     productName: "Action Figure",
     price: 116.05,
     ImageUrl: "https://example.com/images/action_figure.jpg",
@@ -117,6 +130,7 @@ export const products = [
     subCategory: "toy",
   },
   {
+    id: 14,
     productName: "Perfume",
     price: 175.28,
     ImageUrl: "https://example.com/images/perfume.jpg",
@@ -126,6 +140,7 @@ export const products = [
     subCategory: "women",
   },
   {
+    id: 15,
     productName: "Toothpaste",
     price: 37.88,
     ImageUrl: "https://example.com/images/toothpaste.jpg",
@@ -135,6 +150,7 @@ export const products = [
     subCategory: "women",
   },
   {
+    id: 16,
     productName: "Football",
     price: 134.98,
     ImageUrl: "https://example.com/images/football.jpg",
@@ -144,6 +160,7 @@ export const products = [
     subCategory: "sports",
   },
   {
+    id: 17,
     productName: "Baby Milk",
     price: 159.13,
     ImageUrl: "https://example.com/images/baby_powder.jpg",
@@ -153,6 +170,7 @@ export const products = [
     subCategory: "baby-food",
   },
   {
+    id: 18,
     productName: "Beef",
     price: 149.01,
     ImageUrl: "https://example.com/images/cookies.jpg",
@@ -162,6 +180,7 @@ export const products = [
     subCategory: "meat-fish",
   },
   {
+    id: 19,
     productName: "Baby Powder",
     price: 104.16,
     ImageUrl: "https://example.com/images/baby_powder.jpg",
@@ -171,6 +190,7 @@ export const products = [
     subCategory: "baby-accessories",
   },
   {
+    id: 20,
     productName: "Dining Set",
     price: 98.82,
     ImageUrl: "https://example.com/images/dining_set.jpg",
@@ -180,6 +200,7 @@ export const products = [
     subCategory: "kitchen",
   },
   {
+    id: 21,
     productName: "Shampoo",
     price: 61.62,
     ImageUrl: "https://example.com/images/shampoo.jpg",
@@ -189,6 +210,7 @@ export const products = [
     subCategory: "men",
   },
   {
+    id: 22,
     productName: "Dining Set",
     price: 75.33,
     ImageUrl: "https://example.com/images/dining_set.jpg",
@@ -198,6 +220,7 @@ export const products = [
     subCategory: "household",
   },
   {
+    id: 23,
     productName: "Hair Dryer",
     price: 161.22,
     ImageUrl: "https://example.com/images/hair_dryer.jpg",
@@ -207,6 +230,7 @@ export const products = [
     subCategory: "women",
   },
   {
+    id: 24,
     productName: "Cookies",
     price: 58.47,
     ImageUrl: "https://example.com/images/cookies.jpg",
