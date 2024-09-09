@@ -5,19 +5,20 @@ import React from "react";
 import { FaFacebook, FaGoogle } from "react-icons/fa";
 
 const SocialSignin = () => {
-    const router = useRouter();
-    const searchParams = useSearchParams();
+  const router = useRouter();
+  // const searchParams = useSearchParams();
 
-    const path = searchParams.get("redirect");
+  // const path = searchParams.get("redirect");
 
-    // const session = useSession();
+  const session = useSession();
 
   const handleSocialLogin = (provider) => {
-    const res = signIn(provider, {
-      redirect: true,
-      callbackUrl: path ? path : "/",
-    });
+    const res = signIn(provider, { redirect: false });
   };
+
+  if(session.status === 'authenticated'){
+    router.push('/');
+  }
 
   return (
     <div className="flex items-center justify-center space-x-3">

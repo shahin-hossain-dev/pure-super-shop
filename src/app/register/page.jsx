@@ -2,7 +2,6 @@
 import SocialSignin from "@/components/sharePage/SocialSgnin";
 import Link from "next/link";
 import React from "react";
-import { FaFacebook, FaGoogle } from "react-icons/fa";
 
 const page = () => {
   const handleSignUp = async (event) => {
@@ -12,8 +11,7 @@ const page = () => {
       email: event.target.email.value,
       password: event.target.password.value,
     };
-    // console.log(newUser)
-    const res = await fetch('http://localhost:3000/register/api',{
+    const resp = await fetch('http://localhost:3000/register/api',{
       method: "POST",
       body: JSON.stringify(newUser),
       headers: {
@@ -21,14 +19,17 @@ const page = () => {
       },
     })
 
-    if (res.status === 200) {
+    if (resp.status === 200) {
       event.target.reset();
+    }
+    else{
+      console.log('error')
     }
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-white text-black">
-      <div className="absolute top-[8%] right-50% flex space-x-4">
+    <div className="min-h-screen flex flex-col items-center justify-center bg-white text-black">
+      <div className="flex space-x-4">
         <Link href="/" className="text-black font-semibold hover:underline">
           Home
         </Link>
