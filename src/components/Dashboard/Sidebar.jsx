@@ -7,8 +7,7 @@ import { AiOutlineBars } from 'react-icons/ai';
 import { MdHomeWork } from 'react-icons/md';
 import { BsFillHouseAddFill } from 'react-icons/bs'; 
 import Link from 'next/link';
-// import useAuth from '../../../hooks/useAuth'; 
-// import Image from 'next/image';
+
 
 const Sidebar = () => {
 //   const { logOut } = useAuth();
@@ -25,14 +24,8 @@ const Sidebar = () => {
       <div className='bg-gray-100 text-gray-800 flex justify-between md:hidden'>
         <div>
           <div className='block cursor-pointer p-4 font-bold'>
-            {/* <Link href='/'>
-              <Image
-                src='https://i.ibb.co/4ZXzmq5/logo.png'
-                alt='logo'
-                width='100'
-                height='100'
-              />
-            </Link> */}
+            <Link className="text-2xl font-bold text-[#3e84b9]" href='/'> Pure<span className="text-[#84b93e] font-bold">Super</span>
+            </Link>
           </div>
         </div>
 
@@ -52,20 +45,14 @@ const Sidebar = () => {
       >
         <div>
           <div>
-            {/* <div className='w-full hidden md:flex px-4 py-2 shadow-lg rounded-lg justify-center items-center bg-rose-100 mx-auto'>
-              <Link href='/'>
-                <Image
-                  src='https://i.ibb.co/4ZXzmq5/logo.png'
-                  alt='logo'
-                  width='100'
-                  height='100'
-                />
-              </Link>
-            </div> */}
+            <div className='w-full hidden md:flex px-4  rounded-lg justify-center items-center  mx-auto'>
+            <Link className="text-2xl font-bold text-[#3e84b9]" href='/'> Pure<span className="text-[#84b93e] font-bold">Super</span>
+            </Link>
+            </div>
           </div>
 
           {/* Nav Items */}
-          <div className='flex flex-col justify-between flex-1 mt-6'>
+          <div className='flex flex-col justify-between flex-1 mt-2'>
             {/* Menu Items */}
             <nav>
               {/* Sales Overview */}
