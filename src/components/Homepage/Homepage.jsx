@@ -9,7 +9,7 @@ const Homepage = () => {
   return (
     <div>
       <Banner />
-      <CategoryTabs />
+      {/* <CategoryTabs /> */}
       {/* <Category /> */}
       <Services />
       <Footer />
