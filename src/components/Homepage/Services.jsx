@@ -31,7 +31,7 @@ const Services = () => {
         </div>
 
 
-         <div className="grid mt-10 grid-cols-1 md:grid-cols-2  lg:grid-cols-3 gap-5">
+         <div className="grid mt-10  grid-cols-1 md:grid-cols-2  lg:grid-cols-3 gap-5">
             {
                 productFeatures?.map((service , index) => <div className="text-center bg-[#F7F7F8] py-8 rounded-lg hover:shadow-lg px-4 space-y-3" key={index}>
                     {service?.icon && <service.icon className="text-5xl mx-auto" />}

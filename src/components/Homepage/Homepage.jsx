@@ -5,6 +5,7 @@ import CategoryTabs from "./CategoryTabs";
 import Services from "./Services";
 import Brands from "./Brands/Brands";
 import Faq from "./Faq";
+import Newsletter from "./Newsletter";
 
 const Homepage = () => {
   return (
@@ -14,6 +15,7 @@ const Homepage = () => {
       <Services />
       <Brands />
       <Faq />
+      <Newsletter />
       <Footer />
     </div>
   );
