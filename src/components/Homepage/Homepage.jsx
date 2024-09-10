@@ -4,6 +4,8 @@ import Footer from "../sharePage/Footer";
 import CategoryTabs from "./CategoryTabs";
 import Services from "./Services";
 import Brands from "./Brands/Brands";
+import Faq from "./Faq";
+
 
 const Homepage = () => {
   return (
@@ -12,6 +14,7 @@ const Homepage = () => {
       <CategoryTabs />
       <Services />
       <Brands />
+      <Faq />
       <Footer />
     </div>
   );
