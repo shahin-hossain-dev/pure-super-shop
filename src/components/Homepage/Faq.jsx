@@ -2,9 +2,12 @@
 const Faq = () => {
     return (
         <div className="mt-5">
-            <h1 className="text-2xl font-bold">FAQ</h1>
+            <div className="text-center max-w-2xl  mx-auto">
+                <h1 className="text-3xl font-bold mb-2">Frequently Asked Questions (FAQ)</h1>
+                <p>Find quick answers to common questions about our products, services, orders, and delivery options to help you shop with confidence.</p>
+            </div>
             <div >
-                <div className="space-y-4 mt-5">
+                <div className="space-y-4 mt-10">
                     <details className="group rounded-lg bg-gray-50 p-6 [&_summary::-webkit-details-marker]:hidden" open>
                         <summary className="flex cursor-pointer items-center justify-between gap-1.5 text-gray-900">
                             <h2 className="font-medium">What is Deal of the Day?</h2>
