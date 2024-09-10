@@ -7,13 +7,11 @@ import Brands from "./Brands/Brands";
 import Faq from "./Faq";
 import Newsletter from "./Newsletter";
 
-
 const Homepage = () => {
   return (
     <div>
       <Banner />
       <CategoryTabs />
-    
       <Services />
       <Brands />
       <Faq />
