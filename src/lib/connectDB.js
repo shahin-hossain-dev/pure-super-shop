@@ -1,11 +1,10 @@
-
 import { MongoClient, ServerApiVersion } from 'mongodb';
 
 let db;
 
 export const connectDB = async () => {
+  if(db) return db;
   try {
-    if(db) return db;
     const uri = process.env.NEXT_PUBLIC_MONGODB_URI; 
     if (!uri) {
       throw new Error("Please add your MongoDB URI to .env.local");
@@ -18,6 +17,7 @@ export const connectDB = async () => {
       }
     });
     db = client.db('super-Shop-Data');
+    return db;
   } catch (error) {
     console.error("Failed to connect to MongoDB", error);
     throw new Error("Failed to connect to MongoDB");
