@@ -3,7 +3,8 @@ export const products = [
     id: 1,
     productName: "Baby Lotion",
     price: 52.23,
-    ImageUrl: "https://example.com/images/baby_lotion.jpg",
+    ImageUrl:
+      "https://d2t8nl1y0ie1km.cloudfront.net/images/thumbs/65fa9355115075f231ec485e_Meril-Baby-Lotion-200ml_1_415.webp",
     categoryName: "baby-care",
     discountPrice: 41.58,
     createdBy: "user_6",
@@ -11,9 +12,10 @@ export const products = [
   },
   {
     id: 2,
-    productName: "Shampoo",
+    productName: "Dettol Antiseptic Liquid",
     price: 165.94,
-    ImageUrl: "https://example.com/images/shampoo.jpg",
+    ImageUrl:
+      "https://d2t8nl1y0ie1km.cloudfront.net/images/thumbs/660ba2e4f162e0a702a02ec3_3000471_1.webp",
     categoryName: "personal-care",
     discountPrice: 151.66,
     createdBy: "user_7",
@@ -23,7 +25,8 @@ export const products = [
     id: 3,
     productName: "Basketball",
     price: 38.4,
-    ImageUrl: "https://example.com/images/basketball.jpg",
+    ImageUrl:
+      "https://img.lazcdn.com/3rd/q/aHR0cHM6Ly9iZC1saXZlLTIxLnNsYXRpYy5uZXQva2YvUzEzOGE2OTJhM2YzNTQ2MmM4OTlhMjQ0YTcyY2FjOWJhby5qcGc=_400x400q75.png_.webp",
     categoryName: "toy-sports",
     discountPrice: 33.81,
     createdBy: "user_1",
@@ -33,14 +36,14 @@ export const products = [
     id: 4,
     productName: "Diapers",
     price: 15.48,
-    ImageUrl: "https://example.com/images/diapers.jpg",
+    ImageUrl:
+      "https://d2t8nl1y0ie1km.cloudfront.net/images/thumbs/65fa9377115075f231ec4a12_Pampers-Pants-Daiper-L-9-14kg-38pcs-India_1_415.webp",
     categoryName: "baby-care",
     discountPrice: 12.34,
     createdBy: "user_7",
     subCategory: "baby-accessories",
   },
   {
-
     id: 5,
     productName: "Apple",
     price: 65.05,
@@ -55,7 +58,8 @@ export const products = [
     id: 6,
     productName: "Hair Dryer",
     price: 44.41,
-    ImageUrl: "https://example.com/images/hair_dryer.jpg",
+    ImageUrl:
+      "https://img.lazcdn.com/3rd/q/aHR0cHM6Ly9zdGF0aWMtMDEuZGFyYXouY29tLmJkL3AvYmU2ZTU2ZTRhNjgzNWVlNzhiNmM0MGY1YjhiMmJlMTMuanBn_400x400q75.png_.webp",
     categoryName: "personal-care",
     discountPrice: 36.56,
     createdBy: "user_9",
@@ -87,7 +91,8 @@ export const products = [
     id: 9,
     productName: "Bicycle",
     price: 99.91,
-    ImageUrl: "https://example.com/images/bicycle.jpg",
+    ImageUrl:
+      "https://img.drz.lazcdn.com/static/bd/p/5c953874381ed69d1285989ddbdbf3bf.jpg_720x720q80.jpg_.webp",
     categoryName: "toy-sports",
     discountPrice: 74.03,
     createdBy: "user_4",
@@ -108,7 +113,8 @@ export const products = [
     id: 11,
     productName: "Toy Car",
     price: 25.79,
-    ImageUrl: "https://example.com/images/toy_car.jpg",
+    ImageUrl:
+      "https://d2t8nl1y0ie1km.cloudfront.net/images/thumbs/66948c60d15d8ff554a359ae_S202950-UABC-Toyota-Supra-124-32097_1.webp",
     categoryName: "toy-sports",
     discountPrice: 19.55,
     createdBy: "user_3",
@@ -129,7 +135,8 @@ export const products = [
     id: 13,
     productName: "Action Figure",
     price: 116.05,
-    ImageUrl: "https://example.com/images/action_figure.jpg",
+    ImageUrl:
+      "https://img.lazcdn.com/3rd/q/aHR0cHM6Ly9iZC1saXZlLTIxLnNsYXRpYy5uZXQva2YvUzIyM2Y2ZWQxYjAzMjQyMDc5YzE0ODM2OTUzNGIzMTg2ci5qcGc=_400x400q75.png_.webp",
     categoryName: "toy-sports",
     discountPrice: 106.54,
     createdBy: "user_9",
@@ -139,7 +146,8 @@ export const products = [
     id: 14,
     productName: "Perfume",
     price: 175.28,
-    ImageUrl: "https://example.com/images/perfume.jpg",
+    ImageUrl:
+      "https://d2t8nl1y0ie1km.cloudfront.net/images/thumbs/65fa986f115075f231ecd4fd_He-Passion-Body-Perfume-120ml_1_415.webp",
     categoryName: "personal-care",
     discountPrice: 140.22,
     createdBy: "user_5",
@@ -149,7 +157,8 @@ export const products = [
     id: 15,
     productName: "Toothpaste",
     price: 37.88,
-    ImageUrl: "https://example.com/images/toothpaste.jpg",
+    ImageUrl:
+      "https://d2t8nl1y0ie1km.cloudfront.net/images/thumbs/65fa9815d61902ef23087dc9_Mediplus-Toothpaste-70gm_1_415.webp",
     categoryName: "personal-care",
     discountPrice: 35.9,
     createdBy: "user_10",
@@ -159,7 +168,8 @@ export const products = [
     id: 16,
     productName: "Football",
     price: 134.98,
-    ImageUrl: "https://example.com/images/football.jpg",
+    ImageUrl:
+      "https://img.lazcdn.com/3rd/q/aHR0cHM6Ly9zdGF0aWMtMDEuZGFyYXouY29tLmJkL3AvYjUzOTY3YmJhNWMwNjNjYTljNTNmNjJhNTJmMDcyNjMuanBn_400x400q75.png_.webp",
     categoryName: "toy-sports",
     discountPrice: 117.93,
     createdBy: "user_4",
@@ -169,7 +179,8 @@ export const products = [
     id: 17,
     productName: "Baby Milk",
     price: 159.13,
-    ImageUrl: "https://example.com/images/baby_powder.jpg",
+    ImageUrl:
+      "https://d2t8nl1y0ie1km.cloudfront.net/images/thumbs/65fa937f115075f231ec4a76_Nido-Fortigrow-Full-Cream-Milk-Powder-700gm-BIB_1_415.webp",
     categoryName: "baby-care",
     discountPrice: 123.0,
     createdBy: "user_3",
@@ -190,7 +201,8 @@ export const products = [
     id: 19,
     productName: "Baby Powder",
     price: 104.16,
-    ImageUrl: "https://example.com/images/baby_powder.jpg",
+    ImageUrl:
+      "https://d2t8nl1y0ie1km.cloudfront.net/images/thumbs/65fa9364115075f231ec4926_Kodomo-Baby-Lotion-Powder-180ml_1_415.webp",
     categoryName: "baby-care",
     discountPrice: 83.2,
     createdBy: "user_9",
@@ -211,7 +223,8 @@ export const products = [
     id: 21,
     productName: "Shampoo",
     price: 61.62,
-    ImageUrl: "https://example.com/images/shampoo.jpg",
+    ImageUrl:
+      "https://d2t8nl1y0ie1km.cloudfront.net/images/thumbs/6681356df077212bd74ef788_Revlon-FLex-Dry-Shampoo-20FL-OZ-US_1.webp",
     categoryName: "personal-care",
     discountPrice: 47.86,
     createdBy: "user_4",
@@ -231,9 +244,10 @@ export const products = [
   },
   {
     id: 23,
-    productName: "Hair Dryer",
+    productName: "Hair Trimmer",
     price: 161.22,
-    ImageUrl: "https://example.com/images/hair_dryer.jpg",
+    ImageUrl:
+      "https://img.lazcdn.com/3rd/q/aHR0cHM6Ly9zdGF0aWMtMDEuZGFyYXouY29tLmJkL3AvNThjMGMyZmQ5ODY2Mzg1NGQ0NGY3OGNhYzAyZTM1NzYuanBn_400x400q75.png_.webp",
     categoryName: "personal-care",
     discountPrice: 138.8,
     createdBy: "user_6",
