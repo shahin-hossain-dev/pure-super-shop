@@ -6,16 +6,11 @@ import Services from "./Services";
 import Brands from "./Brands/Brands";
 import Faq from "./Faq";
 
-
 const Homepage = () => {
   return (
     <div>
       <Banner />
       <CategoryTabs />
-<<<<<<< HEAD
-      <Category />
-=======
->>>>>>> a34a71044b035f764a1b1da90b80e6594b67b804
       <Services />
       <Brands />
       <Faq />

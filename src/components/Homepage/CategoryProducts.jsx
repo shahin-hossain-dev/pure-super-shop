@@ -1,11 +1,27 @@
-import { products } from "@/lib/products";
-import React from "react";
+"use client";
+import React, { useEffect, useState } from "react";
 import ProductCard from "../ProductCard/ProductCard";
 
 const CategoryProducts = ({ title }) => {
-  const categoryProducts = products.filter(
-    (product) => product.categoryName === title
-  );
+  // const categoryProducts = products.filter(
+  //   (product) => product.categoryName === title
+  // );
+  const [categoryProducts, setCategoryProducts] = useState([]);
+
+  useEffect(() => {
+    const getCategoryProduct = async () => {
+      const products = await fetch(
+        `http://localhost:3000/products/api/get-category/${title}`
+      );
+      const data = await products.json();
+      setCategoryProducts(data);
+    };
+    getCategoryProduct();
+  }, [title]);
+
+  if (!categoryProducts) {
+    <div>Loading...</div>;
+  }
 
   return (
     <div>
