@@ -1,11 +1,15 @@
 "use client";
 import Link from "next/link";
 import React from "react";
-import { FaFacebook, FaGoogle } from "react-icons/fa";
 import { signIn, useSession } from "next-auth/react";
 import SocialSignin from "@/components/sharePage/SocialSgnin";
+import { useRouter, useSearchParams } from "next/navigation";
 
 const page = () => {
+  const router = useRouter();
+  // const searchParams = useSearchParams();
+  // const path = searchParams.get("redirect");
+
   const handleLogin = async (event) => {
     event.preventDefault();
     const email = event.target.email.value;
@@ -16,12 +20,19 @@ const page = () => {
       redirect: false,
       // callbackUrl: path ? path : "/",
     });
-    console.log(res)
+    if (res.status === 200) {
+      // event.target.reset();
+      // console.log('successful')
+      router.push('/')
+    }
+    else{
+      console.log('error')
+    }
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-white text-black">
-      <div className="absolute top-[8%] right-50% flex space-x-4">
+    <div className="min-h-screen flex flex-col items-center justify-center bg-white text-black ">
+      <div className="flex space-x-4">
         <Link href="/" className="text-black font-semibold hover:underline">
           Home
         </Link>
@@ -84,7 +95,7 @@ const page = () => {
             <p className="mb-4">or sign in with</p>
             <SocialSignin></SocialSignin>
             <p className="mt-8">
-              Don't have an account?{" "}
+              Do not have an account?{" "}
               <Link
                 href="/register"
                 className="text-primary font-semibold underline"
