@@ -9,8 +9,8 @@ const Homepage = () => {
   return (
     <div>
       <Banner />
-      {/* <CategoryTabs /> */}
-      {/* <Category /> */}
+      <CategoryTabs />
+      <Category />
       <Services />
       <Footer />
     </div>
