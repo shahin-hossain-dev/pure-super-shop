@@ -3,7 +3,8 @@ import Image from "next/image";
 import React from "react";
 
 const ProductCard = (product) => {
-  const { id, productName, price, categoryName, discountPrice, ImageUrl } = product;
+  const { id, productName, price, categoryName, discountPrice, ImageUrl } =
+    product;
 
   const handleAddToCart = (id) => {
     console.log("add to cart");
@@ -12,7 +13,7 @@ const ProductCard = (product) => {
     // fakhrul islam
     let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
     // Check if the item is already in the wishlist
-    if (!wishlist.some((item) => item.id === product.id)) {
+    if (!wishlist.some((item) => item._id === product._id)) {
       wishlist.push(product); // Add the product if it's not already in the wishlist
       localStorage.setItem("wishlist", JSON.stringify(wishlist));
     } else {

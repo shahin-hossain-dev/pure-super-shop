@@ -11,19 +11,20 @@ const page = () => {
       email: event.target.email.value,
       password: event.target.password.value,
     };
-    const resp = await fetch('http://localhost:3000/register/api',{
+    const resp = await fetch("http://localhost:3000/register/api", {
       method: "POST",
       body: JSON.stringify(newUser),
       headers: {
         "content-type": "application/json",
       },
-    })
+    });
+
+    console.log(resp.json());
 
     if (resp.status === 200) {
       event.target.reset();
-    }
-    else{
-      console.log('error')
+    } else {
+      console.log("error");
     }
   };
 
