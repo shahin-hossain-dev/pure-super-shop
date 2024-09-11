@@ -36,7 +36,7 @@ const ProductCard = (product) => {
     console.log(id);
   };
   return (
-    <div className="card rounded-sm relative flex flex-col justify-between border hover:border-[#84b93e] duration-150 hover:border-2 rounded-sm p-2">
+    <div className="card box-border relative flex flex-col justify-between border hover:border-[#84b93e] duration-300 hover:border-1 rounded-sm p-2">
       <div className=" right-3 top-3 absolute flex flex-col view-wish">
         <Link href={`products/${_id}`}>
           <button className="bg-gray-100 mb-2 p-2 text-[#84b93e] active:scale-95 hover:bg-[#84b93e] duration-300  active:bg-[#6a9630] hover:text-white rounded-full">

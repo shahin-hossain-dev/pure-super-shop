@@ -8,7 +8,7 @@ import { MdOutlineFacebook } from "react-icons/md";
 import { FaFacebookMessenger } from "react-icons/fa";
 import { FaWhatsapp } from "react-icons/fa";
 import { PiVanBold } from "react-icons/pi";
-
+import { LiaMoneyBillWaveAltSolid } from "react-icons/lia";
 const page = async ({ params }) => {
   const product = await getProductWithId(params.productId);
   const {
@@ -30,15 +30,17 @@ const page = async ({ params }) => {
           <span className="text-lg font-medium">{productName}</span>
         </h3>
         <div className="mt-4 grid grid-cols-1 md:grid-cols-3 gap-12">
+          {/* col -1 */}
           <div>
             <Image
               src={ImageUrl}
               alt=""
               height={400}
               width={400}
-              className="border"
+              className="border rounded-md"
             />
           </div>
+          {/* col 2 */}
           <div>
             <h2 className="text-2xl text-[#333333] mb-2 font-medium">
               {productName}
@@ -63,7 +65,7 @@ const page = async ({ params }) => {
             </p>
           </div>
           {/* col-3 */}
-          <div>
+          <div className="border p-3 rounded-md">
             <div>
               <button
                 //   onClick={() => handleAddToWishlist(product)}
@@ -92,6 +94,7 @@ const page = async ({ params }) => {
                 </span>
                 <p>1-2 hours</p>
               </div>
+              {/* payment  */}
               <div className="inline-block px-3 py-2 border shadow-sm rounded-sm mt-8">
                 <span className="flex items-center gap-1  ">
                   <h4 className="font-bold  text-[#333333]">Payments: </h4>
@@ -103,7 +106,29 @@ const page = async ({ params }) => {
                   />
                 </span>
               </div>
-              <div></div>
+              <div className="flex items-center gap-3">
+                <div className="inline-block px-3 py-2 border shadow-sm rounded-sm mt-4">
+                  <span className="flex items-center gap-1  ">
+                    <h4 className="font-bold  text-[#333333]">Nagad: </h4>
+                    <Image
+                      src={
+                        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6Mf12Slt1IA8xOQJ4_EBWcxpW65TN91tn0_zKls2uI5wbnwjShjh1mraNmRUvJueQRl8&usqp=CAU"
+                      }
+                      alt="nagad"
+                      height={50}
+                      width={50}
+                    />
+                  </span>
+                </div>
+                <div className="inline-block px-3 py-2 border shadow-sm rounded-sm mt-4">
+                  <span className="flex items-center gap-2  ">
+                    <h4 className="font-bold  text-[#333333]">
+                      Cash In <br /> Delivery{" "}
+                    </h4>
+                    <LiaMoneyBillWaveAltSolid className="text-3xl text-green-500" />
+                  </span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
