@@ -1,35 +1,48 @@
 "use client";
 import SocialSignin from "@/components/sharePage/SocialSgnin";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import React from "react";
+import Swal from "sweetalert2";
 
 const page = () => {
+  const router = useRouter();
   const handleSignUp = async (event) => {
     event.preventDefault();
     const newUser = {
       name: event.target.name.value,
       email: event.target.email.value,
+      photo: event.target.photo.value,
       password: event.target.password.value,
     };
-    const resp = await fetch('http://localhost:3000/register/api',{
+    const resp = await fetch("http://localhost:3000/register/api", {
       method: "POST",
       body: JSON.stringify(newUser),
       headers: {
         "content-type": "application/json",
       },
-    })
+    });
 
     if (resp.status === 200) {
-      event.target.reset();
-    }
-    else{
-      console.log('error')
+      // event.target.reset();
+      router.push("/login");
+      Swal.fire({
+        icon: "success",
+        title: "Congrats",
+        text: "Registration Successful!",
+      });
+    } else {
+      Swal.fire({
+        icon: 'success',
+        title: 'Congrats',
+        text: 'Registration Successful!',
+    });
     }
   };
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-white text-black">
-      <div className="flex space-x-4">
+      {/* <div className="flex space-x-4">
         <Link href="/" className="text-black font-semibold hover:underline">
           Home
         </Link>
@@ -39,7 +52,7 @@ const page = () => {
         >
           Register
         </Link>
-      </div>
+      </div> */}
 
       <div className="container mx-auto p-4 sm:p-8 lg:p-12">
         <div className="max-w-lg mx-auto border-2 p-8 sm:p-12 rounded-lg shadow-md bg-white">
@@ -62,6 +75,7 @@ const page = () => {
                 type="text"
                 name="name"
                 placeholder="Your Name"
+                required
                 className="mt-1 w-full input input-bordered p-3 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary"
               />
             </div>
@@ -77,6 +91,23 @@ const page = () => {
                 type="email"
                 name="email"
                 placeholder="Your Email"
+                required
+                className="mt-1 w-full input input-bordered p-3 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary"
+              />
+            </div>
+
+            <div>
+              <label
+                htmlFor="photo"
+                className="block text-sm font-medium text-black"
+              >
+                Photo Url
+              </label>
+              <input
+                type="text"
+                name="photo"
+                placeholder="Your Photo Url"
+                required
                 className="mt-1 w-full input input-bordered p-3 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary"
               />
             </div>
@@ -92,6 +123,7 @@ const page = () => {
                 type="password"
                 name="password"
                 placeholder="Your Password"
+                required
                 className="mt-1 w-full input input-bordered p-3 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary"
               />
             </div>

@@ -4,6 +4,7 @@ import React from "react";
 import { signIn, useSession } from "next-auth/react";
 import SocialSignin from "@/components/sharePage/SocialSgnin";
 import { useRouter, useSearchParams } from "next/navigation";
+import Swal from "sweetalert2";
 
 const page = () => {
   const router = useRouter();
@@ -21,9 +22,12 @@ const page = () => {
       // callbackUrl: path ? path : "/",
     });
     if (res.status === 200) {
-      // event.target.reset();
-      // console.log('successful')
       router.push('/')
+      Swal.fire({
+        icon: 'success',
+        title: 'Congrats',
+        text: 'Login Successful!',
+    });
     }
     else{
       console.log('error')
@@ -32,7 +36,7 @@ const page = () => {
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-white text-black ">
-      <div className="flex space-x-4">
+      {/* <div className="flex space-x-4">
         <Link href="/" className="text-black font-semibold hover:underline">
           Home
         </Link>
@@ -42,7 +46,7 @@ const page = () => {
         >
           Login
         </Link>
-      </div>
+      </div> */}
       <div className="container mx-auto p-4 sm:p-8 lg:p-12">
         <div className="max-w-lg mx-auto border-2 p-8 sm:p-12 rounded-lg shadow-md bg-white">
           <p className="text-xl font-semibold text-center mb-8 relative">
