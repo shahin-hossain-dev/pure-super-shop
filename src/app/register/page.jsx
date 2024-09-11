@@ -23,6 +23,7 @@ const page = () => {
       },
     });
 
+
     if (resp.status === 200) {
       // event.target.reset();
       router.push("/login");
@@ -37,6 +38,7 @@ const page = () => {
         title: 'Congrats',
         text: 'Registration Successful!',
     });
+
     }
   };
 

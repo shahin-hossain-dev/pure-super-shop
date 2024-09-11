@@ -1,10 +1,14 @@
 "use client";
 import Image from "next/image";
 import React from "react";
+
 import Swal from "sweetalert2";
+import { FaRegEye } from "react-icons/fa6";
+import { FaRegHeart } from "react-icons/fa6";
 
 const ProductCard = (product) => {
-  const { id, productName, price, categoryName, discountPrice, ImageUrl } = product;
+  const { id, productName, price, categoryName, discountPrice, ImageUrl } =
+    product;
 
   const handleAddToCart = (id) => {
     console.log("add to cart");
@@ -13,7 +17,7 @@ const ProductCard = (product) => {
     // fakhrul islam
     let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
     // Check if the item is already in the wishlist
-    if (!wishlist.some((item) => item.id === product.id)) {
+    if (!wishlist.some((item) => item._id === product._id)) {
       wishlist.push(product); // Add the product if it's not already in the wishlist
       localStorage.setItem("wishlist", JSON.stringify(wishlist));
       Swal.fire({
@@ -31,7 +35,22 @@ const ProductCard = (product) => {
     console.log(id);
   };
   return (
-    <div className=" flex flex-col justify-between border hover:border-[#84b93e] hover:border-2 rounded-sm p-2">
+    <div className="card relative flex flex-col justify-between border hover:border-[#84b93e] hover:border-2 rounded-sm p-2">
+      <div className=" right-3 top-3 absolute flex flex-col view-wish">
+        <button
+          onClick={() => handleDetails("id")}
+          className="bg-gray-100 mb-3 p-2 text-[#333333] rounded-full"
+        >
+          <FaRegEye className="text-2xl " />
+        </button>
+        {/* wish list */}
+        <button
+          onClick={() => handleAddToWishlist(product)}
+          className="bg-gray-100 p-2 text-[#333333] rounded-full"
+        >
+          <FaRegHeart className="text-2xl " />
+        </button>
+      </div>
       <div className="w-full">
         <Image
           src={ImageUrl}
@@ -46,21 +65,6 @@ const ProductCard = (product) => {
         <p className="text-xl mb-2 text-center text-[#84b93e] font-medium">
           ${price}
         </p>
-        <div className="gap-2 flex ">
-          <button
-            onClick={() => handleDetails("id")}
-            className=" w-full bottom-2 left-2 right-2 p-1 bg-gradient-to-t from-gray-300 to-gray-50 "
-          >
-            Details
-          </button>
-
-          <button
-            onClick={() => handleAddToWishlist(product)}
-            className="w-full bottom-2 left-2 right-2 p-1 bg-gradient-to-t from-gray-300 to-gray-50 "
-          >
-            Add to WishList
-          </button>
-        </div>
 
         <button
           onClick={handleAddToCart}
