@@ -30,7 +30,11 @@ const page = () => {
     });
     }
     else{
-      console.log('error')
+      Swal.fire({
+        icon: 'error',
+        title: 'Opps',
+        text: 'Incorrect email or password!',
+    });
     }
   };
 

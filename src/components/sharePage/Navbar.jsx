@@ -55,6 +55,18 @@ const Navbar = () => {
               </Link>
             )}
             {session?.status === "authenticated" && (
+              <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+                <div className="tool w-10 rounded-full">
+                  <img
+                    className="idd"
+                    src={
+                      session?.data?.user?.photo || "https://i.ibb.co/sjymvr8/Capture4.png"
+                    }
+                  />
+                </div>
+              </label>
+            )}
+            {session?.status === "authenticated" && (
               <button
                 className="px-4 py-2 bg-[#ff1111] text-white rounded hover:bg-blue-600"
                 onClick={() => signOut()}
