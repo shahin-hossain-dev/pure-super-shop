@@ -17,7 +17,6 @@ const Homepage = () => {
       <BigSell></BigSell>
       <Faq />
       <Newsletter />
-     
     </div>
   );
 };
