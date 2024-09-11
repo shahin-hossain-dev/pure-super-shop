@@ -4,6 +4,7 @@ import Image from "next/image";
 
 const page = () => {
     return (
+
         <section className="py-12">
       <div className=" mx-auto px-6">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10 mb-10">

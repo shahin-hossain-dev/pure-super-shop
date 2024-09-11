@@ -1,6 +1,7 @@
 import Navbar from "@/components/sharePage/Navbar";
 import Homepage from "@/components/Homepage/Homepage";
-import CheckOut from "@/components/CheckOut/page";
+import CheckOut from "@/app/checkout/page";
+import ShoppingSideBar from "@/components/ShoppingSideBar/page";
 
 export default function Home() {
   return (
@@ -8,7 +9,7 @@ export default function Home() {
       <div className="font-[family-name:var(--font-geist-sans)]">
           <Homepage />
       </div>
-      <CheckOut />
+      <ShoppingSideBar />
     </div>
   );
 }
