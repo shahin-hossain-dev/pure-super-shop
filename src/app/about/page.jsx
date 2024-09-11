@@ -48,7 +48,7 @@ const page = () => {
 
         {/* Our Team */}
         <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold text-gray-800 mb-8">Our Team</h2>
+          <h2 className="text-3xl font-bold text-gray-800 mb-3">Our Team</h2>
           <p className="text-gray-600 text-lg leading-relaxed max-w-2xl mx-auto pb-10">
   Our team is a diverse group of talented professionals united by a shared passion for innovation and excellence.
 </p>
