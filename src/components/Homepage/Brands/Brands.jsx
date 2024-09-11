@@ -7,7 +7,7 @@ const Brands = () => {
   return (
     <div className="w-full mt-10">
       <div className="text-center max-w-2xl  mx-auto">
-        <h1 className="text-3xl font-bold mb-2 ">OUR POPULAR BRANDS</h1>
+        <h1 className="text-3xl font-bold mb-2">Our Popular Brands</h1>
         <p className="text-gray-600">Explore a wide selection of trusted brands known for their quality and freshness. From everyday essentials to specialty items, find everything you need from the brands you love.</p>
       </div>
       <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-10 mt-10 ">
