@@ -6,9 +6,25 @@ import { CiHeart } from "react-icons/ci";
 import { usePathname } from 'next/navigation'
 
 const Navbar = () => {
+  const [showInfo, setShowInfo] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
+  const session = useSession();
+  console.log(session?.data?.user?.email);
+  return (
+    <nav className="bg-white  sticky top-0 z-50">
+      <div className="container mx-auto px-4">
+        <div className="flex justify-between items-center py-6">
+          {/* Logo */}
+          <div className="text-2xl font-bold text-[#3e84b9]">
+            <Link href="/">
+              Pure<span className="text-[#84b93e] font-bold">Super</span>
+            </Link>
+          </div>
+
 //   const [isOpen, setIsOpen] = useState(false);
 //   const session = useSession();
 //   console.log(session);
+
 
 //   return (
 //     <nav className="bg-white  sticky top-0 z-50">
@@ -50,6 +66,66 @@ const Navbar = () => {
     },
 ]
   if(activeRoute.includes('dashboard')) return 
+
+          {/* Right-side buttons */}
+          <div className="hidden md:flex items-center space-x-4">
+            {session?.status === "unauthenticated" && (
+              <Link
+                href="/login"
+                className="px-4 py-2 bg-[#3e84b9] text-white rounded hover:bg-blue-600"
+              >
+                Login
+              </Link>
+            )}
+            {session?.status === "authenticated" && (
+              // <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+              <div className="relative">
+              <div
+                className="tool w-10 rounded-full cursor-pointer"
+                onClick={() => setShowInfo(!showInfo)}
+              >
+                <img
+                  className="h-8 w-8 rounded-full"
+                  src={
+                    session?.data?.user?.photo || "https://i.ibb.co/sjymvr8/Capture4.png"
+                  }
+                  alt="User profile"
+                />
+              </div>
+        
+              {showInfo && (
+                <div className="absolute mt-2 bg-white p-2 rounded shadow-lg">
+                  <p className="text-sm font-semibold">{session?.data?.user?.name || "User Name"}</p>
+                  <p className="text-sm text-gray-500">{session?.data?.user?.email || "user@example.com"}</p>
+                </div>
+              )}
+            </div>
+              // </label>
+            )}
+            {session?.status === "authenticated" && (
+              <button
+                className="px-4 py-2 bg-[#ff1111] text-white rounded hover:bg-blue-600"
+                onClick={() => signOut()}
+              >
+                Logout
+              </button>
+            )}
+            {session?.status === "unauthenticated" && (
+              <Link
+                href="/register"
+                className="px-4 py-2 bg-[#84b93e] text-white rounded hover:bg-green-600"
+              >
+                Register
+              </Link>
+            )}
+
+            <Link
+              href="/wishlist"
+              className="px-4 py-2 bg-white text-[#3e84b9] rounded  border font-medium border-[#3e84b9] flex items-center"
+            >
+              <CiHeart className="mr-2" /> Wishlist
+            </Link>
+          </div>
 
 
 //           {/* Right-side buttons */}
