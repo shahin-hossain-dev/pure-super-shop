@@ -4,11 +4,13 @@ import Link from "next/link";
 import { useState } from "react";
 import { CiHeart } from "react-icons/ci";
 import { usePathname } from "next/navigation";
+import { useSession } from "next-auth/react";
 
 const Navbar = () => {
   const activeRoute = usePathname();
-
+  const session = useSession();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [showInfo, setShowInfo] = useState(false);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -106,18 +108,56 @@ const Navbar = () => {
         </div>
         <div className="flex gap-x-6 gap-y-4 ml-auto items-center">
           {/* Additional Navbar content for larger screens */}
-          <Link
-            href="/login"
-            className="px-4 py-2 bg-[#3e84b9] text-white rounded hover:bg-blue-600 hidden lg:block"
-          >
-            Login
-          </Link>
-          <Link
-            href="/register"
-            className="px-4 py-2 bg-[#84b93e] text-white rounded hover:bg-green-600 hidden lg:block"
-          >
-            Register
-          </Link>
+          {session?.status === "unauthenticated" && (
+              <Link
+                href="/login"
+                className="px-4 py-2 bg-[#3e84b9] text-white rounded hover:bg-blue-600"
+              >
+                Login
+              </Link>
+            )}
+             {session?.status === "authenticated" && (
+              // <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+              <div className="relative">
+              <div
+                className="tool w-10 rounded-full cursor-pointer"
+                onClick={() => setShowInfo(!showInfo)}
+              >
+                <img
+                  className="h-8 w-8 rounded-full"
+                  src={
+                    session?.data?.user?.photo || "https://i.ibb.co/sjymvr8/Capture4.png"
+                  }
+                  alt="User profile"
+                />
+              </div>
+        
+              {showInfo && (
+                <div className="absolute mt-2 bg-white p-2 rounded shadow-lg">
+                  <p className="text-sm font-semibold">{session?.data?.user?.name || "User Name"}</p>
+                  <p className="text-sm text-gray-500">{session?.data?.user?.email || "user@example.com"}</p>
+                </div>
+              )}
+            </div>
+              // </label>
+            )}
+            
+            {session?.status === "authenticated" && (
+              <button
+                className="px-4 py-2 bg-[#ff1111] text-white rounded hover:bg-blue-600"
+                onClick={() => signOut()}
+              >
+                Logout
+              </button>
+            )}
+           {session?.status === "unauthenticated" && (
+              <Link
+                href="/register"
+                className="px-4 py-2 bg-[#84b93e] text-white rounded hover:bg-green-600"
+              >
+                Register
+              </Link>
+            )}
           <Link
             href="/wishlist"
             className="px-4 py-2 bg-white text-[#3e84b9] rounded border font-medium border-[#3e84b9]  items-center hidden lg:flex"
