@@ -1,6 +1,5 @@
 import React from "react";
 import Banner from "./Banner";
-import Footer from "../sharePage/Footer";
 import CategoryTabs from "./CategoryTabs";
 import Services from "./Services";
 import Brands from "./Brands/Brands";
@@ -13,12 +12,11 @@ const Homepage = () => {
     <div>
       <Banner />
       <CategoryTabs />
-    
       <Services />
       <Brands />
       <Faq />
       <Newsletter />
-      <Footer />
+     
     </div>
   );
 };

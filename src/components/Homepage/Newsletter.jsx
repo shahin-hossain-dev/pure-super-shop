@@ -2,7 +2,7 @@
 
 const Newsletter = () => {
     return (
-        <section className="py-6 text-white bg-[#3E84B9] rounded-lg my-10">
+        <section style={{backgroundImage: 'url("/assets/Banner_Image/Newsletter.svg")'}} className="py-6 text-white  rounded-lg bg-cover my-10">
 	<div className="mx-auto flex flex-col justify-center p-4 space-y-8 md:p-10 lg:space-y-0 lg:space-x-12 lg:justify-between lg:flex-row">
 		<div className="flex flex-col space-y-4 text-center lg:text-left">
         <h1 className="text-4xl font-bold leading-none">Join Our Shopping Community</h1>
