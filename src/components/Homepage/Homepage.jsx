@@ -11,7 +11,7 @@ const Homepage = () => {
       <Banner />
       <CategoryTabs />
       <Brands/>
-      <Footer />
+      
     </div>
   );
 };

@@ -44,12 +44,11 @@ export const products = [
     id: 5,
     productName: "Apple",
     price: 65.05,
-<<<<<<< HEAD
     ImageUrl: "https://i.ibb.co.com/myXN0P5/30.png",
-=======
-    ImageUrl:
-      "https://d2t8nl1y0ie1km.cloudfront.net/images/thumbs/65fa9761d61902ef2307c76e_Appl-Fuji-P_1_415.webp",
->>>>>>> c9ff6b7c0b8135b3771203d40be481371110e548
+
+//     ImageUrl:
+//       "https://d2t8nl1y0ie1km.cloudfront.net/images/thumbs/65fa9761d61902ef2307c76e_Appl-Fuji-P_1_415.webp",
+// >>>>>>> c9ff6b7c0b8135b3771203d40be481371110e548
     categoryName: "food",
     discountPrice: 55.72,
     createdBy: "user_8",
@@ -69,12 +68,12 @@ export const products = [
     id: 7,
     productName: "Chocolate",
     price: 180.31,
-<<<<<<< HEAD
+// <<<<<<< HEAD
     ImageUrl: "https://i.ibb.co.com/myXN0P5/30.png",
-=======
-    ImageUrl:
-      "https://d2t8nl1y0ie1km.cloudfront.net/images/thumbs/667d75d56569b52bd37c249c_Lindt-Lindor-Assorted-Chocolate-200g_1_415.webp",
->>>>>>> c9ff6b7c0b8135b3771203d40be481371110e548
+// =======
+//     ImageUrl:
+//       "https://d2t8nl1y0ie1km.cloudfront.net/images/thumbs/667d75d56569b52bd37c249c_Lindt-Lindor-Assorted-Chocolate-200g_1_415.webp",
+// >>>>>>> c9ff6b7c0b8135b3771203d40be481371110e548
     categoryName: "food",
     discountPrice: 132.11,
     createdBy: "user_8",
@@ -84,12 +83,12 @@ export const products = [
     id: 8,
     productName: "Vacuum Cleaner",
     price: 180.85,
-<<<<<<< HEAD
+// <<<<<<< HEAD
     ImageUrl: "https://i.ibb.co.com/myXN0P5/30.png",
-=======
-    ImageUrl:
-      "https://mke.com.bd/media/catalog/product/i/m/image_37_copy.jpg?width=320&height=320&store=default&image-type=small_image",
->>>>>>> c9ff6b7c0b8135b3771203d40be481371110e548
+// =======
+//     ImageUrl:
+//       "https://mke.com.bd/media/catalog/product/i/m/image_37_copy.jpg?width=320&height=320&store=default&image-type=small_image",
+// >>>>>>> c9ff6b7c0b8135b3771203d40be481371110e548
     categoryName: "home-kitchen",
     discountPrice: 159.35,
     createdBy: "user_8",
@@ -109,12 +108,12 @@ export const products = [
     id: 10,
     productName: "Mixer Grinder",
     price: 101.72,
-<<<<<<< HEAD
+// <<<<<<< HEAD
     ImageUrl: "https://i.ibb.co.com/myXN0P5/30.png",
-=======
-    ImageUrl:
-      "https://mke.com.bd/media/catalog/product/0/5/0505836_philips-hl7757-750w-3-jars-mixer-grinder.png?width=700&height=1000&store=default&image-type=image",
->>>>>>> c9ff6b7c0b8135b3771203d40be481371110e548
+// =======
+//     ImageUrl:
+//       "https://mke.com.bd/media/catalog/product/0/5/0505836_philips-hl7757-750w-3-jars-mixer-grinder.png?width=700&height=1000&store=default&image-type=image",
+// >>>>>>> c9ff6b7c0b8135b3771203d40be481371110e548
     categoryName: "home-kitchen",
     discountPrice: 77.55,
     createdBy: "user_7",
@@ -134,12 +133,12 @@ export const products = [
     id: 12,
     productName: "Hilsa Fish",
     price: 20.14,
-<<<<<<< HEAD
+// <<<<<<< HEAD
     ImageUrl: "https://i.ibb.co.com/myXN0P5/30.png",
-=======
-    ImageUrl:
-      "https://d2t8nl1y0ie1km.cloudfront.net/images/thumbs/664ae49769554c8e502f52d9_Hilsha-1-1-199-kg_1_415.webp",
->>>>>>> c9ff6b7c0b8135b3771203d40be481371110e548
+// =======
+//     ImageUrl:
+//       "https://d2t8nl1y0ie1km.cloudfront.net/images/thumbs/664ae49769554c8e502f52d9_Hilsha-1-1-199-kg_1_415.webp",
+// >>>>>>> c9ff6b7c0b8135b3771203d40be481371110e548
     categoryName: "food",
     discountPrice: 16.95,
     createdBy: "user_2",
@@ -199,12 +198,12 @@ export const products = [
     id: 18,
     productName: "Beef",
     price: 149.01,
-<<<<<<< HEAD
+// <<<<<<< HEAD
     ImageUrl: "https://i.ibb.co.com/myXN0P5/30.png",
-=======
-    ImageUrl:
-      "https://d2t8nl1y0ie1km.cloudfront.net/images/thumbs/66c303779b47a37e129f5ca9_Beef-Premium-Chunk_1_415.webp",
->>>>>>> c9ff6b7c0b8135b3771203d40be481371110e548
+// =======
+//     ImageUrl:
+//       "https://d2t8nl1y0ie1km.cloudfront.net/images/thumbs/66c303779b47a37e129f5ca9_Beef-Premium-Chunk_1_415.webp",
+// >>>>>>> c9ff6b7c0b8135b3771203d40be481371110e548
     categoryName: "food",
     discountPrice: 105.45,
     createdBy: "user_2",
@@ -224,12 +223,12 @@ export const products = [
     id: 20,
     productName: "Dining Set",
     price: 98.82,
-<<<<<<< HEAD
+// <<<<<<< HEAD
     ImageUrl: "https://i.ibb.co.com/myXN0P5/30.png",
-=======
-    ImageUrl:
-      "https://d2t8nl1y0ie1km.cloudfront.net/images/thumbs/668e237121359d72afc26e13_S202825-NG-Opal-Plate-10-75-Inch_1.webp",
->>>>>>> c9ff6b7c0b8135b3771203d40be481371110e548
+// =======
+//     ImageUrl:
+//       "https://d2t8nl1y0ie1km.cloudfront.net/images/thumbs/668e237121359d72afc26e13_S202825-NG-Opal-Plate-10-75-Inch_1.webp",
+// >>>>>>> c9ff6b7c0b8135b3771203d40be481371110e548
     categoryName: "home-kitchen",
     discountPrice: 79.23,
     createdBy: "user_5",
@@ -250,12 +249,12 @@ export const products = [
     productName: "Electric Kettle",
 
     price: 75.33,
-<<<<<<< HEAD
+// <<<<<<< HEAD
     ImageUrl: "https://i.ibb.co.com/myXN0P5/30.png",
-=======
-    ImageUrl:
-      "https://d2t8nl1y0ie1km.cloudfront.net/images/thumbs/65fa98e2115075f231ecdb79_Kiam-Electric-Kettle-BL002-1-8L_1.webp",
->>>>>>> c9ff6b7c0b8135b3771203d40be481371110e548
+// =======
+//     ImageUrl:
+//       "https://d2t8nl1y0ie1km.cloudfront.net/images/thumbs/65fa98e2115075f231ecdb79_Kiam-Electric-Kettle-BL002-1-8L_1.webp",
+// >>>>>>> c9ff6b7c0b8135b3771203d40be481371110e548
     categoryName: "home-kitchen",
     discountPrice: 66.89,
     createdBy: "user_9",
@@ -275,12 +274,12 @@ export const products = [
     id: 24,
     productName: "Cookies",
     price: 58.47,
-<<<<<<< HEAD
+// <<<<<<< HEAD
     ImageUrl: "https://i.ibb.co.com/myXN0P5/30.png",
-=======
-    ImageUrl:
-      "https://d2t8nl1y0ie1km.cloudfront.net/images/thumbs/66b46c0ce51c3969c635d433_5.Sugar%20free%20biscuit.png",
->>>>>>> c9ff6b7c0b8135b3771203d40be481371110e548
+// =======
+//     ImageUrl:
+//       "https://d2t8nl1y0ie1km.cloudfront.net/images/thumbs/66b46c0ce51c3969c635d433_5.Sugar%20free%20biscuit.png",
+// >>>>>>> c9ff6b7c0b8135b3771203d40be481371110e548
     categoryName: "food",
     discountPrice: 42.38,
     createdBy: "user_6",
