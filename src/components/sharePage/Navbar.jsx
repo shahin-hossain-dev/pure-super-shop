@@ -63,7 +63,7 @@ const Navbar = () => {
           <ul className="lg:flex lg:gap-x-3 max-lg:space-y-3 max-lg:fixed max-lg:bg-white max-lg:w-1/2 max-lg:min-w-[300px] max-lg:top-0 max-lg:left-0 max-lg:p-6 max-lg:h-full max-lg:shadow-md max-lg:overflow-auto z-50 text-center">
             {/* Mobile Menu Items */}
             {
-        navItems?.map((item) => <li key="title"><Link  className={item?.path === activeRoute ? "font-bold pb-2 border-b-2 text-black border-b-[#84b93e]  react-tabs__tab " : "react-tabs__tab"} href={item?.path}>{item?.title}</Link></li>)
+        navItems?.map((item) => <li key="title"><Link  className={item?.path === activeRoute ? "font-bold pb-2 !text-[#000] react-tabs__tab " : "react-tabs__tab"} href={item?.path}>{item?.title}</Link></li>)
       }
             {/* Add menu items here */}
             {/* Mobile specific links */}

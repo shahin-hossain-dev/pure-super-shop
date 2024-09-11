@@ -19,9 +19,8 @@ const page = () => {
 
   return (
     <div>
-      <Navbar />
-      <div className="wishlist-page container mx-auto">
-        <h1 className="text-2xl font-bold mb-4 text-center mt-24 pb-12">
+      <div className="wishlist-page">
+        <h1 className="text-2xl font-bold mb-4 text-center mt-10 pb-12">
           My Wishlist
         </h1>
         {wishlist.length === 0 ? (
