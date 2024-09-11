@@ -1,9 +1,11 @@
 "use client"
 import Image from "next/image";
 import { FaFacebook } from "react-icons/fa";
-
+import { usePathname } from 'next/navigation'
 
 const Footer = () => {
+    const pathName = usePathname();
+    if(pathName.includes('dashboard')) return 
     return (
         <footer style={{
             backgroundImage: "url(https://t4.ftcdn.net/jpg/06/78/89/43/360_F_678894344_bEwRD1UYjV7atSippMLsvA6IRguy2Yok.jpg)",
