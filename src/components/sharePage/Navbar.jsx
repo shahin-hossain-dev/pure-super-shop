@@ -9,6 +9,7 @@ import Link from "next/link";
 import { signOut, useSession } from "next-auth/react";
 
 const Navbar = () => {
+  const [showInfo, setShowInfo] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const session = useSession();
   console.log(session?.data?.user?.email);
@@ -56,14 +57,27 @@ const Navbar = () => {
             )}
             {session?.status === "authenticated" && (
               // <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-                <div className="tool w-10 rounded-full">
-                  <img
-                    className="h-8 w-8 rounded-full"
-                    src={
-                      session?.data?.user?.photo || "https://i.ibb.co/sjymvr8/Capture4.png"
-                    }
-                  />
+              <div className="relative">
+              <div
+                className="tool w-10 rounded-full cursor-pointer"
+                onClick={() => setShowInfo(!showInfo)}
+              >
+                <img
+                  className="h-8 w-8 rounded-full"
+                  src={
+                    session?.data?.user?.photo || "https://i.ibb.co/sjymvr8/Capture4.png"
+                  }
+                  alt="User profile"
+                />
+              </div>
+        
+              {showInfo && (
+                <div className="absolute mt-2 bg-white p-2 rounded shadow-lg">
+                  <p className="text-sm font-semibold">{session?.data?.user?.name || "User Name"}</p>
+                  <p className="text-sm text-gray-500">{session?.data?.user?.email || "user@example.com"}</p>
                 </div>
+              )}
+            </div>
               // </label>
             )}
             {session?.status === "authenticated" && (
