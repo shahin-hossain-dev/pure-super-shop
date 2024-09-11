@@ -72,3 +72,14 @@
     transition: transform 300ms ease-in-out;
 
   }
+
+  /* card style */
+
+  .view-wish{
+    transform: scale(0);
+    transition: transform 0.2s;
+  }
+
+  .card:hover .view-wish{
+    transform: scale(1);
+  }

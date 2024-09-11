@@ -7,7 +7,7 @@ import CategoryProducts from "./CategoryProducts";
 const CategoryTabs = () => {
   const food = ["food"];
   return (
-    <div>
+    <div className="">
       <Tabs>
         <TabList>
           <div className="flex flex-wrap gap-5 md:gap-2 ">

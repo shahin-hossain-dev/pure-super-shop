@@ -22,14 +22,13 @@ const productFeatures = [
 
 const Services = () => {
     return (
-       <section className="my-14">
+       <section className=" max-w-[1440px] w-[95%] md:w-11/12 mx-auto py-20 px-3 lg:px-0">
         <div className="text-center max-w-2xl  mx-auto">
         <h2 className="text-3xl font-bold mb-2">Our Services</h2>
         <p className="text-gray-600">
           We offer a range of services designed to provide you with the best experience. From secure packaging to round-the-clock support, discover our commitment to quality.
         </p>
         </div>
-
 
          <div className="grid mt-10  grid-cols-1 md:grid-cols-2  lg:grid-cols-3 gap-5">
             {
