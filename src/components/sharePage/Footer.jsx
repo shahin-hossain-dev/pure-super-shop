@@ -8,7 +8,7 @@ const Footer = () => {
         <footer style={{
             backgroundImage: "url(https://t4.ftcdn.net/jpg/06/78/89/43/360_F_678894344_bEwRD1UYjV7atSippMLsvA6IRguy2Yok.jpg)",
           }} className="bg-base-200 bg-no-repeat mt-5 bg-cover">
-            <div className=" mx-auto max-w-screen-xl space-y-8 px-4 pt-16 pb-5 sm:px-6 lg:space-y-16 lg:px-8">
+            <div className="max-w-[1440px] w-[95%] md:w-11/12 mx-auto py-20 px-3 lg:px-0">
                 <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
                     <div className="text-center">
                         <div>

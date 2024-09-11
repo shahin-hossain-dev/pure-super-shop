@@ -12,6 +12,7 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const session = useSession();
   console.log(session);
+
   return (
     <nav className="bg-white  sticky top-0 z-50">
       <div className="container mx-auto px-4">
@@ -48,6 +49,14 @@ const Navbar = () => {
           <div className="hidden md:flex items-center space-x-4">
             {session?.status === "unauthenticated" && (
               <Link
+                href="/checkout"
+                className="px-4 py-2 bg-[#3e84b9] text-white rounded hover:bg-blue-600"
+              >
+                CheckOut
+              </Link>
+            )}
+            {session?.status === "unauthenticated" && (
+              <Link
                 href="/login"
                 className="px-4 py-2 bg-[#3e84b9] text-white rounded hover:bg-blue-600"
               >
@@ -62,13 +71,13 @@ const Navbar = () => {
                 Logout
               </button>
             )}
-            { session?.status === "unauthenticated" && (
+            {session?.status === "unauthenticated" && (
               <Link
-              href="/register"
-              className="px-4 py-2 bg-[#84b93e] text-white rounded hover:bg-green-600"
-            >
-              Register
-            </Link>
+                href="/register"
+                className="px-4 py-2 bg-[#84b93e] text-white rounded hover:bg-green-600"
+              >
+                Register
+              </Link>
             )}
             <Link
               href="/wishlist"
