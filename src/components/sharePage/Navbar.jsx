@@ -6,9 +6,25 @@ import { CiHeart } from "react-icons/ci";
 import { usePathname } from 'next/navigation'
 
 const Navbar = () => {
+//   const [isOpen, setIsOpen] = useState(false);
+//   const session = useSession();
+//   console.log(session);
+
+//   return (
+//     <nav className="bg-white  sticky top-0 z-50">
+//       <div className="container mx-auto px-4">
+//         <div className="flex justify-between items-center py-6">
+//           {/* Logo */}
+//           <div className="text-2xl font-bold text-[#3e84b9]">
+//             <a href="#">
+//               Pure<span className="text-[#84b93e] font-bold">Super</span>
+//             </a>
+//           </div>
+
   const activeRoute = usePathname();
  
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
 
   
   const toggleMenu = () => {
@@ -34,6 +50,45 @@ const Navbar = () => {
     },
 ]
   if(activeRoute.includes('dashboard')) return 
+
+
+//           {/* Right-side buttons */}
+//           <div className="hidden md:flex items-center space-x-4">
+//             {session?.status === "unauthenticated" && (
+//               <Link
+//                 href="/checkout"
+//                 className="px-4 py-2 bg-[#3e84b9] text-white rounded hover:bg-blue-600"
+//               >
+//                 CheckOut
+//               </Link>
+//             )}
+//             {session?.status === "unauthenticated" && (
+//               <Link
+//                 href="/login"
+//                 className="px-4 py-2 bg-[#3e84b9] text-white rounded hover:bg-blue-600"
+//               >
+//                 Login
+//               </Link>
+//             )}
+//             {session?.status === "authenticated" && (
+//               <button
+//                 className="px-4 py-2 bg-[#ff1111] text-white rounded hover:bg-blue-600"
+//                 onClick={() => signOut()}
+//               >
+//                 Logout
+//               </button>
+//             )}
+//             {session?.status === "unauthenticated" && (
+//               <Link
+//                 href="/register"
+//                 className="px-4 py-2 bg-[#84b93e] text-white rounded hover:bg-green-600"
+//               >
+//                 Register
+//               </Link>
+//             )}
+//             <Link
+//               href="/wishlist"
+//               className="px-4 py-2 bg-white text-[#3e84b9] rounded  border font-medium border-[#3e84b9] flex items-center"
 
   return (
     <nav className="flex border-b py-4 max-w-[1440px] w-[95%] md:w-11/12 mx-auto font-[sans-serif] min-h-[80px] tracking-wide relative z-50">
@@ -99,6 +154,7 @@ const Navbar = () => {
               fill="#333"
               viewBox="0 0 20 20"
               xmlns="http://www.w3.org/2000/svg"
+
             >
               <path
                 fillRule="evenodd"

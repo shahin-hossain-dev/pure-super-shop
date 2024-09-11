@@ -1,7 +1,7 @@
 
 const Faq = () => {
     return (
-        <div className="mt-5">
+        <div className="max-w-[1440px] w-[95%] md:w-11/12 mx-auto py-20 px-3 lg:px-0">
             <div className="text-center max-w-2xl  mx-auto">
                 <h1 className="text-3xl font-bold mb-2">Frequently Asked Questions (FAQ)</h1>
                 <p>Find quick answers to common questions about our products, services, orders, and delivery options to help you shop with confidence.</p>
