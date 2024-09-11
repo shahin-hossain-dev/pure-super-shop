@@ -132,6 +132,15 @@ const page = async ({ params }) => {
             </div>
           </div>
         </div>
+        {/* review section */}
+        <div className="border mt-8 rounded-md">
+          <div className="py-2 px-3 bg-gradient-to-b from-gray-50 to-gray-200 ">
+            <p className="text-lg font-medium">Review</p>
+          </div>
+          <div className="p-4">
+            <form action=""></form>
+          </div>
+        </div>
       </div>
     </section>
   );
