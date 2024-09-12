@@ -15,14 +15,16 @@ const page = () => {
       photo: event.target.photo.value,
       password: event.target.password.value,
     };
-    const resp = await fetch("http://localhost:3000/register/api", {
-      method: "POST",
-      body: JSON.stringify(newUser),
-      headers: {
-        "content-type": "application/json",
-      },
-    });
-
+    const resp = await fetch(
+      `${process.env.NEXT_PUBLIC_BASE_URL}/register/api`,
+      {
+        method: "POST",
+        body: JSON.stringify(newUser),
+        headers: {
+          "content-type": "application/json",
+        },
+      }
+    );
 
     if (resp.status === 200) {
       // event.target.reset();
@@ -34,11 +36,10 @@ const page = () => {
       });
     } else {
       Swal.fire({
-        icon: 'success',
-        title: 'Congrats',
-        text: 'Registration Successful!',
-    });
-
+        icon: "success",
+        title: "Congrats",
+        text: "Registration Successful!",
+      });
     }
   };
 

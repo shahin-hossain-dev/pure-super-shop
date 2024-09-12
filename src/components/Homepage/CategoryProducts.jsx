@@ -13,7 +13,7 @@ const CategoryProducts = ({ title }) => {
     setLoading(true);
     const getCategoryProduct = async () => {
       const products = await fetch(
-        `http://localhost:3000/products/api/get-category/${title}`
+        `${process.env.NEXT_PUBLIC_BASE_URL}/products/api/get-category/${title}`
       );
       const data = await products.json();
       setCategoryProducts(data);

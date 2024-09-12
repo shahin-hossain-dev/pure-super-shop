@@ -20,7 +20,7 @@ const CustomerReview = ({ productId }) => {
     };
 
     const resp = await fetch(
-      `http://localhost:3000/products/api/productReview`,
+      `${process.env.NEXT_PUBLIC_BASE_URL}/products/api/productReview`,
       {
         method: "POST",
         headers: {
@@ -39,7 +39,7 @@ const CustomerReview = ({ productId }) => {
     setLoading(true);
     const loadData = async () => {
       const res = await fetch(
-        `http://localhost:3000/products/api/productReview/${productId}`
+        `${process.env.NEXT_PUBLIC_BASE_URL}/products/api/productReview/${productId}`
       );
       const data = await res.json();
       setReviews(data);
