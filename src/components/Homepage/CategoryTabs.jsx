@@ -7,17 +7,20 @@ import CategoryProducts from "./CategoryProducts";
 const CategoryTabs = () => {
   const food = ["food"];
   return (
-    <div>
+    <div className="">
       <Tabs>
         <TabList>
           <div className="flex flex-wrap gap-5 md:gap-2 ">
+            <Tab>Personal Care</Tab>
             <Tab>Food</Tab>
             <Tab>Home & Kitchen</Tab>
             <Tab>Toy & Sports</Tab>
-            <Tab>Personal Care</Tab>
             <Tab>Baby Care</Tab>
           </div>
         </TabList>
+        <TabPanel>
+          <CategoryProducts title="personal-care" />
+        </TabPanel>
         {/* Food */}
         <TabPanel>
           <CategoryProducts title="food" />
@@ -28,9 +31,6 @@ const CategoryTabs = () => {
         </TabPanel>
         <TabPanel>
           <CategoryProducts title="toy-sports" />
-        </TabPanel>
-        <TabPanel>
-          <CategoryProducts title="personal-care" />
         </TabPanel>
         <TabPanel>
           <CategoryProducts title="baby-care" />

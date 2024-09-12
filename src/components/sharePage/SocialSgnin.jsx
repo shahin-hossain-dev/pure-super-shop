@@ -3,21 +3,28 @@ import { signIn, useSession } from "next-auth/react";
 import { useRouter, useSearchParams } from "next/navigation";
 import React from "react";
 import { FaFacebook, FaGoogle } from "react-icons/fa";
+import Swal from "sweetalert2";
 
 const SocialSignin = () => {
-    // const router = useRouter();
-    // const searchParams = useSearchParams();
+  const router = useRouter();
+  // const searchParams = useSearchParams();
 
-    // const path = searchParams.get("redirect");
+  // const path = searchParams.get("redirect");
 
-    // const session = useSession();
+  const session = useSession();
 
   const handleSocialLogin = (provider) => {
-    const res = signIn(provider, {
-      // redirect: true,
-      // callbackUrl: path ? path : "/",
-    });
+    const res = signIn(provider, { redirect: false });
   };
+
+  if (session.status === "authenticated") {
+    Swal.fire({
+      icon: "success",
+      title: "Congrats",
+      text: "Login Successful!",
+    });
+    router.push("/");
+  }
 
   return (
     <div className="flex items-center justify-center space-x-3">
