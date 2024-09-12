@@ -1,7 +1,10 @@
 "use client"
 import axios from 'axios';
-
+import { useSession } from "next-auth/react";
 const addItem = () => {
+
+  const sessoin = useSession();
+  const email = sessoin?.data?.user?.email
  
   const handleSubmit = (e) => {
     
@@ -15,7 +18,7 @@ const addItem = () => {
     const description = e.target.description.value;
     
 
-    const data = {productName , categoryName , price, discountPrice ,subCategory , imageUrl , description, createdBy: "sellsMan@gmail.com"}
+    const data = {productName , categoryName , price, discountPrice ,subCategory , imageUrl , description, createdBy: email}
 
     axios.post('http://localhost:3000/dashboard/additem/api', data)
     .then( (res) => {

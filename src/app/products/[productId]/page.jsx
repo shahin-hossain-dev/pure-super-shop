@@ -9,6 +9,7 @@ import { FaFacebookMessenger } from "react-icons/fa";
 import { FaWhatsapp } from "react-icons/fa";
 import { PiVanBold } from "react-icons/pi";
 import { LiaMoneyBillWaveAltSolid } from "react-icons/lia";
+import CustomerReview from "@/components/Products/CustomerReview";
 const page = async ({ params }) => {
   const product = await getProductWithId(params.productId);
   const {
@@ -65,7 +66,7 @@ const page = async ({ params }) => {
             </p>
           </div>
           {/* col-3 */}
-          <div className="border p-3 rounded-md">
+          <div className="border p-6 rounded-md">
             <div>
               <button
                 //   onClick={() => handleAddToWishlist(product)}
@@ -131,6 +132,14 @@ const page = async ({ params }) => {
               </div>
             </div>
           </div>
+        </div>
+        {/* review section */}
+        <div className="border mt-8 rounded-md">
+          <div className="py-2 px-3 bg-gradient-to-b from-gray-50 to-gray-200 ">
+            <p className="text-lg font-medium">Customer Review</p>
+          </div>
+          {/* customer comment */}
+          <CustomerReview productId={_id} />
         </div>
       </div>
     </section>

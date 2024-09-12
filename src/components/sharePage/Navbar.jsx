@@ -1,10 +1,10 @@
 "use client";
 
+import { signOut, useSession } from "next-auth/react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { CiHeart } from "react-icons/ci";
-import { usePathname } from "next/navigation";
-import { signOut, useSession } from "next-auth/react";
 
 const Navbar = () => {
   const activeRoute = usePathname();
@@ -34,7 +34,10 @@ const Navbar = () => {
       title: "Contact",
     },
   ];
+
+  
   if (activeRoute.includes("dashboard")) return;
+
   return (
     <nav className="flex border-b py-4 max-w-[1440px] w-[95%] md:w-11/12 mx-auto font-[sans-serif] min-h-[80px] tracking-wide relative z-50">
       <div className="flex flex-wrap items-center lg:gap-y-2 gap-4 w-full">

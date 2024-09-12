@@ -1,12 +1,10 @@
-import React from "react";
 import Banner from "./Banner";
-import Footer from "../sharePage/Footer";
-import CategoryTabs from "./CategoryTabs";
-import Services from "./Services";
+import BigSell from "./BigSell";
 import Brands from "./Brands/Brands";
+import CategoryTabs from "./CategoryTabs";
 import Faq from "./Faq";
 import Newsletter from "./Newsletter";
-import BigSell from "./BigSell";
+import Services from "./Services";
 
 const Homepage = () => {
   return (
