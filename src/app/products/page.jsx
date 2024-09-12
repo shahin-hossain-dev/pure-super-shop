@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Card from "@/components/ProductCard/Card";
 import Image from "next/image";
+import ProductCard from "@/components/ProductCard/ProductCard";
 
 const page = () => {
   const [products, setProducts] = useState([]);
@@ -65,7 +66,8 @@ const page = () => {
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
         {products.map((product) => (
-          <Card key={product._id} product={product}></Card>
+          // <Card key={product._id} product={product}></Card>
+          <ProductCard key={product.productName} {...product} ></ProductCard>
         ))}
       </div>
 
