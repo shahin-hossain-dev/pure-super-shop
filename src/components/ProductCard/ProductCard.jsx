@@ -5,9 +5,10 @@ import React from "react";
 import Swal from "sweetalert2";
 import { FaRegEye } from "react-icons/fa6";
 import { FaRegHeart } from "react-icons/fa6";
+import Link from "next/link";
 
 const ProductCard = (product) => {
-  const { id, productName, price, categoryName, discountPrice, ImageUrl } =
+  const { _id, productName, price, categoryName, discountPrice, ImageUrl } =
     product;
 
   const handleAddToCart = (id) => {
@@ -35,18 +36,29 @@ const ProductCard = (product) => {
     console.log(id);
   };
   return (
-    <div className="card relative flex flex-col justify-between border hover:border-[#84b93e] hover:border-2 rounded-sm p-2">
-      {/* View and Wishlist Buttons */}
+ {/* View and Wishlist Buttons */}
+    {/*<div className="card relative flex flex-col justify-between border hover:border-[#84b93e] hover:border-2 rounded-sm p-2">
+     
       <div className="right-3 top-3 absolute flex flex-col view-wish">
         <button
           onClick={() => handleDetails("id")}
           className="bg-gray-100 mb-3 p-2 text-[#333333] rounded-full"
         >
           <FaRegEye className="text-2xl " />
-        </button>
+        </button>*/}
+
+    <div className="card box-border relative flex flex-col justify-between border hover:border-[#84b93e] duration-300 hover:border-1 rounded-sm p-2">
+      <div className=" right-3 top-3 absolute flex flex-col view-wish">
+        <Link href={`products/${_id}`}>
+          <button className="bg-gray-100 mb-2 p-2 text-[#84b93e] active:scale-95 hover:bg-[#84b93e] duration-300  active:bg-[#6a9630] hover:text-white rounded-full">
+            <FaRegEye className="text-2xl  " />
+          </button>
+        </Link>
+        {/* wish list */}
+
         <button
           onClick={() => handleAddToWishlist(product)}
-          className="bg-gray-100 p-2 text-[#333333] rounded-full"
+          className="bg-gray-100 mb-3 p-2 text-red-500 hover:bg-[#84b93e] active:scale-[-10px] duration-300 active:bg-[#6a9630] hover:text-white rounded-full"
         >
           <FaRegHeart className="text-2xl " />
         </button>
@@ -70,6 +82,7 @@ const ProductCard = (product) => {
           ${price}
         </p>
 
+
         {/* Add to Cart Button Fixed at the Bottom */}
         <div className="mt-auto">
           <button
@@ -79,6 +92,14 @@ const ProductCard = (product) => {
             Add to Cart
           </button>
         </div>
+        {/* <button
+          onClick={handleAddToCart}
+          className="w-full mt-4 bottom-2 left-2 rounded-sm active:scale-95 right-2 p-1 bg-gray-300 hover:bg-[#84b93e] duration-300  active:bg-[#6a9630] hover:text-white"
+        >
+          Add to Cart
+        </button> */}
+        
+
       </div>
     </div>
   );
