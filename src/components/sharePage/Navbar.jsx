@@ -1,94 +1,42 @@
 "use client";
 
+import { signOut, useSession } from "next-auth/react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { CiHeart } from "react-icons/ci";
-import { usePathname } from 'next/navigation'
 
 const Navbar = () => {
-  //   const [isOpen, setIsOpen] = useState(false);
-  //   const session = useSession();
-  //   console.log(session);
-
-  //   return (
-  //     <nav className="bg-white  sticky top-0 z-50">
-  //       <div className="container mx-auto px-4">
-  //         <div className="flex justify-between items-center py-6">
-  //           {/* Logo */}
-  //           <div className="text-2xl font-bold text-[#3e84b9]">
-  //             <a href="#">
-  //               Pure<span className="text-[#84b93e] font-bold">Super</span>
-  //             </a>
-  //           </div>
-
   const activeRoute = usePathname();
-
+  const session = useSession();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-
+  const [showInfo, setShowInfo] = useState(false);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
   const navItems = [
     {
-      path: '/',
-      title: "Home"
+      path: "/",
+      title: "Home",
     },
     {
-      path: '/about',
-      title: "About"
+      path: "/about",
+      title: "About",
     },
     {
-      path: '/products',
-      title: "Products"
+      path: "/products",
+      title: "Products",
     },
 
     {
-      path: '/contact',
-      title: "Contact"
+      path: "/contact",
+      title: "Contact",
     },
-  ]
-  if (activeRoute.includes('dashboard')) return
+  ];
 
-
-  //           {/* Right-side buttons */}
-  //           <div className="hidden md:flex items-center space-x-4">
-  //             {session?.status === "unauthenticated" && (
-  //               <Link
-  //                 href="/checkout"
-  //                 className="px-4 py-2 bg-[#3e84b9] text-white rounded hover:bg-blue-600"
-  //               >
-  //                 CheckOut
-  //               </Link>
-  //             )}
-  //             {session?.status === "unauthenticated" && (
-  //               <Link
-  //                 href="/login"
-  //                 className="px-4 py-2 bg-[#3e84b9] text-white rounded hover:bg-blue-600"
-  //               >
-  //                 Login
-  //               </Link>
-  //             )}
-  //             {session?.status === "authenticated" && (
-  //               <button
-  //                 className="px-4 py-2 bg-[#ff1111] text-white rounded hover:bg-blue-600"
-  //                 onClick={() => signOut()}
-  //               >
-  //                 Logout
-  //               </button>
-  //             )}
-  //             {session?.status === "unauthenticated" && (
-  //               <Link
-  //                 href="/register"
-  //                 className="px-4 py-2 bg-[#84b93e] text-white rounded hover:bg-green-600"
-  //               >
-  //                 Register
-  //               </Link>
-  //             )}
-  //             <Link
-  //               href="/wishlist"
-  //               className="px-4 py-2 bg-white text-[#3e84b9] rounded  border font-medium border-[#3e84b9] flex items-center"
+  
+  if (activeRoute.includes("dashboard")) return;
 
   return (
     <nav className="flex border-b py-4 max-w-[1440px] w-[95%] md:w-11/12 mx-auto font-[sans-serif] min-h-[80px] tracking-wide relative z-50">
@@ -98,7 +46,9 @@ const Navbar = () => {
         </Link>
         <div
           id="collapseMenu"
-          className={`lg:ml-10 ${isMenuOpen ? "block" : "hidden"} lg:block max-lg:before:fixed max-lg:before:bg-black max-lg:before:opacity-50 max-lg:before:inset-0 max-lg:before:z-50`}
+          className={`lg:ml-10 ${
+            isMenuOpen ? "block" : "hidden"
+          } lg:block max-lg:before:fixed max-lg:before:bg-black max-lg:before:opacity-50 max-lg:before:inset-0 max-lg:before:z-50`}
         >
           <button
             id="toggleClose"
@@ -117,30 +67,121 @@ const Navbar = () => {
           </button>
           <ul className="lg:flex lg:gap-x-3 max-lg:space-y-3 max-lg:fixed max-lg:bg-white max-lg:w-1/2 max-lg:min-w-[300px] max-lg:top-0 max-lg:left-0 max-lg:p-6 max-lg:h-full max-lg:shadow-md max-lg:overflow-auto z-50 text-center">
             {/* Mobile Menu Items */}
-            {
-              navItems?.map((item) => <li key="title"><Link className={item?.path === activeRoute ? "font-bold pb-2 !text-[#000] react-tabs__tab " : "react-tabs__tab"} href={item?.path}>{item?.title}</Link></li>)
-            }
+            {navItems?.map((item) => (
+              <li key="title">
+                <Link
+                  className={
+                    item?.path === activeRoute
+                      ? "font-bold pb-2 !text-[#000] react-tabs__tab "
+                      : "react-tabs__tab"
+                  }
+                  href={item?.path}
+                >
+                  {item?.title}
+                </Link>
+              </li>
+            ))}
             {/* Add menu items here */}
             {/* Mobile specific links */}
-            <li><Link href="/login" className="px-4 lg:hidden py-2 bg-[#3e84b9] text-white rounded hover:bg-blue-600 block text-center">Login</Link></li>
-            <li><Link href="/register" className="px-4 py-2 bg-[#84b93e] text-white rounded hover:bg-green-600 block text-center lg:hidden">Register</Link></li>
-            <li><Link href="/wishlist" className="px-4 py-2 bg-white text-[#3e84b9] rounded border font-medium border-[#3e84b9] flex items-center justify-center lg:hidden"><CiHeart className="mr-2" /> Wishlist</Link></li>
+            {/* Do not delete these comments below*/}
+            {/* <li>
+              {session?.status === "unauthenticated" && (
+                <Link
+                  href="/login"
+                  className="px-4 py-2 bg-[#3e84b9] text-white rounded hover:bg-blue-600"
+                >
+                  Login
+                </Link>
+              )}
+            </li>
+            <li>
+              {" "}
+              {session?.status === "authenticated" && (
+                <button
+                  className="px-4 py-2 bg-[#ff1111] text-white rounded hover:bg-blue-600"
+                  onClick={() => signOut()}
+                >
+                  Logout
+                </button>
+              )}
+            </li>
+            <li>
+              {session?.status === "unauthenticated" && (
+                <Link
+                  href="/register"
+                  className="px-4 py-2 bg-[#84b93e] text-white rounded hover:bg-green-600"
+                >
+                  Register
+                </Link>
+              )}
+            </li> */}
+            <li>
+              <Link
+                href="/wishlist"
+                className="px-4 py-2 bg-white text-[#3e84b9] rounded border font-medium border-[#3e84b9] flex items-center justify-center lg:hidden"
+              >
+                <CiHeart className="mr-2" /> Wishlist
+              </Link>
+            </li>
           </ul>
         </div>
         <div className="flex gap-x-6 gap-y-4 ml-auto items-center">
           {/* Additional Navbar content for larger screens */}
-          <Link
-            href="/login"
-            className="px-4 py-2 bg-[#3e84b9] text-white rounded hover:bg-blue-600 hidden lg:block"
-          >
-            Login
-          </Link>
-          <Link
-            href="/register"
-            className="px-4 py-2 bg-[#84b93e] text-white rounded hover:bg-green-600 hidden lg:block"
-          >
-            Register
-          </Link>
+          {session?.status === "unauthenticated" && (
+            <Link
+              href="/login"
+              className="px-4 py-2 bg-[#3e84b9] text-white rounded hover:bg-blue-600"
+            >
+              Login
+            </Link>
+          )}
+          {session?.status === "authenticated" && (
+            // <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+            <div className="relative">
+              <div
+                className="tool w-10 rounded-full cursor-pointer"
+                onClick={() => setShowInfo(!showInfo)}
+              >
+                <img
+                  className="h-8 w-8 rounded-full"
+                  src={
+                    session?.data?.user?.photo ||
+                    "https://i.ibb.co/sjymvr8/Capture4.png"
+                  }
+                  alt="User profile"
+                />
+              </div>
+
+              {showInfo && (
+                <div className="absolute mt-2 bg-white p-2 rounded shadow-lg">
+                  <p className="text-sm font-semibold">
+                    {session?.data?.user?.name || "User Name"}
+                  </p>
+                  <p className="text-sm text-gray-500">
+                    {session?.data?.user?.email || "user@example.com"}
+                  </p>
+                </div>
+              )}
+            </div>
+            // </label>
+          )}
+
+          {session?.status === "authenticated" && (
+            <button
+              className="px-4 py-2 bg-[#ff1111] text-white rounded hover:bg-blue-600"
+              onClick={() => signOut()}
+            >
+              Logout
+            </button>
+          )}
+          {session?.status === "unauthenticated" && (
+            <Link
+              href="/register"
+              className="px-4 py-2 bg-[#84b93e] text-white rounded hover:bg-green-600"
+            >
+              Register
+            </Link>
+          )}
           <Link
             href="/wishlist"
             className="px-4 py-2 bg-white text-[#3e84b9] rounded border font-medium border-[#3e84b9]  items-center hidden lg:flex"
@@ -154,7 +195,6 @@ const Navbar = () => {
               fill="#333"
               viewBox="0 0 20 20"
               xmlns="http://www.w3.org/2000/svg"
-
             >
               <path
                 fillRule="evenodd"
