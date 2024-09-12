@@ -47,7 +47,7 @@ const page = () => {
       {/* Banner */}
       <div className="mb-8">
         <Image
-          src="https://i.ibb.co.com/Gch4rQG/banner.png"
+          src="https://i.ibb.co.com/JrJQJq7/banner2.png"
           alt="Cool Banner"
           width={1200} 
           height={400} 
