@@ -5,10 +5,9 @@ import Navbar from "@/components/sharePage/Navbar";
 const Page = () => {
   return (
     <div>
-      <Navbar />
       <div className="m-5 max-w-[1320px] mx-auto">
-        <h1 className="text-4xl">Our All Brands</h1>
-        <div className=" grid grid-cols-6 gap-5">
+        <h1 className="text-4xl font-semibold text-center">Our All Brands</h1>
+        <div className=" grid grid-cols-2 lg:grid-cols-6 gap-5 mt-12">
           {brands.map((brand, index) => (
             <div
               key={index}

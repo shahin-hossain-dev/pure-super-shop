@@ -6,3 +6,10 @@ export const getCategoryProduct = async (title) => {
   console.log(data);
   return data;
 };
+
+//get product with Id
+export const getProductWithId = async (id) => {
+  const product = await fetch(`http://localhost:3000/products/api/${id}`);
+  const data = await product.json();
+  return data;
+};
