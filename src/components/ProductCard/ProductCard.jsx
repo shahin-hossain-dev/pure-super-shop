@@ -21,14 +21,14 @@ const ProductCard = (product) => {
       wishlist.push(product); // Add the product if it's not already in the wishlist
       localStorage.setItem("wishlist", JSON.stringify(wishlist));
       Swal.fire({
-        icon: 'success',
-        text: 'Added to your wishlist!',
-    });
+        icon: "success",
+        text: "Added to your wishlist!",
+      });
     } else {
       Swal.fire({
-        icon: 'error',
-        text: 'This product is already added to your wishlist!',
-    });
+        icon: "error",
+        text: "This product is already added to your wishlist!",
+      });
     }
   };
   const handleDetails = (id) => {
@@ -36,14 +36,14 @@ const ProductCard = (product) => {
   };
   return (
     <div className="card relative flex flex-col justify-between border hover:border-[#84b93e] hover:border-2 rounded-sm p-2">
-      <div className=" right-3 top-3 absolute flex flex-col view-wish">
+      {/* View and Wishlist Buttons */}
+      <div className="right-3 top-3 absolute flex flex-col view-wish">
         <button
           onClick={() => handleDetails("id")}
           className="bg-gray-100 mb-3 p-2 text-[#333333] rounded-full"
         >
           <FaRegEye className="text-2xl " />
         </button>
-        {/* wish list */}
         <button
           onClick={() => handleAddToWishlist(product)}
           className="bg-gray-100 p-2 text-[#333333] rounded-full"
@@ -51,6 +51,8 @@ const ProductCard = (product) => {
           <FaRegHeart className="text-2xl " />
         </button>
       </div>
+
+      {/* Product Image */}
       <div className="w-full">
         <Image
           src={ImageUrl}
@@ -60,18 +62,23 @@ const ProductCard = (product) => {
           height={500}
         />
       </div>
-      <div>
+
+      {/* Product Info and Fixed Buttons */}
+      <div className="flex flex-col justify-end flex-grow">
         <h3 className="text-xl mb-2 text-center">{productName}</h3>
         <p className="text-xl mb-2 text-center text-[#84b93e] font-medium">
           ${price}
         </p>
 
-        <button
-          onClick={handleAddToCart}
-          className="w-full mt-4 bottom-2 left-2 right-2 p-1 bg-gradient-to-t from-gray-300 to-gray-50 "
-        >
-          Add to Cart
-        </button>
+        {/* Add to Cart Button Fixed at the Bottom */}
+        <div className="mt-auto">
+          <button
+            onClick={handleAddToCart}
+            className="w-full p-2 bg-gradient-to-t from-gray-300 to-gray-50"
+          >
+            Add to Cart
+          </button>
+        </div>
       </div>
     </div>
   );
