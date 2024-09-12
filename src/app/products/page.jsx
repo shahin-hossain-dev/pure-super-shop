@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Card from "@/components/ProductCard/Card";
+import Image from "next/image";
 
 const page = () => {
   const [products, setProducts] = useState([]);
@@ -13,7 +14,9 @@ const page = () => {
     // Fetch products from the API
     const fetchProducts = async () => {
       try {
-        const response = await axios.get("http://localhost:3000/products/api/get-all");
+        const response = await axios.get(
+          "http://localhost:3000/products/api/get-all"
+        );
         const allProducts = response.data;
 
         // Pagination setup
@@ -40,10 +43,29 @@ const page = () => {
 
   return (
     <div className="container mx-auto p-6 mt-12">
-      <h2 className="text-3xl font-bold text-center mb-8">Products</h2>
+
+      {/* Banner */}
+      <div className="mb-8">
+        <Image
+          src="https://i.ibb.co.com/Gch4rQG/banner.png"
+          alt="Cool Banner"
+          width={1200} 
+          height={400} 
+          className="w-full rounded-lg shadow-md"
+          priority // This ensures the image is loaded quickly
+        />
+      </div>
+
+
+      <div className="bg-yellow-300 text-center p-4 mb-8 rounded-lg shadow-md">
+        <p className="text-xl font-semibold text-gray-800">
+          Welcome to our exclusive product collection!
+        </p>
+      </div>
+
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
         {products.map((product) => (
-          <Card key={product._id} product={product} ></Card>
+          <Card key={product._id} product={product}></Card>
         ))}
       </div>
 
