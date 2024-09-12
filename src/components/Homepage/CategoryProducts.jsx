@@ -30,7 +30,7 @@ const CategoryProducts = ({ title }) => {
 
       <div className="mt-6 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 w-full gap-4 min-h-[200px]">
         {categoryProducts?.map((product) => (
-          <ProductCard key={product.productName} {...product} />
+          <ProductCard key={product._id} {...product} />
         ))}
       </div>
     </div>

@@ -18,7 +18,6 @@ const Homepage = () => {
       <BigSell></BigSell>
       <Faq />
       <Newsletter />
-      <Footer />
     </div>
   );
 };
