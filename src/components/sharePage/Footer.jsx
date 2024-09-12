@@ -1,8 +1,10 @@
 "use client";
 import Image from "next/image";
+
 import { FaFacebook } from "react-icons/fa";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
+
 
 const Footer = () => {
   const pathName = usePathname();

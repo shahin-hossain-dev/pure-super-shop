@@ -65,7 +65,7 @@ const CheckOut = () => {
                         <span>€ 656616</span>
                     </div>
                 </div>
-                <button className="mt-6 w-full py-3 bg-black text-lg font-Barlow text-white rounded-lg">Go to checkout</button>
+                <button className="mt-6 w-full py-3 bg-[#84b93e] text-lg font-Barlow text-white rounded-lg">Go to checkout</button>
             </div>
         </div>
     );
