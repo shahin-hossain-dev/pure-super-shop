@@ -1,11 +1,11 @@
 "use client";
 import Image from "next/image";
 import React from "react";
-
-import Swal from "sweetalert2";
 import { FaRegEye } from "react-icons/fa6";
 import { FaRegHeart } from "react-icons/fa6";
+import Swal from "sweetalert2";
 import Link from "next/link";
+
 
 const ProductCard = (product) => {
   const { _id, productName, price, categoryName, discountPrice, ImageUrl } =
@@ -22,13 +22,14 @@ const ProductCard = (product) => {
       wishlist.push(product); // Add the product if it's not already in the wishlist
       localStorage.setItem("wishlist", JSON.stringify(wishlist));
       Swal.fire({
-        icon: "success",
-        text: "Added to your wishlist!",
+        icon: 'success',
+        text: 'Added to your wishlist!',
       });
     } else {
       Swal.fire({
-        icon: "error",
-        text: "This product is already added to your wishlist!",
+        icon: 'error',
+        text: 'This product is already added to your wishlist!',
+
       });
     }
   };
