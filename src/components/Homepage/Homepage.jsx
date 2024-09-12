@@ -1,5 +1,6 @@
 import React from "react";
 import Banner from "./Banner";
+import Footer from "../sharePage/Footer";
 import CategoryTabs from "./CategoryTabs";
 import Services from "./Services";
 import Brands from "./Brands/Brands";
@@ -17,7 +18,6 @@ const Homepage = () => {
       <BigSell></BigSell>
       <Faq />
       <Newsletter />
-     
     </div>
   );
 };

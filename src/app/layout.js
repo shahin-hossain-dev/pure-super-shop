@@ -30,8 +30,7 @@ export default function RootLayout({ children }) {
        <div className="fixed bg-[#F7F7F8]  z-50 w-full">
        <Navbar />
        </div>
-
-          <main className="max-w-[1440px] pt-20 min-h-[calc(100vh-330px)] w-[95%] md:w-11/12 mx-auto">
+          <main className="max-w-[1440px] pt-10 min-h-[calc(100vh-330px)] w-[95%] md:w-11/12 mx-auto">
            {children}
           </main>
           <Footer />

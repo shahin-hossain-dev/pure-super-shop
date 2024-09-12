@@ -16,7 +16,7 @@ export default function Banner () {
 
     return (
           <div className="">
-              <div className="h-72 w-full transform overflow-hidden rounded-lg  sm:h-80 md:h-[550px] lg:gap-10">
+              <div className="h-72 w-full transform overflow-hidden rounded-b-lg  sm:h-80 md:h-[550px] lg:gap-10">
                   {data.map((slide, index) => {
                       const { img, title, des } = slide;
                       return (
