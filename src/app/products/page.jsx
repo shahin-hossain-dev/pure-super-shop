@@ -56,9 +56,18 @@ const Page = () => {
 
       <div className="bg-yellow-300 text-center p-4 mb-8 rounded-lg shadow-md">
         <p className="text-xl font-semibold text-gray-800">
-          Welcome to our exclusive product collection!
+          <marquee>Welcome to our exclusive product collection!</marquee>
         </p>
       </div>
+
+      {/* <div className="flex justify-center items-center mb-8 space-x-4">
+        <div className="w-10 h-10 bg-blue-500 rounded-full animate-bounce delay-300"></div>
+        <p className="text-xl font-semibold text-gray-800 animate-pulse">
+          Special Discounts Available!
+        </p>
+        <div className="w-10 h-10 bg-blue-500 rounded-full animate-bounce delay-300"></div>
+      </div> */}
+
       <div className="flex flex-col md:flex-row items-center justify-center gap-5">
         {/* Search Form */}
         <form
