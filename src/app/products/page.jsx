@@ -1,49 +1,47 @@
 "use client";
-import React, { useEffect, useState } from "react";
-import axios from "axios";
-import Card from "@/components/ProductCard/Card";
-import Image from "next/image";
 import ProductCard from "@/components/ProductCard/ProductCard";
+import axios from "axios";
+import Image from "next/image";
+import React, { useEffect, useState } from "react";
+import { GrSearch } from "react-icons/gr";
 
-const page = () => {
+const Page = () => {
   const [products, setProducts] = useState([]);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [category, setCategory] = useState("");
+  const [sort, setSort] = useState("asc"); // "asc" or "desc"
   const [currentPage, setCurrentPage] = useState(1);
-  const [totalPages, setTotalPages] = useState(0);
-  const itemsPerPage = 12;
+  const [totalPages, setTotalPages] = useState(1);
 
+  const ITEMS_PER_PAGE = 12;
+
+  // Fetch products based on current filters
   useEffect(() => {
-    // Fetch products from the API
     const fetchProducts = async () => {
       try {
-        const response = await axios.get(
-          `${process.env.NEXT_PUBLIC_BASE_URL}/products/api/get-all`
+        const res = await axios.get(
+          `${process.env.NEXT_PUBLIC_BASE_URL}/products/api/get-all?page=${currentPage}&search=${searchQuery}&category=${category}&sort=${sort}`
         );
-        const allProducts = response.data;
-
-        // Pagination setup
-        setTotalPages(Math.ceil(allProducts.length / itemsPerPage));
-        const paginatedProducts = allProducts.slice(
-          (currentPage - 1) * itemsPerPage,
-          currentPage * itemsPerPage
-        );
-        setProducts(paginatedProducts);
+        const data = res.data; // Axios already returns data directly
+        //console.log(data);
+        setProducts(data.products);
+        setTotalPages(data.totalPages);
       } catch (error) {
         console.error("Error fetching products:", error);
       }
     };
 
     fetchProducts();
-  }, [currentPage]);
+  }, [currentPage, searchQuery, category, sort]);
 
-  // Function to handle page changes
-  const handlePageChange = (page) => {
-    if (page >= 1 && page <= totalPages) {
-      setCurrentPage(page);
-    }
+  // Handle the search form submit
+  const handleSearchSubmit = (e) => {
+    e.preventDefault();
+    setSearchQuery(e.target.search.value);
   };
 
   return (
-    <div className="container mx-auto p-6 mt-12">
+    <div className="mt-24">
       {/* Banner */}
       <div className="mb-8">
         <Image
@@ -61,34 +59,80 @@ const page = () => {
           Welcome to our exclusive product collection!
         </p>
       </div>
+      <div className="flex flex-col md:flex-row items-center justify-center gap-5">
+        {/* Search Form */}
+        <form
+          onSubmit={handleSearchSubmit}
+          className="flex items-center justify-center gap-5"
+        >
+          <input
+            name="search"
+            className="py-3 px-5 border border-cyan-300 outline-none"
+            type="text"
+            placeholder="Search by Product Name"
+          />
+          <button
+            type="submit"
+            className="btn rounded bg-cyan-500 border-none text-white text-2xl hover:bg-cyan-800 p-2"
+          >
+            <GrSearch />
+          </button>
+        </form>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-        {products.map((product) => (
-          // <Card key={product._id} product={product}></Card>
-          <ProductCard key={product.productName} {...product}></ProductCard>
-        ))}
+        {/* Filter by Category */}
+        <select
+          value={category}
+          onChange={(e) => setCategory(e.target.value)}
+          className="py-3 px-5 border border-cyan-300 outline-none"
+        >
+          <option value="">All Categories</option>
+          <option value="baby-care">Baby Care</option>
+          <option value="personal-care">Personal Care</option>
+          <option value="toy-sports">Toy Sports</option>
+          <option value="food">Food</option>
+          <option value="home-kitchen">Home Kitchen</option>
+
+          {/* Add more categories as needed */}
+        </select>
+
+        {/* Sort */}
+        <select
+          value={sort}
+          onChange={(e) => setSort(e.target.value)}
+          className="py-3 px-5 border border-cyan-300 outline-none"
+        >
+          <option value="asc">Price: Low to High</option>
+          <option value="desc">Price: High to Low</option>
+        </select>
+      </div>
+
+      {/* Product List */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-8">
+        {products.length > 0 ? (
+          products.map((product) => (
+            <ProductCard key={product._id} {...product} />
+          ))
+        ) : (
+          <p>No products found.</p>
+        )}
       </div>
 
       {/* Pagination */}
-      <div className="flex justify-center mt-8">
-        <button
-          className="px-4 py-2 bg-blue-500 text-white rounded-lg mx-2 hover:bg-blue-600 disabled:bg-gray-300 disabled:cursor-not-allowed transition-colors"
-          disabled={currentPage === 1}
-          onClick={() => handlePageChange(currentPage - 1)}
-        >
-          Previous
-        </button>
-        <span className="px-4 py-2">{`Page ${currentPage} of ${totalPages}`}</span>
-        <button
-          className="px-4 py-2 bg-blue-500 text-white rounded-lg mx-2 hover:bg-blue-600 disabled:bg-gray-300 disabled:cursor-not-allowed transition-colors"
-          disabled={currentPage === totalPages}
-          onClick={() => handlePageChange(currentPage + 1)}
-        >
-          Next
-        </button>
+      <div className="mt-8 flex justify-center gap-2">
+        {Array.from({ length: totalPages }, (_, index) => (
+          <button
+            key={index}
+            onClick={() => setCurrentPage(index + 1)}
+            className={`py-2 px-4 border ${
+              currentPage === index + 1 ? "bg-cyan-500 text-white" : ""
+            }`}
+          >
+            {index + 1}
+          </button>
+        ))}
       </div>
     </div>
   );
 };
 
-export default page;
+export default Page;
