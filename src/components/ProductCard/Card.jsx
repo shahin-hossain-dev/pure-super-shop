@@ -4,9 +4,12 @@ import { FaRegHeart } from "react-icons/fa6";
 import Swal from "sweetalert2";
 
 const Card = ({ product }) => {
+  
   const handleAddToWishlist = (product) => {
+
     // fakhrul islam
     let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+
     // Check if the item is already in the wishlist
     if (!wishlist.some((item) => item._id === product._id)) {
       wishlist.push(product); // Add the product if it's not already in the wishlist
@@ -22,6 +25,8 @@ const Card = ({ product }) => {
       });
     }
   };
+
+
   return (
     <div className="bg-white p-6 rounded-lg shadow-lg hover:shadow-2xl transition-shadow duration-300">
       <img
@@ -53,5 +58,6 @@ const Card = ({ product }) => {
     </div>
   );
 };
+
 
 export default Card;

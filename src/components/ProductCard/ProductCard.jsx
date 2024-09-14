@@ -12,8 +12,11 @@ const ProductCard = (product) => {
     product;
 
   const handleAddToCart = (id) => {
-    console.log("add to cart");
+    const productItem = { productName, price, ImageUrl}
+    console.log("add to cart", productItem);
+        
   };
+
   const handleAddToWishlist = (product) => {
     // fakhrul islam
     let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
@@ -33,9 +36,11 @@ const ProductCard = (product) => {
       });
     }
   };
+
   const handleDetails = (id) => {
     console.log(id);
   };
+
   return (
     <div className="card box-border relative flex flex-col justify-between border hover:border-[#84b93e] duration-300 hover:border-1 rounded-sm p-2">
       <div className=" right-3 top-3 absolute flex flex-col view-wish">
