@@ -1,5 +1,4 @@
 import { connectDB } from "@/lib/connectDB";
-import { NextResponse } from "next/server";
 
 // Handle GET requests
 export const GET = async (req) => {
@@ -55,6 +54,13 @@ export const GET = async (req) => {
     });
   } catch (error) {
     console.error("Error fetching products:", error);
+<<<<<<< HEAD
     return NextResponse.json({ message: "Something went wrong" }, { status: 500 });
+=======
+    return new Response(
+      JSON.stringify({ error: "Failed to fetch products" }),
+      { status: 500 }
+    );
+>>>>>>> 8d5f4c52aaaadc8b4a4f0cc8a04b5c8dfc1c3e52
   }
 };
