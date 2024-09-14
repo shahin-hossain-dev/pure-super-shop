@@ -8,5 +8,4 @@ const productsCollection = db.collection('products');
 } catch (error) {
     console.log(error)
 }
-
 }

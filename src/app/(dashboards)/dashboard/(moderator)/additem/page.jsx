@@ -1,10 +1,10 @@
 "use client"
 import axios from 'axios';
 import { useSession } from "next-auth/react";
-const addItem = () => {
+const AddItem = () => {
 
   const sessoin = useSession();
-  const email = sessoin?.data?.user?.email
+  const email = sessoin?.data?.user?.email; 
  
   const handleSubmit = (e) => {
     
@@ -157,4 +157,4 @@ const addItem = () => {
   );
 };
 
-export default addItem;
+export default AddItem;
