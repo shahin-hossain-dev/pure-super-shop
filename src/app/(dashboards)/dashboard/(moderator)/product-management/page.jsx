@@ -36,7 +36,6 @@ const ProductManagement = () => {
 
 
   const handleDelete = (id) =>{
-
     Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",
@@ -57,7 +56,6 @@ const ProductManagement = () => {
               icon: "success"
             });
             refetch();
-
           }
       })
       .catch((error)=> {

@@ -1,6 +1,5 @@
 import React from "react";
 import { brands } from "@/lib/brands";
-import Navbar from "@/components/sharePage/Navbar";
 
 const Page = () => {
   return (

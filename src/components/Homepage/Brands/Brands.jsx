@@ -20,7 +20,7 @@ const Brands = () => {
         ))}
       </div>
         {/* Directly apply the class to Link */}
-        <div className="flex justify-center py-10">
+        <div className="flex justify-center pt-10">
 
         <Link href="/brands" className="bg-[#84b93e] text-white  py-4 px-6 text-sm rounded-xl ">
           See More...
