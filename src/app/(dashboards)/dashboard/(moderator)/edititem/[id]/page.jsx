@@ -1,14 +1,13 @@
 "use client"
 import axios from 'axios';
 import { useRouter } from 'next/navigation'; 
-import { useParams } from 'next/navigation';
 import { useState, useEffect } from 'react';
 import Swal from 'sweetalert2';
 
-const EditItem = () => {
+const EditItem = ({params}) => {
   const router = useRouter();
-  const { id } = useParams();
-
+  const { id } = params;
+  
   const [product, setProduct] = useState({
     productName: '',
     categoryName: '',
