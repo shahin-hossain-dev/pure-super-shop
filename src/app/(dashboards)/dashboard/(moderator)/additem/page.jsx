@@ -54,6 +54,7 @@ const AddItem = () => {
             </label>
             <input
               type="text"
+              required
               id="productName"
               name='productName'
               placeholder="Enter product name"
@@ -69,6 +70,7 @@ const AddItem = () => {
             </label>
             <select
             name="categoryName"
+            required
               id="categorySelector"
               className="border rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
             >
@@ -89,6 +91,7 @@ const AddItem = () => {
             </label>
             <input
               type="text"
+              required
               name='subCategory'
               id="subCategory"
               placeholder="Enter subcategory"
@@ -103,6 +106,7 @@ const AddItem = () => {
             </label>
             <input
               type="number"
+              required
               id="price"
               name='price'
               placeholder="Enter price"
@@ -117,6 +121,7 @@ const AddItem = () => {
             </label>
             <input
               name='discountPrice'
+              required
               type="number"
               id="discountPrice"
               placeholder="Enter discount price"
@@ -131,6 +136,7 @@ const AddItem = () => {
             </label>
             <input
               type="url"
+              required
               name='imageUrl'
               id="imageUrl"
               placeholder="Enter image URL"
@@ -145,6 +151,7 @@ const AddItem = () => {
             </label>
             <textarea
               id="description"
+              required
               name='description'
               placeholder="Enter Description"
               className="border rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-400"

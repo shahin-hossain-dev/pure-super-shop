@@ -17,10 +17,7 @@ const ProductManagement = () => {
     queryFn: () =>
       axios
         .get(`${process.env.NEXT_PUBLIC_BASE_URL}/dashboard/product-management/api/${email}`)
-<<<<<<< HEAD
-=======
 
->>>>>>> 8d5f4c52aaaadc8b4a4f0cc8a04b5c8dfc1c3e52
         .then((res) => res.data),
     enabled: !!email, 
   });
@@ -39,10 +36,6 @@ const ProductManagement = () => {
 
 
   const handleDelete = (id) =>{
-<<<<<<< HEAD
-=======
-
->>>>>>> 8d5f4c52aaaadc8b4a4f0cc8a04b5c8dfc1c3e52
     Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",
@@ -53,10 +46,7 @@ const ProductManagement = () => {
       confirmButtonText: "Yes, delete it!"
     }).then((result) => {
       if (result.isConfirmed) {
-<<<<<<< HEAD
-=======
 
->>>>>>> 8d5f4c52aaaadc8b4a4f0cc8a04b5c8dfc1c3e52
       axios.delete(`${process.env.NEXT_PUBLIC_BASE_URL}/dashboard/product-management/api/delete/${id}`)
       .then((res)=>{
           if(res.data.status === 200){
@@ -66,10 +56,6 @@ const ProductManagement = () => {
               icon: "success"
             });
             refetch();
-<<<<<<< HEAD
-=======
-
->>>>>>> 8d5f4c52aaaadc8b4a4f0cc8a04b5c8dfc1c3e52
           }
       })
       .catch((error)=> {
