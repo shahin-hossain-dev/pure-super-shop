@@ -1,4 +1,5 @@
 import { connectDB } from "@/lib/connectDB";
+import { NextResponse } from "next/server";
 
 export const GET = async (request, { params }) => {
   const db = await connectDB();
@@ -9,8 +10,8 @@ export const GET = async (request, { params }) => {
     const products = await productCollection
       .find({ categoryName: category })
       .toArray();
-    return Response.json(products);
+    return NextResponse.json(products);
   } catch (error) {
-    return Response.json({ message: "Something went wrong" });
+    return NextResponse.json({ message: "Something went wrong" });
   }
 };
