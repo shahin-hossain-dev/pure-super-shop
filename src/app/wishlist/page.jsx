@@ -1,5 +1,4 @@
 "use client";
-import Navbar from "@/components/sharePage/Navbar";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 

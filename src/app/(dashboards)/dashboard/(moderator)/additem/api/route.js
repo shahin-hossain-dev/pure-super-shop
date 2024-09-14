@@ -1,4 +1,5 @@
 import { connectDB } from "@/lib/connectDB"
+import { NextResponse } from "next/server";
 
 export const POST = async(req) =>{
 const db = await connectDB();
@@ -7,9 +8,9 @@ try {
     const productData = await req.json();
     const product = await productsCollection.insertOne(productData);
     
-    return Response.json({message: "product item post successful"}, {status: 200});
+    return NextResponse.json({message: "product item post successful"}, {status: 200});
     
 } catch (error) {
-    console.log(error)
+    return NextResponse.json({error});
 }
 }

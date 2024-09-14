@@ -1,5 +1,6 @@
 import { connectDB } from "@/lib/connectDB"
 import { ObjectId } from "mongodb";
+import { NextResponse } from "next/server";
 export const PUT = async(req , {params}) => {
     const db = await connectDB();
     const productsCollection = db.collection('products');
@@ -14,10 +15,10 @@ export const PUT = async(req , {params}) => {
           };
         const product = await productsCollection.updateOne( query, updateDoc, options);
         
-        return Response.json({message: "product item edit successful"}, {status: 200});
+        return NextResponse.json({message: "product item edit successful"}, {status: 200});
         
     } catch (error) {
-        return Response.json({error})
+        return NextResponse.json({error})
     }
 }
 
@@ -29,9 +30,9 @@ export const GET = async(req, {params}) => {
        
         const product = await productsCollection.findOne(query)
       
-        return Response.json({product});
+        return NextResponse.json({product});
         
     } catch (error) {
-        return Response.json({error})
+        return NextResponse.json({error})
     }
 }

@@ -1,3 +1,4 @@
+"use client"
 import { FcOnlineSupport } from "react-icons/fc";
 import { MdOutlinePayment } from "react-icons/md";
 import { GiBoxUnpacking } from "react-icons/gi";

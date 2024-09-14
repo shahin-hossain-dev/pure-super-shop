@@ -1,4 +1,4 @@
-
+"use client"
 const Faq = () => {
     return (
         <div className="max-w-[1440px] w-[95%] md:w-11/12 mx-auto py-20 px-3 lg:px-0">
