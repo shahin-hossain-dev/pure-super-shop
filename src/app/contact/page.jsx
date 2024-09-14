@@ -3,12 +3,12 @@ import ContactForm from "@/components/Contact/ContactForm";
 
 const Contact = () => {
   return (
-    <section className="" id="contact">
-      <div className="mx-auto   py-16 lg:py-20">
+    <section className="pt-10" id="contact">
+      <div className="mx-auto">
         <div className="mb-4">
           <div className="mb-6 text-center sm:text-center md:mx-auto md:mb-12">
            
-            <h2 className="font-heading mb-4 font-bold tracking-tight  text-3xl sm:text-5xl">
+            <h2 className="font-heading mb-4 font-bold tracking-tight  text-3xl sm:text-4xl">
               Get in Touch
             </h2>
             <p className="mx-auto mt-4 max-w-3xl text-xl">

@@ -5,7 +5,7 @@ import Link from "next/link";
 
 const Brands = () => {
   return (
-    <div className="max-w-[1440px] w-[95%] md:w-11/12 mx-auto py-20 px-3 lg:px-0">
+    <div className="mx-auto py-20 px-3 lg:px-0">
       <div className="text-center max-w-2xl  mx-auto">
         <h1 className="text-3xl font-bold mb-2">Our Popular Brands</h1>
         <p className="text-gray-600">Explore a wide selection of trusted brands known for their quality and freshness. From everyday essentials to specialty items, find everything you need from the brands you love.</p>

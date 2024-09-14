@@ -8,10 +8,12 @@ export const DELETE = async(req, {params}) => {
         const productsCollection = db.collection('products');
 
         const query = { _id: new ObjectId(params?.id) };
-        console.log(query)
+
+      
          const productsData = await productsCollection.deleteOne(query);
-         return Response.json({productsData});
+         return Response.json({message: "product data delete successful", status: 200});
         } catch (error) {
-            console.log(error)
+            return Response.json({error})
+
         }
 }
