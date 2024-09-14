@@ -6,6 +6,6 @@ const productsCollection = db.collection('products');
  const productsData = await productsCollection.find({createdBy: params?.email}).toArray();
  return Response.json({productsData});
 } catch (error) {
-    console.log(error)
+    return Response.json({error})
 }
 }

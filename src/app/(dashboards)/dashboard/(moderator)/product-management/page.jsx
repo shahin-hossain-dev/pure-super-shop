@@ -16,7 +16,7 @@ const ProductManagement = () => {
     queryKey: ["productsData", email],
     queryFn: () =>
       axios
-        .get(`http://localhost:3000/dashboard/product-management/api/${email}`)
+        .get(`${process.env.NEXT_PUBLIC_BASE_URL}/dashboard/product-management/api/${email}`)
         .then((res) => res.data),
     enabled: !!email, 
   });
@@ -35,7 +35,6 @@ const ProductManagement = () => {
 
 
   const handleDelete = (id) =>{
-    console.log(id)
     Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",
@@ -46,15 +45,15 @@ const ProductManagement = () => {
       confirmButtonText: "Yes, delete it!"
     }).then((result) => {
       if (result.isConfirmed) {
-      axios.delete(`http://localhost:3000/dashboard/product-management/api/delete/${id}`)
+      axios.delete(`${process.env.NEXT_PUBLIC_BASE_URL}/dashboard/product-management/api/delete/${id}`)
       .then((res)=>{
-          if(res.data.deletedCount > 0){
-              refetch();
-              Swal.fire({
-                  title: "Deleted!",
-                  text: "Your file has been deleted.",
-                  icon: "success"
-                });
+          if(res.data.status === 200){
+            Swal.fire({
+              title: "Deleted!",
+              text: "Your product has been deleted.",
+              icon: "success"
+            });
+            refetch();
           }
       })
       .catch((error)=> {
