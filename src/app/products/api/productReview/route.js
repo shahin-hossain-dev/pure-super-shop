@@ -1,4 +1,5 @@
 import { connectDB } from "@/lib/connectDB";
+import { NextResponse } from "next/server";
 
 export const POST = async (request) => {
   const db = await connectDB();
@@ -7,8 +8,8 @@ export const POST = async (request) => {
   //   console.log(review);
   try {
     const resp = await reviewCollection.insertOne(review);
-    return Response.json({ message: "User Review added", status: 200 });
+    return NextResponse.json({ message: "User Review added", status: 200 });
   } catch (error) {
-    return Response.json({ message: error.message });
+    return NextResponse.json({ message: error.message });
   }
 };
