@@ -89,6 +89,18 @@ const ProductManagement = () => {
       selector: (product) => product?.discountPrice,
       sortable: true,
     },
+   
+    {
+      name: "Action",
+      cell: (product) => (
+        <Link
+          href={`/dashboard/edititem/${product?._id}`}
+          className="bg-gray-200 inline-block p-3 m-1 rounded-lg hover:bg-[#84b93e] hover:text-white hover:duration-300"
+        >
+          <FaEdit className="text-2xl" />
+        </Link>
+      ),
+    },
     {
       name: "Action",
       cell: (product) => (
@@ -98,17 +110,6 @@ const ProductManagement = () => {
         >
           <AiFillDelete className="text-2xl" />
         </button>
-      ),
-    },
-    {
-      name: "Action",
-      cell: (product) => (
-        <Link
-          href={`/dashboard/edititem/${product?._id}`}
-          className="bg-gray-200 inline-block p-3 m-1 rounded-lg hover:bg-green-500 hover:text-white hover:duration-300"
-        >
-          <FaEdit className="text-2xl" />
-        </Link>
       ),
     },
   ];

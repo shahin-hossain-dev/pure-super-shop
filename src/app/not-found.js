@@ -3,7 +3,7 @@ import Image from 'next/image'
 export default function NotFound() {
   return (
     <div>
-      <section className="flex items-center h-screen">
+      <section className="flex -mt-24 items-center h-screen">
 	<div className="flex flex-col items-center justify-center px-5 mx-auto my-8">
 		<div className="max-w-md text-center">
 			<h2 className=" font-extrabold text-9xl">

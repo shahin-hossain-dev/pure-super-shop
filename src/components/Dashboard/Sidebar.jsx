@@ -1,10 +1,10 @@
 "use client";
 import { useState } from 'react';
 import { GrLogout } from 'react-icons/gr';
-import { FcSettings } from 'react-icons/fc';
-import {  BsGraphUp } from 'react-icons/bs';
+import { FcSettings , FcLineChart  ,  FcBusinessman , FcComboChart } from 'react-icons/fc';
+
+
 import { AiOutlineBars } from 'react-icons/ai';
-import { MdHomeWork } from 'react-icons/md';
 import { BsFillHouseAddFill } from 'react-icons/bs'; 
 import Link from 'next/link';
 
@@ -58,23 +58,23 @@ const Sidebar = () => {
               {/* Sales Overview */}
               <Link href='/dashboard/overview'>
                 <p className='flex items-center px-4 py-2 my-5 transition-colors duration-300 transform hover:bg-gray-300 hover:text-gray-700'>
-                  <BsGraphUp className='w-5 h-5' />
+                  <FcLineChart  className='w-5 h-5' />
                   <span className='mx-4 font-medium'>Sales Overview</span>
                 </p>
               </Link>
 
               {/*Product Management */}
-              <Link href='/add-room'>
+              <Link href='/dashboard/product-management'>
                 <p className='flex items-center px-4 py-2 my-5 transition-colors duration-300 transform hover:bg-gray-300 hover:text-gray-700'>
-                  <BsFillHouseAddFill className='w-5 h-5' />
+                  <FcComboChart  className='w-5 h-5' />
                   <span className='mx-4 font-medium'>Product Management</span>
                 </p>
               </Link>
 
               {/* User Management */}
-              <Link href='/my-listings'>
+              <Link href='/dashboard/user-management'>
                 <p className='flex items-center px-4 py-2 my-5 transition-colors duration-300 transform hover:bg-gray-300 hover:text-gray-700'>
-                  <MdHomeWork className='w-5 h-5' />
+                  <FcBusinessman className='w-5 h-5' />
                   <span className='mx-4 font-medium'>User Management</span>
                 </p>
               </Link>
