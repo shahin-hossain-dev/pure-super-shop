@@ -48,11 +48,19 @@ const Page = () => {
     chart: {
       id: "product-categories",
     },
-    labels: ["Food", "Home & Kitchen", "Toy & Sports", "Personal Care", "Baby Care"],
-    colors: ['#008FFB', '#00E396', '#FEB019', '#FF4560', '#775DD0'],
+    labels: [
+      "Food",
+      "Home & Kitchen",
+      "Toy & Sports",
+      "Personal Care",
+      "Baby Care",
+    ],
+    colors: ["#008FFB", "#00E396", "#FEB019", "#FF4560", "#775DD0"],
   });
 
-  const [categoryChartSeries, setCategoryChartSeries] = useState([120, 80, 150, 60, 90]); // Example quantities for each category
+  const [categoryChartSeries, setCategoryChartSeries] = useState([
+    120, 80, 150, 60, 90,
+  ]); // Example quantities for each category
 
   return (
     <div className=" max-w-[1300px] mx-auto my-5">
@@ -61,7 +69,9 @@ const Page = () => {
         {/* Sales Chart */}
         <div className="flex justify-between  items-center">
           <div>
-            <h2 className=" text-xl font-normal my-3">Total Sales Preview in Previous Six Months</h2>
+            <h2 className=" text-xl font-normal my-3">
+              Total Sales Preview in Previous Six Months
+            </h2>
             <Chart
               options={chartOptions}
               series={chartSeries}
@@ -72,7 +82,9 @@ const Page = () => {
 
           {/* Customer Reviews Chart */}
           <div>
-            <h2 className=" text-xl font-normal my-3">Customer Reviews Over Six Months</h2>
+            <h2 className=" text-xl font-normal my-3">
+              Customer Reviews Over Six Months
+            </h2>
             <Chart
               options={reviewChartOptions}
               series={reviewChartSeries}
@@ -85,7 +97,9 @@ const Page = () => {
         {/* Product Categories Chart */}
         <div className="flex justify-center">
           <div>
-            <h2 className=" text-xl font-normal my-3">Product Quantities by Category</h2>
+            <h2 className=" text-xl font-normal my-3">
+              Product Quantities by Category
+            </h2>
             <Chart
               options={categoryChartOptions}
               series={categoryChartSeries}
