@@ -1,14 +1,32 @@
 "use client"
 import axios from 'axios';
-import { useSession } from "next-auth/react";
+import { useRouter } from 'next/navigation'; 
+import { useParams } from 'next/navigation';
+import { useState, useEffect } from 'react';
 import Swal from 'sweetalert2';
-const AddItem = () => {
+const EditItem = () => {
 
-  const sessoin = useSession();
-  const email = sessoin?.data?.user?.email; 
+ 
+  const router = useRouter()
+  const {id} = useParams()
+
+  const [product, setProduct] = useState({});
+  const {productName , categoryName , discountPrice , price , subCategory , imageUrl , description} = product;
+
+
+
+  useEffect(()=>{
+    axios.get(`${process.env.NEXT_PUBLIC_BASE_URL}/dashboard/edititem/api/${id}`)
+    .then(res=>{
+      setProduct(res?.data?.product)
+    })
+    .catch(error=>{
+      return Response.json({error})
+    })
+  },[id])
  
   const handleSubmit = (e) => {
-    
+
     e.preventDefault();
     const productName = e.target.productName.value;
     const categoryName = e.target.categoryName.value;
@@ -19,16 +37,17 @@ const AddItem = () => {
     const description = e.target.description.value;
     
 
-    const data = {productName , categoryName , price, discountPrice ,subCategory , imageUrl , description, createdBy: email}
+    const data = {productName , categoryName , price, discountPrice ,subCategory , imageUrl , description}
 
-    axios.post(`${process.env.NEXT_PUBLIC_BASE_URL}/dashboard/additem/api`, data)
+    axios.put(`${process.env.NEXT_PUBLIC_BASE_URL}/dashboard/edititem/api/${id}`, data)
     .then( (res) => {
       if(res.status === 200){
         Swal.fire({
-          title: "Added!",
-          text: "Your product has been successfully added.",
-          icon: "success"
+          title: 'Updated!',
+          text: 'Your product has been updated successfully.',
+          icon: 'success'
         });
+        router.push('/dashboard/product-management')
         e.target.reset();;
       }
     })
@@ -44,7 +63,7 @@ const AddItem = () => {
   }
   return (
     <div className="w-full">
-      <h1 className="text-center text-2xl font-bold">Add Product</h1>
+      <h1 className="text-center text-2xl font-bold">Edit Product</h1>
       <form onSubmit={(e)=> handleSubmit(e)} className="w-full mx-auto p-4 bg-white shadow-md rounded-lg">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {/* Product Name */}
@@ -56,12 +75,13 @@ const AddItem = () => {
               type="text"
               id="productName"
               name='productName'
+              
               placeholder="Enter product name"
               className="border rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
             />
           </div>
 
-          {/* Category Name */}
+         
           {/* Category Selector */}
           <div className="flex flex-col">
             <label htmlFor="categorySelector" className="mb-2 text-gray-700 font-semibold">
@@ -166,4 +186,4 @@ const AddItem = () => {
   );
 };
 
-export default AddItem;
+export default EditItem;

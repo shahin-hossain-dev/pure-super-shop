@@ -1,13 +1,13 @@
 "use client"
 import emailjs from 'emailjs-com';
-
+import Swal from 'sweetalert2';
 const ContactForm = () => {
 const handleSubmit = (e) =>{
     e.preventDefault()
     const name =  e.target.name.value;
     const email = e.target.email.value;
     const message = e.target.message.value;
-    const data = {name, email , message}
+    const data = {name, email , message};
     
     emailjs.send(
       process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID,
@@ -16,12 +16,20 @@ const handleSubmit = (e) =>{
         process.env.NEXT_PUBLIC_EMAILJS_USER_ID
     ).then((result)=>{
       if (result.status === 200) {
-      alert( "Email sent successfully")
+        Swal.fire({
+          title: 'Success!',
+          text: 'Your email has been sent successfully.',
+          icon: 'success'
+        });
      
       }
       
     }).catch((error)=>{
-      alert(error.message)
+      Swal.fire({
+        title: "error!",
+        text: error?.message,
+        icon: "error"
+      });
     })
      
   }
