@@ -57,9 +57,8 @@ export const GET = async (req) => {
     );
   } catch (error) {
     console.error("Error fetching products:", error);
-    return new Response(
-      JSON.stringify({ error: "Failed to fetch products" }),
-      { status: 500 }
-    );
+    return new Response(JSON.stringify({ error: "Failed to fetch products" }), {
+      status: 500,
+    });
   }
 };
