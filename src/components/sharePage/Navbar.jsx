@@ -5,7 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { CiHeart } from "react-icons/ci";
-
+import Image from 'next/image'
 const Navbar = () => {
   const activeRoute = usePathname();
   const session = useSession();
@@ -40,7 +40,7 @@ const Navbar = () => {
 
   return (
     <nav className="flex border-b py-4 max-w-[1440px] w-[95%] md:w-11/12 mx-auto font-[sans-serif] min-h-[80px] tracking-wide relative z-50">
-      <div className="flex flex-wrap items-center lg:gap-y-2 gap-4 w-full">
+      <div className="flex flex-wrap items-center justify-between lg:justify-start lg:gap-y-2 gap-4 w-full">
         <Link className="text-2xl font-bold text-[#3e84b9]" href="/">
           Pure<span className="text-[#84b93e] font-bold">Super</span>
         </Link>
@@ -84,11 +84,11 @@ const Navbar = () => {
             {/* Add menu items here */}
             {/* Mobile specific links */}
             {/* Do not delete these comments below*/}
-            {/* <li>
+            <li className="w-full">
               {session?.status === "unauthenticated" && (
                 <Link
                   href="/login"
-                  className="px-4 py-2 bg-[#3e84b9] text-white rounded hover:bg-blue-600"
+                  className="px-4 w-full block py-2 bg-[#3e84b9] text-white rounded lg:hidden"
                 >
                   Login
                 </Link>
@@ -98,7 +98,7 @@ const Navbar = () => {
               {" "}
               {session?.status === "authenticated" && (
                 <button
-                  className="px-4 py-2 bg-[#ff1111] text-white rounded hover:bg-blue-600"
+                  className="px-4 py-2 w-full block bg-[#84b93e] text-white rounded lg:hidden"
                   onClick={() => signOut()}
                 >
                   Logout
@@ -109,12 +109,12 @@ const Navbar = () => {
               {session?.status === "unauthenticated" && (
                 <Link
                   href="/register"
-                  className="px-4 py-2 bg-[#84b93e] text-white rounded hover:bg-green-600"
+                  className="px-4 w-full block py-2 bg-[#84b93e] text-white rounded lg:hidden"
                 >
                   Register
                 </Link>
               )}
-            </li> */}
+            </li>
             <li>
               <Link
                 href="/wishlist"
@@ -125,12 +125,12 @@ const Navbar = () => {
             </li>
           </ul>
         </div>
-        <div className="flex gap-x-6 gap-y-4 ml-auto items-center">
+        <div className="hidden lg:flex gap-x-2 gap-y-4 ml-auto items-center">
           {/* Additional Navbar content for larger screens */}
           {session?.status === "unauthenticated" && (
             <Link
               href="/login"
-              className="px-4 py-2 bg-[#3e84b9] text-white rounded hover:bg-blue-600"
+              className="px-4 py-2 bg-[#3e84b9] text-white rounded "
             >
               Login
             </Link>
@@ -142,13 +142,15 @@ const Navbar = () => {
                 className="tool w-10 rounded-full cursor-pointer"
                 onClick={() => setShowInfo(!showInfo)}
               >
-                <img
+                <Image
                   className="h-8 w-8 rounded-full"
                   src={
                     session?.data?.user?.photo ||
                     "https://i.ibb.co/sjymvr8/Capture4.png"
                   }
                   alt="User profile"
+                  width="40"
+                  height="40"
                 />
               </div>
 
@@ -168,7 +170,7 @@ const Navbar = () => {
 
           {session?.status === "authenticated" && (
             <button
-              className="px-4 py-2 bg-[#ff1111] text-white rounded hover:bg-blue-600"
+              className="px-4 py-2 bg-[#84b93e] text-white rounded "
               onClick={() => signOut()}
             >
               Logout
@@ -177,7 +179,7 @@ const Navbar = () => {
           {session?.status === "unauthenticated" && (
             <Link
               href="/register"
-              className="px-4 py-2 bg-[#84b93e] text-white rounded hover:bg-green-600"
+              className="px-4 py-2 bg-[#84b93e] text-white rounded "
             >
               Register
             </Link>
@@ -188,7 +190,24 @@ const Navbar = () => {
           >
             <CiHeart className="mr-2" /> Wishlist
           </Link>
-          <button id="toggleOpen" onClick={toggleMenu} className="lg:hidden">
+        </div>
+          <div className="flex gap-2 lg:hidden">
+          <div
+                className="tool  w-10 rounded-full cursor-pointer"
+                onClick={() => setShowInfo(!showInfo)}
+              >
+                <Image
+                  className="h-8 w-8 rounded-full"
+                  src={
+                    session?.data?.user?.photo ||
+                    "https://i.ibb.co/sjymvr8/Capture4.png"
+                  }
+                  alt="User profile"
+                  width="40"
+                  height="40"
+                />
+              </div>
+          <button id="toggleOpen" onClick={toggleMenu}>
             {/* Open Menu Icon */}
             <svg
               className="w-7 h-7"
@@ -203,7 +222,7 @@ const Navbar = () => {
               />
             </svg>
           </button>
-        </div>
+          </div>
       </div>
     </nav>
   );
