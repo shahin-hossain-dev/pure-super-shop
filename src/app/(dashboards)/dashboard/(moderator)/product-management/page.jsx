@@ -1,7 +1,7 @@
 "use client";
 import { AiFillDelete } from "react-icons/ai";
 import { FaEdit } from "react-icons/fa";
-import Link from 'next/link'
+import Link from "next/link";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { useSession } from "next-auth/react";
@@ -11,21 +11,23 @@ import Image from 'next/image'
 const ProductManagement = () => {
   const session = useSession();
   const email = session?.data?.user?.email;
-
- 
-  const { data = {}, isLoading, error , refetch } = useQuery({
+  const {
+    data = {},
+    isLoading,
+    error,
+    refetch,
+  } = useQuery({
     queryKey: ["productsData", email],
     queryFn: () =>
       axios
-        .get(`${process.env.NEXT_PUBLIC_BASE_URL}/dashboard/product-management/api/${email}`)
-
+        .get(
+          `${process.env.NEXT_PUBLIC_BASE_URL}/dashboard/product-management/api/${email}`
+        )
         .then((res) => res.data),
-    enabled: !!email, 
+    enabled: !!email,
   });
 
-
   const productsArray = data.productsData || [];
-
 
   if (error) {
     return <div>An error occurred: {error.message}</div>;
@@ -36,7 +38,8 @@ const ProductManagement = () => {
   }
 
 
-  const handleDelete = (id) =>{
+  const handleDelete = (id) => {
+
     Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",
@@ -44,14 +47,26 @@ const ProductManagement = () => {
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
-      confirmButtonText: "Yes, delete it!"
+      confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-
-      axios.delete(`${process.env.NEXT_PUBLIC_BASE_URL}/dashboard/product-management/api/delete/${id}`)
-      .then((res)=>{
-          if(res.data.status === 200){
+        axios
+          .delete(
+            `${process.env.NEXT_PUBLIC_BASE_URL}/dashboard/product-management/api/delete/${id}`
+          )
+          .then((res) => {
+            if (res.data.status === 200) {
+              Swal.fire({
+                title: "Deleted!",
+                text: "Your product has been deleted.",
+                icon: "success",
+              });
+              refetch();
+            }
+          })
+          .catch((error) => {
             Swal.fire({
+
               title: "Deleted!",
               text: "Your product has been deleted.",
               icon: "success"
@@ -61,15 +76,15 @@ const ProductManagement = () => {
       })
       .catch((error)=> {
           Swal.fire({
+
               title: "error!",
               text: error?.message,
-              icon: "error"
+              icon: "error",
             });
-      })
-        
+          });
       }
     });
-  }
+  };
 
   const columns = [
     {
@@ -92,7 +107,7 @@ const ProductManagement = () => {
       selector: (product) => product?.discountPrice,
       sortable: true,
     },
-   
+
     {
       name: "Action",
       cell: (product) => (
@@ -108,7 +123,7 @@ const ProductManagement = () => {
       name: "Action",
       cell: (product) => (
         <button
-          onClick={() => handleDelete(product?._id)} 
+          onClick={() => handleDelete(product?._id)}
           className="bg-gray-200 p-3 m-1 rounded-lg hover:bg-red-500 hover:text-white hover:duration-300"
         >
           <AiFillDelete className="text-2xl" />
@@ -116,15 +131,14 @@ const ProductManagement = () => {
       ),
     },
   ];
-  
 
   return (
-    <div> 
+    <div>
       <h1 className="text-center text-2xl font-bold">Product Management</h1>
 
       <DataTable
         columns={columns}
-        data={productsArray} 
+        data={productsArray}
         pagination
         highlightOnHover
         striped

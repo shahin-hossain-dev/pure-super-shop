@@ -1,3 +1,4 @@
+"use client"
 import Banner from "./Banner";
 import BigSell from "./BigSell";
 import Brands from "./Brands/Brands";
