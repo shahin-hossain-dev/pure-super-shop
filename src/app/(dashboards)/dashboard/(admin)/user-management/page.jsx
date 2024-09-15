@@ -3,7 +3,7 @@ import { AiFillDelete } from "react-icons/ai";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import DataTable from "react-data-table-component";
-
+import Image from 'next/image'
 
 
 
@@ -26,7 +26,7 @@ const UserManagement = () => {
       }
     
       if (isLoading) {
-        return <div>Loading...</div>;
+        return <div className="h-screen flex justify-center items-center -mt-10"><Image src="/assets/Banner_Image/loading.gif" alt="loading" width="400" height="400"></Image></div>;
       }
 
       const handleDelete = (id) => {
