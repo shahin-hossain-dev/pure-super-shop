@@ -18,3 +18,4 @@ export const DELETE = async (req, { params }) => {
     return NextResponse.json({ error });
   }
 };
+

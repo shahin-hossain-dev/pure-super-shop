@@ -1,5 +1,5 @@
 import { connectDB } from "@/lib/connectDB";
-
+import { NextResponse } from 'next/server'
 // Handle GET requests
 export const GET = async (req) => {
   const db = await connectDB();
@@ -7,13 +7,13 @@ export const GET = async (req) => {
 
   try {
     // Get query parameters
-    const url = new URL(req.url); // Use URL constructor to parse URL properly
+    const url = new URL(req.url);
     const searchParams = url.searchParams;
 
     const search = searchParams.get("search") || "";
     const category = searchParams.get("category") || "";
     const sort = searchParams.get("sort") || "asc";
-    const page = parseInt(searchParams.get("page") || "1");
+    const page = parseInt(searchParams.get("page") || "1", 10);
 
     const ITEMS_PER_PAGE = 12;
 
@@ -47,18 +47,16 @@ export const GET = async (req) => {
     const totalPages = Math.ceil(totalProducts / ITEMS_PER_PAGE);
 
     // Return the response as JSON
-    return new Response(
-      JSON.stringify({
-        products,
-        totalPages,
-        currentPage: page,
-      }),
-      { status: 200 }
-    );
+    return NextResponse.json({
+      products,
+      totalPages,
+      currentPage: page,
+    });
   } catch (error) {
     console.error("Error fetching products:", error);
-    return new Response(JSON.stringify({ error: "Failed to fetch products" }), {
-      status: 500,
-    });
+
+    return NextResponse.json({ message: "Something went wrong" }, { status: 500 });
+
+    
   }
 };

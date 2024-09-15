@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import ProductCard from "../ProductCard/ProductCard";
-
+import Image from 'next/image'
 const CategoryProducts = ({ title }) => {
   // const categoryProducts = products.filter(
   //   (product) => product.categoryName === title
@@ -24,9 +24,9 @@ const CategoryProducts = ({ title }) => {
 
   return (
     <div>
-      {loading && (
-        <h2 className="text-xl text-center text-[#333333]">Loading...</h2>
-      )}
+      {loading && 
+          <div className="flex justify-center items-center"><Image src="/assets/Banner_Image/loading.gif" alt="loading" width="400" height="400"></Image></div>
+      }
 
       <div className="mt-6 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 w-full gap-4 min-h-[200px]">
         {categoryProducts?.map((product) => (

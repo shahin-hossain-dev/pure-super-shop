@@ -7,7 +7,7 @@ export const GET = async () => {
   // const paymentCollection = db.collection("payments");
   try {
     // const payments = await paymentCollection.find().toArray();
-    return Response.json(payments);
+    return NextResponse.json(payments);
   } catch (error) {
     return NextResponse({ message: error.message });
   }
