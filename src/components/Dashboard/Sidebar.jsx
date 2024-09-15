@@ -1,19 +1,17 @@
 "use client";
+
 import { useState } from "react";
 import { GrLogout } from "react-icons/gr";
-import { FcSettings } from "react-icons/fc";
-import { BsGraphUp } from "react-icons/bs";
+import { FcSettings , FcLineChart  , FcAddDatabase ,  FcBusinessman , FcComboChart } from 'react-icons/fc';
 import { AiOutlineBars } from "react-icons/ai";
-import { MdHomeWork } from "react-icons/md";
-import { BsFillHouseAddFill } from "react-icons/bs";
 import Link from "next/link";
 import { MdOutlinePayment } from "react-icons/md";
 
+
 const Sidebar = () => {
-  //   const { logOut } = useAuth();
   const [isActive, setActive] = useState(false);
 
-  // Sidebar Responsive Handler
+
   const handleToggle = () => {
     setActive(!isActive);
   };
@@ -60,34 +58,48 @@ const Sidebar = () => {
             {/* Menu Items */}
             <nav>
               {/* Sales Overview */}
-              <Link href="/dashboard/overview">
-                <p className="flex items-center px-4 py-2 my-5 transition-colors duration-300 transform hover:bg-gray-300 hover:text-gray-700">
-                  <BsGraphUp className="w-5 h-5" />
-                  <span className="mx-4 font-medium">Sales Overview</span>
+
+              <Link href='/dashboard/overview'>
+                <p className='flex items-center px-4 py-2 my-5 transition-colors duration-300 transform hover:bg-gray-300 hover:text-gray-700'>
+                  <FcLineChart  className='w-5 h-5' />
+                  <span className='mx-4 font-medium'>Sales Overview</span>
+
                 </p>
               </Link>
 
+              {/*add product */}
+
+              <Link href='/dashboard/additem'>
+                <p className='flex items-center px-4 py-2 my-5 transition-colors duration-300 transform hover:bg-gray-300 hover:text-gray-700'>
+                  <FcAddDatabase   className='w-5 h-5' />
+                  <span className='mx-4 font-medium'>Add Product</span>
+
+                </p>
+              </Link>
               {/*Product Management */}
-              <Link href="/add-room">
-                <p className="flex items-center px-4 py-2 my-5 transition-colors duration-300 transform hover:bg-gray-300 hover:text-gray-700">
-                  <BsFillHouseAddFill className="w-5 h-5" />
-                  <span className="mx-4 font-medium">Product Management</span>
+
+              <Link href='/dashboard/product-management'>
+                <p className='flex items-center px-4 py-2 my-5 transition-colors duration-300 transform hover:bg-gray-300 hover:text-gray-700'>
+                  <FcComboChart  className='w-5 h-5' />
+                  <span className='mx-4 font-medium'>Product Management</span>
+
                 </p>
               </Link>
 
               {/* User Management */}
-              <Link href="/my-listings">
-                <p className="flex items-center px-4 py-2 my-5 transition-colors duration-300 transform hover:bg-gray-300 hover:text-gray-700">
-                  <MdHomeWork className="w-5 h-5" />
-                  <span className="mx-4 font-medium">User Management</span>
-                </p>
-              </Link>
 
+              <Link href='/dashboard/user-management'>
+                <p className='flex items-center px-4 py-2 my-5 transition-colors duration-300 transform hover:bg-gray-300 hover:text-gray-700'>
+                  <FcBusinessman className='w-5 h-5' />
+                  <span className='mx-4 font-medium'>User Management</span> 
+                  </p>             
+                </Link>
               {/* Payment */}
               <Link href="/dashboard/payments">
                 <p className="flex items-center px-4 py-2 my-5 transition-colors duration-300 transform hover:bg-gray-300 hover:text-gray-700">
                   <MdOutlinePayment className="w-5 h-5" />
                   <span className="mx-4 font-medium">Payments</span>
+
                 </p>
               </Link>
             </nav>

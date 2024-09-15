@@ -7,6 +7,7 @@ import axios from "axios";
 import { useSession } from "next-auth/react";
 import DataTable from "react-data-table-component";
 import Swal from "sweetalert2";
+import Image from "next/image";
 const ProductManagement = () => {
   const session = useSession();
   const email = session?.data?.user?.email;
@@ -33,7 +34,16 @@ const ProductManagement = () => {
   }
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return (
+      <div className="h-screen flex justify-center items-center -mt-10">
+        <Image
+          src="/assets/Banner_Image/loading.gif"
+          alt="loading"
+          width="400"
+          height="400"
+        ></Image>
+      </div>
+    );
   }
 
   const handleDelete = (id) => {
@@ -60,6 +70,14 @@ const ProductManagement = () => {
               });
               refetch();
             }
+          })
+          .catch((error) => {
+            Swal.fire({
+              title: "Deleted!",
+              text: "Your product has been deleted.",
+              icon: "success",
+            });
+            refetch();
           })
           .catch((error) => {
             Swal.fire({

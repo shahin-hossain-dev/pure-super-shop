@@ -23,7 +23,7 @@ const productFeatures = [
 
 const Services = () => {
     return (
-       <section className="px-3 lg:px-0">
+       <section className="px-3 pt-20 lg:px-0">
         <div className="text-center max-w-2xl  mx-auto">
         <h2 className="text-3xl font-bold mb-2">Our Services</h2>
         <p className="text-gray-600">
