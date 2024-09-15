@@ -212,8 +212,8 @@ export const products = [
   {
     productName: "Electric Kettle",
     price: 75.33,
-     ImageUrl:
-       "https://d2t8nl1y0ie1km.cloudfront.net/images/thumbs/65fa98e2115075f231ecdb79_Kiam-Electric-Kettle-BL002-1-8L_1.webp",
+    ImageUrl:
+      "https://d2t8nl1y0ie1km.cloudfront.net/images/thumbs/65fa98e2115075f231ecdb79_Kiam-Electric-Kettle-BL002-1-8L_1.webp",
     categoryName: "home-kitchen",
     discountPrice: 66.89,
     createdBy: "user_9",
@@ -232,7 +232,7 @@ export const products = [
   {
     productName: "Cookies",
     price: 58.47,
-     ImageUrl:
+    ImageUrl:
       "https://d2t8nl1y0ie1km.cloudfront.net/images/thumbs/66b46c0ce51c3969c635d433_5.Sugar%20free%20biscuit.png",
     categoryName: "food",
     discountPrice: 42.38,

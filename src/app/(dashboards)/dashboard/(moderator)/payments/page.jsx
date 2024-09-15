@@ -133,7 +133,7 @@ const Payments = () => {
 
   return (
     <div>
-      <h2 className="text-2xl  font-medium">Payment History</h2>
+      <h2 className="text-2xl  font-medium mt-10">Payment History</h2>
       <div className="mt-5 border">
         <DataTable columns={columns} data={payments} pagination />
       </div>
