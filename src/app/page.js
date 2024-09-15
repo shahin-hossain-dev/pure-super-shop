@@ -1,6 +1,6 @@
-import Navbar from "@/components/sharePage/Navbar";
+export const dynamic = "force-dynamic";
 import Homepage from "@/components/Homepage/Homepage";
-import CheckOut from "@/app/checkout/page";
+
 import ShoppingSideBar from "@/components/ShoppingSideBar/page";
 
 export default function Home() {
