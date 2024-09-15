@@ -7,7 +7,7 @@ import axios from "axios";
 import { useSession } from "next-auth/react";
 import DataTable from "react-data-table-component";
 import Swal from "sweetalert2";
-import Image from 'next/image'
+import Image from "next/image";
 const ProductManagement = () => {
   const session = useSession();
   const email = session?.data?.user?.email;
@@ -34,12 +34,19 @@ const ProductManagement = () => {
   }
 
   if (isLoading) {
-    return <div className="h-screen flex justify-center items-center -mt-10"><Image src="/assets/Banner_Image/loading.gif" alt="loading" width="400" height="400"></Image></div>;
+    return (
+      <div className="h-screen flex justify-center items-center -mt-10">
+        <Image
+          src="/assets/Banner_Image/loading.gif"
+          alt="loading"
+          width="400"
+          height="400"
+        ></Image>
+      </div>
+    );
   }
 
-
   const handleDelete = (id) => {
-
     Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",
@@ -66,17 +73,14 @@ const ProductManagement = () => {
           })
           .catch((error) => {
             Swal.fire({
-
               title: "Deleted!",
               text: "Your product has been deleted.",
-              icon: "success"
+              icon: "success",
             });
             refetch();
-          }
-      })
-      .catch((error)=> {
-          Swal.fire({
-
+          })
+          .catch((error) => {
+            Swal.fire({
               title: "error!",
               text: error?.message,
               icon: "error",
