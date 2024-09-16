@@ -6,7 +6,7 @@ import SocialSignin from "@/components/sharePage/SocialSgnin";
 import { useRouter, useSearchParams } from "next/navigation";
 import Swal from "sweetalert2";
 
-const page = () => {
+const Login = () => {
   const router = useRouter();
   // const searchParams = useSearchParams();
   // const path = searchParams.get("redirect");
@@ -22,19 +22,18 @@ const page = () => {
       // callbackUrl: path ? path : "/",
     });
     if (res.status === 200) {
-      router.push('/')
+      router.push("/");
       Swal.fire({
-        icon: 'success',
-        title: 'Congrats',
-        text: 'Login Successful!',
-    });
-    }
-    else{
+        icon: "success",
+        title: "Congrats",
+        text: "Login Successful!",
+      });
+    } else {
       Swal.fire({
-        icon: 'error',
-        title: 'Opps',
-        text: 'Incorrect email or password!',
-    });
+        icon: "error",
+        title: "Opps",
+        text: "Incorrect email or password!",
+      });
     }
   };
 
@@ -118,4 +117,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Login;

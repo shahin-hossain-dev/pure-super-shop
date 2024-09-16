@@ -3,7 +3,7 @@ import React from "react";
 import { brands } from "@/lib/brands";
 import Image from "next/image";
 
-const Page = () => {
+const Brand = () => {
   return (
     <div>
       <div className="m-5 max-w-[1320px] mx-auto">
@@ -33,4 +33,4 @@ const Page = () => {
   );
 };
 
-export default Page;
+export default Brand;
