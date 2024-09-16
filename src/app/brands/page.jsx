@@ -1,6 +1,7 @@
-"use client"
+"use client";
 import React from "react";
 import { brands } from "@/lib/brands";
+import Image from "next/image";
 
 const Page = () => {
   return (
@@ -14,11 +15,11 @@ const Page = () => {
               className=" p-2 flex flex-col justify-between shadow-md rounded-md cursor-pointer"
             >
               <div className=" w-full flex flex-col h-full justify-center items-center ">
-                <img
+                <Image
                   src={brand.image}
                   alt={brand.name}
-                  width="200"
-                  height="200"
+                  width={200}
+                  height={200}
                 />
               </div>
               <h2 className=" bg-gray-200 py-2 my-2 text-center text-xl font-semibold">
