@@ -20,7 +20,7 @@ export default function Banner() {
 
   return (
     <div className="">
-      <div className="h-72 w-full transform overflow-hidden rounded-lg  sm:h-80 md:h-[550px] lg:gap-10">
+      <div className="w-full transform overflow-hidden rounded-b-lg h-96 md:h-[550px] lg:gap-10">
         {data.map((slide, index) => {
           const { img, title, des } = slide;
           return (
@@ -43,7 +43,7 @@ export default function Banner() {
               />
               <div className="absolute inset-0 flex flex-col top-1/2 md:left-4 -translate-y-1/2 md:w-1/2 drop-shadow-lg text-center md:text-left">
                 <div className="rounded-md p-3">
-                  <div className="mb-5 overflow-hidden text-xl font-semibold lg:text-5xl">
+                  <div className="mb-5 overflow-hidden text-xl font-semibold md:text-2xl lg:text-5xl">
                     <h1
                       className={`${
                         index === currentSlider ? "" : "translate-y-12"
