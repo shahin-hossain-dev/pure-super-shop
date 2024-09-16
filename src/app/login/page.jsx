@@ -23,17 +23,16 @@ const Login = () => {
     
     if (res.ok) {
       Swal.fire({
-        icon: 'success',
-        title: 'Congrats',
-        text: 'Login Successful!',
-    });
-    }
-    else{
+        icon: "success",
+        title: "Congrats",
+        text: "Login Successful!",
+      });
+    } else {
       Swal.fire({
-        icon: 'error',
-        title: 'Opps',
-        text: 'Incorrect email or password!',
-    });
+        icon: "error",
+        title: "Opps",
+        text: "Incorrect email or password!",
+      });
     }
   };
 

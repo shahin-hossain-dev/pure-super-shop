@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import {useEffect, useState } from "react";
 import { CiHeart } from "react-icons/ci";
+
 import Image from 'next/image'
 import axios from "axios";
 const Navbar = () => {
@@ -11,6 +12,7 @@ const Navbar = () => {
   const session = useSession();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [showInfo, setShowInfo] = useState(false);
+
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
@@ -47,7 +49,6 @@ const Navbar = () => {
     },
   ];
 
-  
   if (activeRoute.includes("dashboard")) return;
 
   return (
@@ -79,8 +80,8 @@ const Navbar = () => {
           </button>
           <ul className="lg:flex lg:gap-x-3 max-lg:space-y-3 max-lg:fixed max-lg:bg-white max-lg:w-1/2 max-lg:min-w-[300px] max-lg:top-0 max-lg:left-0 max-lg:p-6 max-lg:h-full max-lg:shadow-md max-lg:overflow-auto z-50 text-center">
             {/* Mobile Menu Items */}
-            {navItems?.map((item) => (
-              <li key="title">
+            {navItems?.map((item, idx) => (
+              <li key={idx}>
                 <Link
                   className={
                     item?.path === activeRoute
@@ -227,22 +228,22 @@ const Navbar = () => {
             <CiHeart className="mr-2" /> Wishlist
           </Link>
         </div>
-          <div className="flex gap-2 lg:hidden">
+        <div className="flex gap-2 lg:hidden">
           <div
-                className="tool  w-10 rounded-full cursor-pointer"
-                onClick={() => setShowInfo(!showInfo)}
-              >
-                <Image
-                  className="h-8 w-8 rounded-full"
-                  src={
-                    session?.data?.user?.photo ||
-                    "https://i.ibb.co/sjymvr8/Capture4.png"
-                  }
-                  alt="User profile"
-                  width="40"
-                  height="40"
-                />
-              </div>
+            className="tool  w-10 rounded-full cursor-pointer"
+            onClick={() => setShowInfo(!showInfo)}
+          >
+            <Image
+              className="h-8 w-8 rounded-full"
+              src={
+                session?.data?.user?.photo ||
+                "https://i.ibb.co/sjymvr8/Capture4.png"
+              }
+              alt="User profile"
+              width="40"
+              height="40"
+            />
+          </div>
           <button id="toggleOpen" onClick={toggleMenu}>
             {/* Open Menu Icon */}
             <svg
@@ -258,7 +259,7 @@ const Navbar = () => {
               />
             </svg>
           </button>
-          </div>
+        </div>
       </div>
     </nav>
   );

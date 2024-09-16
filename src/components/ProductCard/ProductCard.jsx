@@ -1,19 +1,21 @@
 "use client";
 import Image from "next/image";
-import React from "react";
+import React, { useContext } from "react";
 import { FaRegEye } from "react-icons/fa6";
 import { FaRegHeart } from "react-icons/fa6";
 import Swal from "sweetalert2";
 import Link from "next/link";
-
+import { useSession } from "next-auth/react";
+import axios from "axios";
+import { AddToCartContext } from "@/services/AddToCartProvider";
 
 const ProductCard = (product) => {
+  const session = useSession();
+  const { handleAddToCart } = useContext(AddToCartContext);
   const { _id, productName, price, categoryName, discountPrice, ImageUrl } =
     product;
+  const userEmail = session?.data?.user?.email;
 
-  const handleAddToCart = (id) => {
-    console.log("add to cart");
-  };
   const handleAddToWishlist = (product) => {
     // fakhrul islam
     let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
@@ -22,20 +24,17 @@ const ProductCard = (product) => {
       wishlist.push(product); // Add the product if it's not already in the wishlist
       localStorage.setItem("wishlist", JSON.stringify(wishlist));
       Swal.fire({
-        icon: 'success',
-        text: 'Added to your wishlist!',
+        icon: "success",
+        text: "Added to your wishlist!",
       });
     } else {
       Swal.fire({
-        icon: 'error',
-        text: 'This product is already added to your wishlist!',
-
+        icon: "error",
+        text: "This product is already added to your wishlist!",
       });
     }
   };
-  const handleDetails = (id) => {
-    console.log(id);
-  };
+
   return (
     <div className="card box-border relative flex flex-col justify-between border hover:border-[#84b93e] duration-300 hover:border-1 rounded-sm p-2">
       <div className=" right-3 top-3 absolute flex flex-col view-wish">
@@ -75,7 +74,7 @@ const ProductCard = (product) => {
         {/* Add to Cart Button Fixed at the Bottom */}
         <div className="mt-auto"></div>
         <button
-          onClick={handleAddToCart}
+          onClick={() => handleAddToCart(product)}
           className="w-full mt-4 bottom-2 left-2 rounded-sm active:scale-95 right-2 p-1 bg-gray-300 hover:bg-[#84b93e] duration-300  active:bg-[#6a9630] hover:text-white"
         >
           Add to Cart

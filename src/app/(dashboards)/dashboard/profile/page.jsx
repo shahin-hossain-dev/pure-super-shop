@@ -1,12 +1,12 @@
 "use client";
 import { useSession, signOut } from "next-auth/react";
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 import { useRouter } from "next/navigation";
 import Swal from "sweetalert2";
 import Link from "next/link";
+import Image from "next/image";
 
-const Page = () => {
+const Profile = () => {
   const { data: session, status } = useSession();
   const router = useRouter();
   const [editMode, setEditMode] = useState(false);
@@ -23,10 +23,10 @@ const Page = () => {
         ...userData,
         name: session.user.name,
         email: session.user.email,
-        image: session?.user?.image|| "",
+        image: session?.user?.image || "",
       });
     }
-  }, [session]);
+  }, [session, userData]);
 
   //console.log(session)
 
@@ -59,11 +59,11 @@ const Page = () => {
       if (res.ok) {
         setEditMode(false);
         router.push("/login");
+        signOut(); // Sign out to refresh the session with updated data
         Swal.fire({
           icon: "success",
           text: "User Updated Successfully!",
         });
-        signOut(); // Sign out to refresh the session with updated data
       } else {
         alert(result.message || "Error updating user");
       }
@@ -80,7 +80,9 @@ const Page = () => {
       {status === "authenticated" ? (
         <div>
           <div className="text-center mb-6">
-            <img
+            <Image
+              height={36}
+              width={36}
               className="h-36 w-36 rounded-full mx-auto"
               src={userData.image || "https://i.ibb.co/sjymvr8/Capture4.png"}
               alt="User profile"
@@ -91,7 +93,10 @@ const Page = () => {
             <p className="text-gray-600">
               {userData.email || "user@example.com"}
             </p>
-            <button className="px-4 py-2 bg-[#3e84b9] text-white rounded hover:bg-blue-600" onClick={() => setEditMode(!editMode)}>
+            <button
+              className="px-4 py-2 bg-[#3e84b9] text-white rounded hover:bg-blue-600"
+              onClick={() => setEditMode(!editMode)}
+            >
               {editMode ? "Cancel" : "Edit Profile"}
             </button>
           </div>
@@ -142,7 +147,7 @@ const Page = () => {
 
               <button
                 type="button"
-                className="px-4 py-2 ml-2 bg-gray-300 text-gray-700 rounded hover:bg-gray-400"
+                className="px-4 py-2 ml-2 bg-[#3e84b9] text-white rounded hover:bg-blue-600"
                 onClick={() => setEditMode(false)}
               >
                 Cancel
@@ -157,7 +162,10 @@ const Page = () => {
               <marquee>Please Login!</marquee>
             </p>
           </div>
-          <Link className="px-4 py-2 bg-[#3e84b9] text-white rounded hover:bg-blue-600" href="/login">
+          <Link
+            className="px-4 py-2 bg-[#3e84b9] text-white rounded hover:bg-blue-600"
+            href="/login"
+          >
             Login
           </Link>
         </div>
@@ -166,4 +174,4 @@ const Page = () => {
   );
 };
 
-export default Page;
+export default Profile;
