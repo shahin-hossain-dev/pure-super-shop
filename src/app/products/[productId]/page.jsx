@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import { getProductWithId } from "@/services/getProducts";
 import Image from "next/image";
 import React from "react";
@@ -10,6 +10,7 @@ import { FaFacebookMessenger } from "react-icons/fa";
 import { FaWhatsapp } from "react-icons/fa";
 import { PiVanBold } from "react-icons/pi";
 import { LiaMoneyBillWaveAltSolid } from "react-icons/lia";
+import CustomerReview from "@/components/Products/CustomerReview";
 const page = async ({ params }) => {
   const product = await getProductWithId(params.productId);
   const {
@@ -133,6 +134,9 @@ const page = async ({ params }) => {
               </div>
             </div>
           </div>
+        </div>
+        <div>
+          <CustomerReview productId={_id} />
         </div>
       </div>
     </section>
