@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import React from "react";
 import Swal from "sweetalert2";
 
-const page = () => {
+const Register = () => {
   const router = useRouter();
   const handleSignUp = async (event) => {
     event.preventDefault();
@@ -158,4 +158,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Register;
