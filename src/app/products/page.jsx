@@ -54,6 +54,7 @@ const Page = () => {
         />
       </div>
 
+
       <div className="bg-[#84b93e] text-center px-4 py-2  mb-8 rounded-lg shadow-md">
         <p className="text-xl font-semibold text-[#333333] ">
           <marquee>Welcome to our exclusive product collection!</marquee>
@@ -76,15 +77,19 @@ const Page = () => {
         >
           <input
             name="search"
+
             className="py-3 px-5 border border-[#84b93e] outline-none focus:border-[#3e84b9]"
+
             type="text"
             placeholder="Search by Product Name"
           />
           <button
             type="submit"
+
             className="btn rounded bg-[#84b93e] border-none text-white text-2xl duration-200 hover:bg-[#3e84b9] p-2"
+
           >
-            <GrSearch />
+            <GrSearch  />
           </button>
         </form>
 
@@ -92,7 +97,9 @@ const Page = () => {
         <select
           value={category}
           onChange={(e) => setCategory(e.target.value)}
+
           className="py-3 px-5 border border-[#84b93e] outline-none focus:border-[#3e84b9]"
+
         >
           <option value="">All Categories</option>
           <option value="baby-care">Baby Care</option>
@@ -108,7 +115,9 @@ const Page = () => {
         <select
           value={sort}
           onChange={(e) => setSort(e.target.value)}
+
           className="py-3 px-5 border border-[#84b93e] outline-none focus:border-[#3e84b9]"
+
         >
           <option value="asc">Price: Low to High</option>
           <option value="desc">Price: High to Low</option>
@@ -116,7 +125,7 @@ const Page = () => {
       </div>
 
       {/* Product List */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-8">
+      <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 w-full gap-4 min-h-[200px] mt-12">
         {products.length > 0 ? (
           products.map((product) => (
             <ProductCard key={product._id} {...product} />
@@ -133,6 +142,7 @@ const Page = () => {
             key={index}
             onClick={() => setCurrentPage(index + 1)}
             className={`py-2 px-4 border ${
+
               currentPage === index + 1 ? "bg-[#3e84b9] text-white" : ""
             }`}
           >

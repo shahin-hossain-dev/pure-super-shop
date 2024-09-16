@@ -12,7 +12,7 @@ const page = () => {
     const newUser = {
       name: event.target.name.value,
       email: event.target.email.value,
-      photo: event.target.photo.value,
+      image: event.target.image.value,
       password: event.target.password.value,
     };
     const resp = await fetch(
@@ -101,14 +101,14 @@ const page = () => {
 
             <div>
               <label
-                htmlFor="photo"
+                htmlFor="image"
                 className="block text-sm font-medium text-black"
               >
                 Photo Url
               </label>
               <input
                 type="text"
-                name="photo"
+                name="image"
                 placeholder="Your Photo Url"
                 required
                 className="mt-1 w-full input input-bordered p-3 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary"

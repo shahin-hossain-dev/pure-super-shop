@@ -11,7 +11,7 @@ const Navbar = () => {
   const session = useSession();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [showInfo, setShowInfo] = useState(false);
-
+  console.log(session)
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
@@ -145,7 +145,7 @@ const Navbar = () => {
                 <Image
                   className="h-8 w-8 rounded-full"
                   src={
-                    session?.data?.user?.photo ||
+                    session?.data?.user?.image ||
                     "https://i.ibb.co/sjymvr8/Capture4.png"
                   }
                   alt="User profile"
