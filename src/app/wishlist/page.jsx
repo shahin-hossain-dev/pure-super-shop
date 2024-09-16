@@ -5,7 +5,7 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
 
-const page = () => {
+const Wishlist = () => {
   const [wishlist, setWishlist] = useState([]);
 
   useEffect(() => {
@@ -35,8 +35,11 @@ const page = () => {
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 w-full gap-4 min-h-[200px]">
             {wishlist.map((product) => (
-              <Card key={product._id} {...product}
-              onRemoveFromWishlist={handleRemoveFromWishlist}></Card>
+              <Card
+                key={product._id}
+                {...product}
+                onRemoveFromWishlist={handleRemoveFromWishlist}
+              ></Card>
             ))}
           </div>
         )}
@@ -45,4 +48,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Wishlist;
