@@ -98,13 +98,13 @@ const UserManagement = () => {
         {
           name: "Action",
           cell: (user) =>
-            user?.role !== "moderator" ?
+            (user?.role !== "moderator" && user?.role !== "admin") ?
             <button
             onClick={() => handleModerator(user?._id)} 
               className="bg-gray-200  p-3 m-1 rounded-lg hover:bg-[#84b93e] hover:text-white hover:duration-300"
             >
              Make Moderator
-            </button> : <p className="text-center">Moderator</p>
+            </button> : <p className="text-center">{user?.role === "moderator" ? "Moderator" : "Admin"} </p>
         },
         
         {
