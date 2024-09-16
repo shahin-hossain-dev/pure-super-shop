@@ -125,7 +125,7 @@ const Page = () => {
       </div>
 
       {/* Product List */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-8">
+      <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 w-full gap-4 min-h-[200px] mt-12">
         {products.length > 0 ? (
           products.map((product) => (
             <ProductCard key={product._id} {...product} />

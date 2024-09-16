@@ -1,7 +1,9 @@
 "use client";
+import Card from "@/components/ProductCard/Card";
 import ProductCard from "@/components/ProductCard/ProductCard";
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import Swal from "sweetalert2";
 
 const page = () => {
   const [wishlist, setWishlist] = useState([]);
@@ -15,6 +17,11 @@ const page = () => {
     const updatedWishlist = wishlist.filter((item) => item._id !== id);
     setWishlist(updatedWishlist);
     localStorage.setItem("wishlist", JSON.stringify(updatedWishlist));
+    // Show success message without reloading
+    Swal.fire({
+      icon: "success",
+      text: "Removed from wishlist!",
+    });
   };
 
   return (
@@ -26,9 +33,10 @@ const page = () => {
         {wishlist.length === 0 ? (
           <p>Your wishlist is empty.</p>
         ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 w-full gap-4 min-h-[200px]">
             {wishlist.map((product) => (
-              <ProductCard key={product._id} {...product}></ProductCard>
+              <Card key={product._id} {...product}
+              onRemoveFromWishlist={handleRemoveFromWishlist}></Card>
             ))}
           </div>
         )}

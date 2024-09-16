@@ -59,11 +59,11 @@ const Page = () => {
       if (res.ok) {
         setEditMode(false);
         router.push("/login");
+        signOut(); // Sign out to refresh the session with updated data
         Swal.fire({
           icon: "success",
           text: "User Updated Successfully!",
         });
-        signOut(); // Sign out to refresh the session with updated data
       } else {
         alert(result.message || "Error updating user");
       }
@@ -142,7 +142,7 @@ const Page = () => {
 
               <button
                 type="button"
-                className="px-4 py-2 ml-2 bg-gray-300 text-gray-700 rounded hover:bg-gray-400"
+                className="px-4 py-2 ml-2 bg-[#3e84b9] text-white rounded hover:bg-blue-600"
                 onClick={() => setEditMode(false)}
               >
                 Cancel
