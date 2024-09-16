@@ -1,5 +1,4 @@
 "use client";
-
 import { AddToCartContext } from "@/services/AddToCartProvider";
 import Image from "next/image";
 import Link from "next/link";
@@ -7,10 +6,53 @@ import { useContext, useEffect, useState } from "react";
 import { FaArrowRight } from "react-icons/fa6";
 import { HiOutlineShoppingBag } from "react-icons/hi";
 import CartCard from "./CartCard/CartCard";
+import { useSession } from "next-auth/react";
+import axios from "axios";
+import { useMutation, useQuery } from "@tanstack/react-query";
 
 const ShoppingSideBar = () => {
   const [isCartVisible, setIsCartVisible] = useState(false);
-  const { carts } = useContext(AddToCartContext);
+  const { update } = useContext(AddToCartContext);
+  const session = useSession();
+  const userEmail = session?.data?.user?.email;
+  // const [carts, setCarts] = useState([]);
+
+  /*  useEffect(() => {
+    const loadCartData = async () => {
+      const carts = await axios.get(
+        `http://localhost:3000/products/api/addToCart/${userEmail}`
+      );
+      setCarts(carts.data);
+    };
+    loadCartData();
+  }, [userEmail, update]); */
+
+  const { data: carts, refetch } = useQuery({
+    queryKey: ["carts", userEmail, update],
+    queryFn: async () => {
+      const data = await axios.get(
+        `${process.env.NEXT_PUBLIC_BASE_URL}/products/api/addToCart/${userEmail}`
+      );
+      console.log(data.data);
+      return data.data;
+    },
+  });
+
+  // delete Items
+  const { mutate } = useMutation({
+    mutationFn: async (id) => {
+      const resp = await axios.delete(
+        `${process.env.NEXT_PUBLIC_BASE_URL}/products/api/addToCart/delete/${id}`
+      );
+      console.log(resp);
+      if (resp) {
+        refetch();
+      }
+    },
+  });
+  const handleDelete = (id) => {
+    mutate(id);
+  };
 
   const handleCartItem = () => {
     setIsCartVisible(true);
@@ -31,7 +73,7 @@ const ShoppingSideBar = () => {
           <span className="text-xl">
             <HiOutlineShoppingBag />
           </span>
-          {carts.length} Item
+          {carts?.length} Item
         </div>
       )}
 
@@ -53,8 +95,12 @@ const ShoppingSideBar = () => {
 
           {/* Cart Items */}
           <div>
-            {carts.map((cart) => (
-              <CartCard key={cart._id} cart={cart}></CartCard>
+            {carts?.map((cart) => (
+              <CartCard
+                key={cart._id}
+                cart={cart}
+                handleDelete={handleDelete}
+              ></CartCard>
             ))}
           </div>
 

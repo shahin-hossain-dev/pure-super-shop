@@ -3,12 +3,13 @@
 import axios from "axios";
 import { useSession } from "next-auth/react";
 import React, { createContext, useEffect, useState } from "react";
+import Swal from "sweetalert2";
 
 export const AddToCartContext = createContext(null);
 
 const AddToCartProvider = ({ children }) => {
   const session = useSession();
-  const [carts, setCarts] = useState([]);
+  const [update, setUpdate] = useState(false);
   const userEmail = session?.data?.user?.email;
   //   add to cart handle ler
   const handleAddToCart = async (product) => {
@@ -21,8 +22,12 @@ const AddToCartProvider = ({ children }) => {
           ImageUrl: product.ImageUrl,
           productName: product.productName,
           price: product.price,
+          quantity: 1,
         }
       );
+      if (res.status === 200) {
+        setUpdate(true);
+      }
       if (res.status !== 200) {
         Swal.fire({
           icon: "error",
@@ -48,19 +53,10 @@ const AddToCartProvider = ({ children }) => {
   //       return carts.data;
   //     },
   //   });
-  useEffect(() => {
-    const loadCartData = async () => {
-      const carts = await axios.get(
-        `http://localhost:3000/products/api/addToCart/${userEmail}`
-      );
-      setCarts(carts.data);
-    };
-    loadCartData();
-  }, [userEmail]);
 
   const cartInfo = {
     handleAddToCart,
-    carts,
+    update,
   };
 
   return (
