@@ -30,7 +30,7 @@ export default function Banner() {
                   ? "visible opacity-100"
                   : "invisible opacity-0"
               } absolute inset-0 duration-500 ease-linear`}
-              key={`index_${index}`}
+              key={index}
             >
               <Image
                 src={img}
