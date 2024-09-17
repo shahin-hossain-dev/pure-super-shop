@@ -20,7 +20,7 @@ const Login = () => {
       redirect: true,
       callbackUrl: path ? path : "/",
     });
-    
+    console.log(res)
     if (res.ok) {
       Swal.fire({
         icon: "success",
