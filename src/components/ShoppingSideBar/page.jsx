@@ -12,6 +12,7 @@ import { useMutation, useQuery } from "@tanstack/react-query";
 
 const ShoppingSideBar = () => {
   const [isCartVisible, setIsCartVisible] = useState(false);
+  const [loading, setLoading] = useState(false);
   const { update } = useContext(AddToCartContext);
   const session = useSession();
   const userEmail = session?.data?.user?.email;
@@ -33,24 +34,26 @@ const ShoppingSideBar = () => {
       const data = await axios.get(
         `${process.env.NEXT_PUBLIC_BASE_URL}/products/api/addToCart/${userEmail}`
       );
-      console.log(data.data);
+      // console.log(data.data);
       return data.data;
     },
   });
 
   // delete Items
-  const { mutate } = useMutation({
+  const { mutate, isLoading } = useMutation({
     mutationFn: async (id) => {
       const resp = await axios.delete(
         `${process.env.NEXT_PUBLIC_BASE_URL}/products/api/addToCart/delete/${id}`
       );
       console.log(resp);
       if (resp) {
+        setLoading(false);
         refetch();
       }
     },
   });
   const handleDelete = (id) => {
+    setLoading(true);
     mutate(id);
   };
 
@@ -101,8 +104,15 @@ const ShoppingSideBar = () => {
                 cart={cart}
                 handleDelete={handleDelete}
                 refetch={refetch}
+                loading={loading}
+                setLoading={setLoading}
               ></CartCard>
             ))}
+          </div>
+
+          <div className="bg-slate-100 p-5 flex gap-3 justify-between font-medium">
+            <h3>Sub Total:</h3>${" "}
+            {carts.reduce((acc, cur) => acc + cur.totalPrice, 0).toFixed(2)}
           </div>
 
           {/* Checkout Page Link Buttons at the bottom */}
