@@ -4,21 +4,42 @@ import Image from "next/image";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import axios from "axios";
 
-const CartCard = ({ cart, handleDelete }) => {
-  const { _id, ImageUrl, price, productId, productName, quantity, userEmail } =
-    cart;
+const CartCard = ({ cart, handleDelete, refetch }) => {
+  const {
+    _id,
+    ImageUrl,
+    price,
+    productId,
+    productName,
+    quantity,
+    userEmail,
+    totalPrice,
+  } = cart;
+  // quantity increment
+  const handleIncrease = async () => {
+    const resp = await axios.patch(
+      `${process.env.NEXT_PUBLIC_BASE_URL}/products/api/addToCart/update/${_id}`,
+      { type: "increment", price }
+    );
+    if (resp?.data?.modifiedCount > 0) {
+      refetch();
+    }
+  };
 
-  const { data } = useQuery({
-    queryKey: ["quantity"],
-    queryFn: async () => {
-      const quantity = await axios.get(
-        `http://localhost:3000/products/api/addToCart/update/${_id}`
-      );
-    },
-  });
+  // quantity decrement
 
-  const handleIncrease = () => {};
-  const handleDecrease = () => {};
+  const handleDecrease = async () => {
+    if (quantity < 2) {
+      return;
+    }
+    const resp = await axios.patch(
+      `${process.env.NEXT_PUBLIC_BASE_URL}/products/api/addToCart/update/${_id}`,
+      { type: "decrement", price }
+    );
+    if (resp?.data?.modifiedCount > 0) {
+      refetch();
+    }
+  };
 
   return (
     <div className="flex-grow overflow-y-auto">
@@ -54,7 +75,7 @@ const CartCard = ({ cart, handleDelete }) => {
             {" "}
             X{" "}
           </button>
-          <p>{price}</p>
+          <p>{totalPrice.toFixed(2)}</p>
         </div>
       </div>
     </div>

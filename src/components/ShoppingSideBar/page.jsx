@@ -100,6 +100,7 @@ const ShoppingSideBar = () => {
                 key={cart._id}
                 cart={cart}
                 handleDelete={handleDelete}
+                refetch={refetch}
               ></CartCard>
             ))}
           </div>

@@ -8,15 +8,23 @@ export const PATCH = async (request, { params }) => {
   const filter = {
     _id: new ObjectId(params.cartId),
   };
-  console.log(params);
+  // console.log(params);
   const increment = await request.json();
-  console.log(increment);
+
+  const options = { upsert: true };
 
   try {
-    if ((increment.type = "increment")) {
-      const options = { upsert: true };
+    if (increment.type === "increment") {
       const updateDoc = {
-        $inc: { quantity: 1 },
+        $inc: { quantity: 1, totalPrice: increment?.price },
+      };
+
+      const resp = await cartCollection.updateOne(filter, updateDoc, options);
+      return NextResponse.json(resp);
+    }
+    if (increment.type === "decrement") {
+      const updateDoc = {
+        $inc: { quantity: -1, totalPrice: -increment?.price },
       };
       const resp = await cartCollection.updateOne(filter, updateDoc, options);
       return NextResponse.json(resp);
