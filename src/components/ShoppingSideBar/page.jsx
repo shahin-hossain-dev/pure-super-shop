@@ -112,7 +112,7 @@ const ShoppingSideBar = () => {
 
           <div className="bg-slate-100 p-5 flex gap-3 justify-between font-medium">
             <h3>Sub Total:</h3>${" "}
-            {carts.reduce((acc, cur) => acc + cur.totalPrice, 0).toFixed(2)}
+            {carts?.reduce((acc, cur) => acc + cur.totalPrice, 0).toFixed(2)}
           </div>
 
           {/* Checkout Page Link Buttons at the bottom */}
