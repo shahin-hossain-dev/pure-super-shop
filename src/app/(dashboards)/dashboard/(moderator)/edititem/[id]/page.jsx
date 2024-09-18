@@ -205,10 +205,8 @@ const EditItem = ({ params }) => {
           </div>
 
           {/* Description */}
-
           <div className="flex flex-col md:col-span-2">
             <label htmlFor="description" className="mb-2 text-gray-700 font-semibold">
-
               Description
             </label>
             <textarea

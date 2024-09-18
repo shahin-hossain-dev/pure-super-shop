@@ -1,15 +1,14 @@
 "use client";
 import Link from "next/link";
 import React from "react";
-import { signIn, useSession } from "next-auth/react";
+import { signIn } from "next-auth/react";
 import SocialSignin from "@/components/sharePage/SocialSgnin";
-import { useRouter, useSearchParams } from "next/navigation";
+import {  useRouter, useSearchParams } from "next/navigation";
 import Swal from "sweetalert2";
-
 const Login = () => {
   const router = useRouter();
-  // const searchParams = useSearchParams();
-  // const path = searchParams.get("redirect");
+  const searchParams = useSearchParams();
+  const path = searchParams.get("redirect");
 
   const handleLogin = async (event) => {
     event.preventDefault();
@@ -18,11 +17,11 @@ const Login = () => {
     const res = await signIn("credentials", {
       email,
       password,
-      redirect: false,
-      // callbackUrl: path ? path : "/",
+      redirect: true,
+      callbackUrl: path ? path : "/",
     });
-    if (res.status === 200) {
-      router.push("/");
+    console.log(res)
+    if (res.ok) {
       Swal.fire({
         icon: "success",
         title: "Congrats",
