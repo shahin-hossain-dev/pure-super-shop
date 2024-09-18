@@ -2,10 +2,10 @@
 import { signOut, useSession } from "next-auth/react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import {useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { CiHeart } from "react-icons/ci";
 
-import Image from 'next/image'
+import Image from "next/image";
 import axios from "axios";
 const Navbar = () => {
   const activeRoute = usePathname();
@@ -16,19 +16,20 @@ const Navbar = () => {
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
-  const [user , setUser] = useState({});
+  const [user, setUser] = useState({});
 
   const email = session?.data?.user?.email;
   useEffect(() => {
-    axios.get(`${process.env.NEXT_PUBLIC_BASE_URL}/dashboard/api/${email}`)
+    axios
+      .get(`${process.env.NEXT_PUBLIC_BASE_URL}/dashboard/api/${email}`)
       .then((res) => {
-        setUser(res?.data)
+        setUser(res?.data);
       })
       .catch((error) => {
         return NextResponse.json({ error });
       });
   }, [email]);
-  
+
   const navItems = [
     {
       path: "/",
@@ -96,28 +97,20 @@ const Navbar = () => {
             ))}
 
             {/* role base dashboard redirect */}
-            {
-              user?.role === 'admin' &&
-            <li>
-                <Link
-                  className="react-tabs__tab"
-                  href="/dashboard/overview"
-                >
+            {user?.role === "admin" && (
+              <li>
+                <Link className="react-tabs__tab" href="/dashboard/overview">
                   Dashboard
                 </Link>
               </li>
-            }
-            {
-              user?.role === 'moderator' &&
-            <li>
-                <Link
-                  className="react-tabs__tab"
-                  href="/dashboard/additem"
-                >
+            )}
+            {user?.role === "moderator" && (
+              <li>
+                <Link className="react-tabs__tab" href="/dashboard/additem">
                   Dashboard
                 </Link>
               </li>
-            }
+            )}
             {/* Add menu items here */}
             {/* Mobile specific links */}
             {/* Do not delete these comments below*/}
