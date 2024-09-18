@@ -3,8 +3,9 @@ import React, { useState } from "react";
 import Image from "next/image";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import axios from "axios";
-
-const CartCard = ({ cart, handleDelete, refetch }) => {
+import { GoTrash } from "react-icons/go";
+import { ImSpinner3 } from "react-icons/im";
+const CartCard = ({ cart, handleDelete, refetch, loading, setLoading }) => {
   const {
     _id,
     ImageUrl,
@@ -15,8 +16,13 @@ const CartCard = ({ cart, handleDelete, refetch }) => {
     userEmail,
     totalPrice,
   } = cart;
+
   // quantity increment
   const handleIncrease = async () => {
+    if (quantity > 9) {
+      return;
+    }
+    setLoading(true);
     const resp = await axios.patch(
       `${process.env.NEXT_PUBLIC_BASE_URL}/products/api/addToCart/update/${_id}`,
       { type: "increment", price }
@@ -24,6 +30,7 @@ const CartCard = ({ cart, handleDelete, refetch }) => {
     if (resp?.data?.modifiedCount > 0) {
       refetch();
     }
+    setLoading(false);
   };
 
   // quantity decrement
@@ -32,6 +39,7 @@ const CartCard = ({ cart, handleDelete, refetch }) => {
     if (quantity < 2) {
       return;
     }
+    setLoading(true);
     const resp = await axios.patch(
       `${process.env.NEXT_PUBLIC_BASE_URL}/products/api/addToCart/update/${_id}`,
       { type: "decrement", price }
@@ -39,6 +47,7 @@ const CartCard = ({ cart, handleDelete, refetch }) => {
     if (resp?.data?.modifiedCount > 0) {
       refetch();
     }
+    setLoading(false);
   };
 
   return (
@@ -56,7 +65,10 @@ const CartCard = ({ cart, handleDelete, refetch }) => {
                 {" "}
                 -{" "}
               </button>
-              <p className="">{quantity}</p>
+              <p className="">
+                {" "}
+                {loading ? <ImSpinner3 className="animate-spin" /> : quantity}
+              </p>
               <button
                 onClick={handleIncrease}
                 className="border border-black text-center px-2 rounded-md text-xl"
@@ -70,12 +82,15 @@ const CartCard = ({ cart, handleDelete, refetch }) => {
         <div className="flex flex-col items-end gap-3">
           <button
             onClick={() => handleDelete(_id)}
-            className="text-white bg-red-600 px-2 rounded-md"
+            className="text-red-600 px-2 rounded-md"
           >
-            {" "}
-            X{" "}
+            {loading ? (
+              <ImSpinner3 className="animate-spin" />
+            ) : (
+              <GoTrash className="text-lg " />
+            )}
           </button>
-          <p>{totalPrice.toFixed(2)}</p>
+          <p>$ {totalPrice.toFixed(2)}</p>
         </div>
       </div>
     </div>
