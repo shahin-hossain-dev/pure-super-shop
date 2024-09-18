@@ -4,7 +4,7 @@ import { NextResponse } from "next/server";
 export const GET = async (request, { params }) => {
   const db = await connectDB();
   const addToCartCollection = db.collection("addToCarts");
-  console.log(request);
+  // console.log(request);
   try {
     const carts = await addToCartCollection
       .find({ userEmail: params?.email })

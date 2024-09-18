@@ -3,7 +3,7 @@ export const getCategoryProduct = async (title) => {
     `${process.env.NEXT_PUBLIC_BASE_URL}/products/api/get-category/${title}`
   );
   const data = await products.json();
-  console.log(data);
+  // console.log(data);
   return data;
 };
 

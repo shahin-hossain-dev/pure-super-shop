@@ -1,11 +1,24 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQuery } from "@tanstack/react-query";
 import axios from "axios";
 
 const CartCard = ({ cart, handleDelete }) => {
-  const { _id, ImageUrl, price, productId, productName, userEmail } = cart;
+  const { _id, ImageUrl, price, productId, productName, quantity, userEmail } =
+    cart;
+
+  const { data } = useQuery({
+    queryKey: ["quantity"],
+    queryFn: async () => {
+      const quantity = await axios.get(
+        `http://localhost:3000/products/api/addToCart/update/${_id}`
+      );
+    },
+  });
+
+  const handleIncrease = () => {};
+  const handleDecrease = () => {};
 
   return (
     <div className="flex-grow overflow-y-auto">
@@ -15,12 +28,18 @@ const CartCard = ({ cart, handleDelete }) => {
           <div className="space-y-3">
             <h3 className="text-base">{productName}</h3>
             <div className="quantity flex items-center gap-4">
-              <button className="border border-black text-center px-2 rounded-md text-xl">
+              <button
+                onClick={handleDecrease}
+                className="border border-black text-center px-2 rounded-md text-xl"
+              >
                 {" "}
                 -{" "}
               </button>
-              <p className="">1</p>
-              <button className="border border-black text-center px-2 rounded-md text-xl">
+              <p className="">{quantity}</p>
+              <button
+                onClick={handleIncrease}
+                className="border border-black text-center px-2 rounded-md text-xl"
+              >
                 {" "}
                 +{" "}
               </button>

@@ -11,7 +11,7 @@ const Navbar = () => {
   const session = useSession();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [showInfo, setShowInfo] = useState(false);
-  console.log(session);
+  // console.log(session);
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };

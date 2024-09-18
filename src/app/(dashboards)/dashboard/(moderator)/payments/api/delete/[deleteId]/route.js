@@ -5,7 +5,7 @@ import { NextResponse } from "next/server";
 export const DELETE = async (req, { params }) => {
   const db = await connectDB();
   const paymentCollection = db.collection("payments");
-  console.log(params);
+  // console.log(params);
   try {
     // const resp = await paymentCollection.deleteOne({
     //   _id: ObjectId(params.deleteId),
