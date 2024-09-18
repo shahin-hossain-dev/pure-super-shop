@@ -23,6 +23,7 @@ const AddToCartProvider = ({ children }) => {
           productName: product.productName,
           price: product.price,
           quantity: 1,
+          totalPrice: product.price,
         }
       );
       if (res.status === 200) {
