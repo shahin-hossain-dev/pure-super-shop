@@ -1,21 +1,40 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { GrLogout } from "react-icons/gr";
 import { FcSettings , FcLineChart  , FcAddDatabase ,  FcBusinessman , FcComboChart } from 'react-icons/fc';
 import { AiOutlineBars } from "react-icons/ai";
 import Link from "next/link";
 import { MdOutlinePayment } from "react-icons/md";
+
+import { useSession } from "next-auth/react";
+import axios from "axios";
+import { usePathname } from 'next/navigation'
+
 import { signOut } from "next-auth/react";
 
 
 const Sidebar = () => {
   const [isActive, setActive] = useState(false);
-
-
   const handleToggle = () => {
     setActive(!isActive);
   };
+  const [user , setUser] = useState({});
+  const session = useSession();
+  const email = session?.data?.user?.email;
+  const activeRoute = usePathname();
+  
+  useEffect(() => {
+    axios.get(`${process.env.NEXT_PUBLIC_BASE_URL}/dashboard/api/${email}`)
+      .then((res) => {
+        setUser(res?.data)
+      })
+      .catch((error) => {
+        return NextResponse.json({ error });
+      });
+  }, [email]);
+  
+  
 
   return (
     <>
@@ -58,51 +77,67 @@ const Sidebar = () => {
           <div className="flex flex-col justify-between flex-1 mt-2">
             {/* Menu Items */}
             <nav>
-              {/* Sales Overview */}
+            
 
-              <Link href='/dashboard/overview'>
-                <p className='flex items-center px-4 py-2 my-5 transition-colors duration-300 transform hover:bg-gray-300 hover:text-gray-700'>
+              {
+                user?.role === "admin" && <>
+                  {/* Sales Overview */}
+                <Link href='/dashboard/overview'>
+                <p className={`${activeRoute === '/dashboard/overview' && 'bg-gray-300'} flex items-center px-4 py-2 my-5 transition-colors duration-300 transform hover:bg-gray-300 hover:text-gray-700`}>
                   <FcLineChart  className='w-5 h-5' />
                   <span className='mx-4 font-medium'>Sales Overview</span>
 
                 </p>
               </Link>
+                
+                 {/* User Management */}
 
-              {/*add product */}
+              <Link href='/dashboard/user-management'>
+                <p className={`${activeRoute === '/dashboard/user-management' && 'bg-gray-300'} flex items-center px-4 py-2 my-5 transition-colors duration-300 transform hover:bg-gray-300 hover:text-gray-700`}>
+                  <FcBusinessman className='w-5 h-5' />
+                  <span className='mx-4 font-medium'>User Management</span> 
+                  </p>             
+                </Link>
+                
+               
+               {/* Payment */}
+               <Link href="/dashboard/payments">
+                <p className={`${activeRoute === '/dashboard/payments' && 'bg-gray-300'} flex items-center px-4 py-2 my-5 transition-colors duration-300 transform hover:bg-gray-300 hover:text-gray-700`}>
+                  <MdOutlinePayment className="w-5 h-5" />
+                  <span className="mx-4 font-medium">Payments</span>
+
+                </p>
+              </Link>
+             
+                </>
+              }
+
+              {
+                user?.role === "moderator" && <>
+                  {/*add product */}
 
               <Link href='/dashboard/additem'>
-                <p className='flex items-center px-4 py-2 my-5 transition-colors duration-300 transform hover:bg-gray-300 hover:text-gray-700'>
+                <p className={`${activeRoute === '/dashboard/additem' && 'bg-gray-300'} flex items-center px-4 py-2 my-5 transition-colors duration-300 transform hover:bg-gray-300 hover:text-gray-700`}>
                   <FcAddDatabase   className='w-5 h-5' />
                   <span className='mx-4 font-medium'>Add Product</span>
 
                 </p>
               </Link>
-              {/*Product Management */}
+             {/*Product Management */}
 
-              <Link href='/dashboard/product-management'>
-                <p className='flex items-center px-4 py-2 my-5 transition-colors duration-300 transform hover:bg-gray-300 hover:text-gray-700'>
+             <Link href='/dashboard/product-management'>
+                <p className={`${activeRoute === '/dashboard/product-management' && 'bg-gray-300'} flex items-center px-4 py-2 my-5 transition-colors duration-300 transform hover:bg-gray-300 hover:text-gray-700`}>
                   <FcComboChart  className='w-5 h-5' />
                   <span className='mx-4 font-medium'>Product Management</span>
 
                 </p>
               </Link>
 
-              {/* User Management */}
-
-              <Link href='/dashboard/user-management'>
-                <p className='flex items-center px-4 py-2 my-5 transition-colors duration-300 transform hover:bg-gray-300 hover:text-gray-700'>
-                  <FcBusinessman className='w-5 h-5' />
-                  <span className='mx-4 font-medium'>User Management</span> 
-                  </p>             
-                </Link>
-              {/* Payment */}
-              <Link href="/dashboard/payments">
-                <p className="flex items-center px-4 py-2 my-5 transition-colors duration-300 transform hover:bg-gray-300 hover:text-gray-700">
-                  <MdOutlinePayment className="w-5 h-5" />
-                  <span className="mx-4 font-medium">Payments</span>
-
-                </p>
-              </Link>
+              
+                </>
+              }
+              
+             
             </nav>
           </div>
         </div>

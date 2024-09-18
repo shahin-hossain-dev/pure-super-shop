@@ -20,7 +20,7 @@ const page = () => {
         <div className="">
         <Image
                 className="rounded-full mx-auto mb-4"
-                src="/assets/Banner_image/cart.gif"
+                src="/assets/Banner_Image/cart.gif"
                 alt="Team Member"
                 width={'400'}
                 height={'400'}
@@ -59,7 +59,7 @@ const page = () => {
             <div className="bg-white rounded-lg shadow-lg p-6 max-w-sm">
               <Image
                 className="w-24 h-24 rounded-full mx-auto mb-4"
-                src="/assets/team_member/images.jfif"
+                src="/assets/team_member/images.jpg"
                 alt="Team Member"
                 width={'100'}
                 height={'100'}
@@ -75,7 +75,7 @@ const page = () => {
             <div className="bg-white rounded-lg shadow-lg p-6 max-w-sm">
               <Image
                 className="w-24 h-24 rounded-full mx-auto mb-4"
-                src="/assets/team_member/download.jfif"
+                src="/assets/team_member/download.jpg"
                 alt="Team Member"
                 width={'100'}
                 height={'100'}
@@ -91,7 +91,7 @@ const page = () => {
             <div className="bg-white rounded-lg shadow-lg p-6 max-w-sm">
               <Image
                 className="w-24 h-24 rounded-full mx-auto mb-4"
-                src="/assets/team_member/images (1).jfif"
+                src="/assets/team_member/images (1).jpg"
                 alt="Team Member"
                 width={'100'}
                 height={'100'}
