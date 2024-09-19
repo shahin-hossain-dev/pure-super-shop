@@ -5,7 +5,7 @@ import { useMutation, useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { GoTrash } from "react-icons/go";
 import { ImSpinner3 } from "react-icons/im";
-const CartCard = ({ cart, handleDelete, refetch, loading, setLoading }) => {
+const CartCard = ({ cart, handleDelete, refetch, isFetching }) => {
   const {
     _id,
     ImageUrl,
@@ -22,7 +22,7 @@ const CartCard = ({ cart, handleDelete, refetch, loading, setLoading }) => {
     if (quantity > 9) {
       return;
     }
-    setLoading(true);
+
     const resp = await axios.patch(
       `${process.env.NEXT_PUBLIC_BASE_URL}/products/api/addToCart/update/${_id}`,
       { type: "increment", price }
@@ -30,7 +30,6 @@ const CartCard = ({ cart, handleDelete, refetch, loading, setLoading }) => {
     if (resp?.data?.modifiedCount > 0) {
       refetch();
     }
-    setLoading(false);
   };
 
   // quantity decrement
@@ -39,7 +38,7 @@ const CartCard = ({ cart, handleDelete, refetch, loading, setLoading }) => {
     if (quantity < 2) {
       return;
     }
-    setLoading(true);
+
     const resp = await axios.patch(
       `${process.env.NEXT_PUBLIC_BASE_URL}/products/api/addToCart/update/${_id}`,
       { type: "decrement", price }
@@ -47,7 +46,6 @@ const CartCard = ({ cart, handleDelete, refetch, loading, setLoading }) => {
     if (resp?.data?.modifiedCount > 0) {
       refetch();
     }
-    setLoading(false);
   };
 
   return (
@@ -67,7 +65,11 @@ const CartCard = ({ cart, handleDelete, refetch, loading, setLoading }) => {
               </button>
               <p className="">
                 {" "}
-                {loading ? <ImSpinner3 className="animate-spin" /> : quantity}
+                {isFetching ? (
+                  <ImSpinner3 className="animate-spin" />
+                ) : (
+                  quantity
+                )}
               </p>
               <button
                 onClick={handleIncrease}
@@ -84,7 +86,7 @@ const CartCard = ({ cart, handleDelete, refetch, loading, setLoading }) => {
             onClick={() => handleDelete(_id)}
             className="text-red-600 px-2 rounded-md"
           >
-            {loading ? (
+            {isFetching ? (
               <ImSpinner3 className="animate-spin" />
             ) : (
               <GoTrash className="text-lg " />

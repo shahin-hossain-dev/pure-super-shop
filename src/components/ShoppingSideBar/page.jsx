@@ -9,6 +9,7 @@ import CartCard from "./CartCard/CartCard";
 import { useSession } from "next-auth/react";
 import axios from "axios";
 import { useMutation, useQuery } from "@tanstack/react-query";
+import { ImSpinner3 } from "react-icons/im";
 
 const ShoppingSideBar = () => {
   const [isCartVisible, setIsCartVisible] = useState(false);
@@ -28,7 +29,11 @@ const ShoppingSideBar = () => {
     loadCartData();
   }, [userEmail, update]); */
 
-  const { data: carts, refetch } = useQuery({
+  const {
+    data: carts,
+    refetch,
+    isFetching,
+  } = useQuery({
     queryKey: ["carts", userEmail, update],
     queryFn: async () => {
       const data = await axios.get(
@@ -38,9 +43,9 @@ const ShoppingSideBar = () => {
       return data.data;
     },
   });
-
+  console.log(isFetching);
   // delete Items
-  const { mutate, isLoading } = useMutation({
+  const { mutate } = useMutation({
     mutationFn: async (id) => {
       const resp = await axios.delete(
         `${process.env.NEXT_PUBLIC_BASE_URL}/products/api/addToCart/delete/${id}`
@@ -52,6 +57,7 @@ const ShoppingSideBar = () => {
       }
     },
   });
+
   const handleDelete = (id) => {
     setLoading(true);
     mutate(id);
@@ -76,7 +82,7 @@ const ShoppingSideBar = () => {
           <span className="text-xl">
             <HiOutlineShoppingBag />
           </span>
-          {carts?.length} Item
+          {isFetching ? <ImSpinner3 /> : `${carts?.length} Item`}
         </div>
       )}
 
@@ -104,8 +110,7 @@ const ShoppingSideBar = () => {
                 cart={cart}
                 handleDelete={handleDelete}
                 refetch={refetch}
-                loading={loading}
-                setLoading={setLoading}
+                isFetching={isFetching}
               ></CartCard>
             ))}
           </div>
