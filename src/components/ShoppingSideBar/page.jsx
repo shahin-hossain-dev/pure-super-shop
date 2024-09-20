@@ -82,7 +82,11 @@ const ShoppingSideBar = () => {
           <span className="text-xl">
             <HiOutlineShoppingBag />
           </span>
-          {isFetching ? <ImSpinner3 /> : `${carts?.length} Item`}
+          {isFetching ? (
+            <ImSpinner3 className="animate-spin" />
+          ) : (
+            `${carts?.length} Item`
+          )}
         </div>
       )}
 

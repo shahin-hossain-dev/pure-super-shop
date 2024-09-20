@@ -42,8 +42,37 @@ const CheckOut = () => {
       }
     },
   });
+  // delete handler
   const handleDelete = (id) => {
     mutate(id);
+  };
+  // payment handler
+  const paymentInfo = {
+    userEmail: userEmail,
+    amount: parseFloat(totalPrice),
+    paymentDate: new Date().toISOString(),
+    products: carts.map((cart) => {
+      const paymentInfo = {
+        productName: cart.productName,
+        productId: cart.productId,
+        quantity: cart.quantity,
+        unitPrice: cart.price,
+        totalPrice: cart.totalPrice,
+      };
+      return paymentInfo;
+    }),
+  };
+
+  const handlePayment = async () => {
+    const resp = await axios.post(
+      `${process.env.NEXT_PUBLIC_BASE_URL}/api/payments/create-payment`,
+      paymentInfo
+    );
+
+    const redirectURL = resp?.data?.paymentURL;
+    if (redirectURL) {
+      window.location.replace(redirectURL);
+    }
   };
   return (
     <div className="max-w-[1440px] w-[95%] md:w-11/12 mx-auto py-20 px-3 lg:px-0 flex flex-col lg:flex-row gap-24">
@@ -93,7 +122,10 @@ const CheckOut = () => {
             <span>$ {totalPrice}</span>
           </div>
         </div>
-        <button className="mt-6 w-full py-3 bg-[#84b93e] text-lg font-Barlow text-white rounded-lg">
+        <button
+          onClick={handlePayment}
+          className="mt-6 w-full py-3 bg-[#84b93e] text-lg font-Barlow text-white rounded-lg"
+        >
           Place to Order
         </button>
       </div>
