@@ -1,6 +1,8 @@
 import { connectDB } from "@/lib/connectDB";
 import axios from "axios";
+import { ObjectId } from "mongodb";
 import { NextResponse } from "next/server";
+import queryString from "query-string";
 
 export const POST = async (request) => {
   const db = await connectDB();
@@ -8,21 +10,24 @@ export const POST = async (request) => {
   const paymentInfo = await request.json();
   const amount = paymentInfo?.amount;
   // console.log(amount);
-  //   initiate data
+
+  const tranId = new ObjectId().toString();
+
+  // step-1: initiate data
   const initiateData = {
     store_id: "pures66ed3e3d29573",
     store_passwd: "pures66ed3e3d29573@ssl",
-    product_name: "Laptop",
-    product_category: "electronics",
+    product_name: paymentInfo.products,
+    product_category: "general",
     product_profile: "general",
     total_amount: amount.toString(),
     currency: "BDT",
-    tran_id: "REF123",
+    tran_id: tranId,
     success_url: `${process.env.NEXT_PUBLIC_BASE_URL}/api/payments/success-payment`,
-    fail_url: "http://yoursite.com/fail.php",
-    cancel_url: "http://yoursite.com/cancel.php",
-    cus_name: "Customer Name",
-    cus_email: "cust@yahoo.com",
+    fail_url: `${process.env.NEXT_PUBLIC_BASE_URL}/api/payments/failed`,
+    cancel_url: `${process.env.NEXT_PUBLIC_BASE_URL}/api/payments/cancel`,
+    cus_name: paymentInfo.cus_name,
+    cus_email: paymentInfo.userEmail,
     cus_add1: "Dhaka",
     cus_add2: "Dhaka",
     cus_city: "Dhaka",
@@ -39,23 +44,41 @@ export const POST = async (request) => {
     value_d: "ref004_D",
   };
 
-  //post request to ssl api url with initiate data
-  const response = await axios({
-    method: "POST",
-    url: "https://sandbox.sslcommerz.com/gwprocess/v4/api.php",
-    data: initiateData,
-    headers: {
-      "content-type": "application/x-www-form-urlencoded",
-    },
-  });
+  const urlEncodedData = queryString.stringify(initiateData); //make data query string
+
+  //step-2:  post request to ssl api url with initiate data
+  const response = await axios.post(
+    "https://sandbox.sslcommerz.com/gwprocess/v4/api.php",
+    urlEncodedData,
+    {
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+    }
+  );
 
   // console.log(response.data);
 
-  // save payment data to mongodb database
+  //step-3: save payment data to mongodb database
 
+  const randomNumber = () => {
+    const number = `pay_${Math.floor(
+      Math.random() * 10000 + (1000000 - 99999)
+    )}`;
+    if (number.length < 10) {
+      randomNumber();
+    }
+    return number;
+  };
+  const paymentId = randomNumber();
   const saveData = {
+    tranId,
+    paymentId,
     ...paymentInfo,
     status: "pending",
+    billingAddress: {
+      city: "Dhaka",
+    },
   };
 
   try {

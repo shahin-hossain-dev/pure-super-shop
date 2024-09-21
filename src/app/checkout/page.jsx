@@ -11,6 +11,7 @@ const CheckOut = () => {
   const session = useSession();
   const { update } = useContext(AddToCartContext);
   const userEmail = session?.data?.user?.email;
+  const userName = session?.data?.user?.name;
 
   const {
     data: carts,
@@ -36,7 +37,7 @@ const CheckOut = () => {
       const resp = await axios.delete(
         `${process.env.NEXT_PUBLIC_BASE_URL}/products/api/addToCart/delete/${id}`
       );
-      console.log(resp);
+
       if (resp) {
         refetch();
       }
@@ -46,8 +47,9 @@ const CheckOut = () => {
   const handleDelete = (id) => {
     mutate(id);
   };
-  // payment handler
+  //  create payment info
   const paymentInfo = {
+    cus_name: userName,
     userEmail: userEmail,
     amount: parseFloat(totalPrice),
     paymentDate: new Date().toISOString(),
@@ -62,7 +64,8 @@ const CheckOut = () => {
       return paymentInfo;
     }),
   };
-
+  // payment handler
+  // payment post request to server with payment data
   const handlePayment = async () => {
     const resp = await axios.post(
       `${process.env.NEXT_PUBLIC_BASE_URL}/api/payments/create-payment`,
