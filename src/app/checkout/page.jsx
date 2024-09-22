@@ -5,10 +5,12 @@ import { AddToCartContext } from "@/services/AddToCartProvider";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { useSession } from "next-auth/react";
-import { useContext } from "react";
+import { useContext, useState } from "react";
+import { ImSpinner3 } from "react-icons/im";
 
 const CheckOut = () => {
   const session = useSession();
+  const [loading, setLoading] = useState(false);
   const { update } = useContext(AddToCartContext);
   const userEmail = session?.data?.user?.email;
   const userName = session?.data?.user?.name;
@@ -17,6 +19,7 @@ const CheckOut = () => {
     data: carts,
     refetch,
     isFetching,
+    isLoading,
   } = useQuery({
     queryKey: ["carts", userEmail, update],
     queryFn: async () => {
@@ -67,6 +70,7 @@ const CheckOut = () => {
   // payment handler
   // payment post request to server with payment data
   const handlePayment = async () => {
+    setLoading(true);
     const resp = await axios.post(
       `${process.env.NEXT_PUBLIC_BASE_URL}/api/payments/create-payment`,
       paymentInfo
@@ -76,6 +80,7 @@ const CheckOut = () => {
     if (redirectURL) {
       window.location.replace(redirectURL);
     }
+    setLoading(false);
   };
   return (
     <div className="max-w-[1440px] w-[95%] md:w-11/12 mx-auto py-20 px-3 lg:px-0 flex flex-col lg:flex-row gap-24">
@@ -129,7 +134,11 @@ const CheckOut = () => {
           onClick={handlePayment}
           className="mt-6 w-full py-3 bg-[#84b93e] text-lg font-Barlow text-white rounded-lg"
         >
-          Place to Order
+          {loading ? (
+            <ImSpinner3 className="animate-spin text-center" />
+          ) : (
+            "Place to Order"
+          )}
         </button>
       </div>
     </div>

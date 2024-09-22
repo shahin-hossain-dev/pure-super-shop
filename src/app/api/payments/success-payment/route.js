@@ -1,39 +1,38 @@
 import { connectDB } from "@/lib/connectDB";
+import { redirect } from "next/navigation";
 import { NextResponse } from "next/server";
 import queryString from "query-string";
 
 export const POST = async (req) => {
   const db = await connectDB();
   const paymentCollection = db.collection("payments");
+  const addToCartCollection = db.collection("addToCarts");
 
-  const streamData = await streamToText(req);
-  const paymentData = queryString.parse(streamData);
+  const streamData = await streamToText(req); //covert request text stream to readable text
+  const paymentData = queryString.parse(streamData); //covert to query string
   console.log("success payment", paymentData);
 
-  try {
-    // more safe payment validation with ssl commerce data
-    if (paymentData.status !== "VALID") {
-      throw new Error("Unauthorized Payment, Invalid Payment");
-    }
-    // update database data
+  // more safe payment validation with ssl commerce data
+  if (paymentData.status !== "VALID") {
+    throw new Error("Unauthorized Payment, Invalid Payment");
+  }
+  // update database data
 
-    const query = { tranId: paymentData.tran_id };
-    const update = {
-      $set: {
-        status: "Completed",
-      },
-    };
-    const updateResp = await paymentCollection.updateOne(query, update);
+  const query = { tranId: paymentData.tran_id };
+  const update = {
+    $set: {
+      status: "Completed",
+    },
+  };
+  const updateResp = await paymentCollection.updateOne(query, update);
 
-    if (updateResp) {
-      NextResponse.redirect(
-        `${process.env.NEXT_PUBLIC_BASE_URL}/payments/success`
-      );
-    }
-
-    return NextResponse.json({ message: "payment successfully" });
-  } catch (error) {
-    return NextResponse.json({ message: error });
+  if (updateResp.modifiedCount > 0) {
+    // await addToCartCollection.deleteMany({})
+    const email = await paymentCollection.findOne({
+      tranId: paymentData.tran_id,
+    });
+    console.log(email);
+    redirect(`${process.env.NEXT_PUBLIC_BASE_URL}/payments/success`);
   }
 };
 

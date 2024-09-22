@@ -39,7 +39,7 @@ const ShoppingSideBar = () => {
       const data = await axios.get(
         `${process.env.NEXT_PUBLIC_BASE_URL}/products/api/addToCart/${userEmail}`
       );
-      // console.log(data.data);
+      console.log(data.data);
       return data.data;
     },
   });
@@ -126,17 +126,17 @@ const ShoppingSideBar = () => {
 
           {/* Checkout Page Link Buttons at the bottom */}
           <div className="flex items-center justify-center gap-6 bg-slate-100 py-5">
-            <Link
+            {/* <Link
               href={"/checkout"}
               className="px-10 py-2 bg-[#84b93e] text-white rounded hover:bg-green-600"
             >
               View Cart
-            </Link>
+            </Link> */}
             <Link
               href={"/checkout"}
-              className="px-10 py-2 bg-[#84b93e] text-white rounded hover:bg-green-600"
+              className="px-10 py-2 w-full text-center font-medium bg-[#84b93e] text-white rounded hover:bg-[#3e84b9]"
             >
-              Check out
+              Check Out
             </Link>
           </div>
         </div>

@@ -1,7 +1,5 @@
-import { NextResponse } from "next/server";
+import { redirect } from "next/navigation";
 
 export const POST = async (req, res) => {
-  return NextResponse.redirect(
-    `${process.env.NEXT_PUBLIC_BASE_URL}/payments/failed`
-  );
+  redirect(`${process.env.NEXT_PUBLIC_BASE_URL}/payments/failed`);
 };
