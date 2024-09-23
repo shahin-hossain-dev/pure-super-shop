@@ -3,7 +3,7 @@ import Link from "next/link";
 import React from "react";
 import { signIn } from "next-auth/react";
 import SocialSignin from "@/components/sharePage/SocialSgnin";
-import {  useRouter, useSearchParams } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import Swal from "sweetalert2";
 const Login = () => {
   const router = useRouter();
@@ -20,7 +20,7 @@ const Login = () => {
       redirect: true,
       callbackUrl: path ? path : "/",
     });
-    console.log(res)
+    // console.log(res)
     if (res.ok) {
       Swal.fire({
         icon: "success",
