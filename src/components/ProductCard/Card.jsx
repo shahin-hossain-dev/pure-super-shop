@@ -19,7 +19,7 @@ const Card = ({
   const [wishlist, setWishlist] = useState([]);
 
   const handleAddToCart = (_id) => {
-    console.log("add to cart");
+    // console.log("add to cart");
   };
 
   // Load wishlist from localStorage on component mount
@@ -52,7 +52,7 @@ const Card = ({
     }
   };
   const handleDetails = (id) => {
-    console.log(id);
+    // console.log(id);
   };
   return (
     <div className="card box-border relative flex flex-col justify-between border hover:border-[#84b93e] duration-300 hover:border-1 rounded-sm p-2">

@@ -39,18 +39,18 @@ const ShoppingSideBar = () => {
       const data = await axios.get(
         `${process.env.NEXT_PUBLIC_BASE_URL}/products/api/addToCart/${userEmail}`
       );
-      console.log(data.data);
+      // console.log(data.data);
       return data.data;
     },
   });
-  console.log(isFetching);
+
   // delete Items
   const { mutate } = useMutation({
     mutationFn: async (id) => {
       const resp = await axios.delete(
         `${process.env.NEXT_PUBLIC_BASE_URL}/products/api/addToCart/delete/${id}`
       );
-      console.log(resp);
+      // console.log(resp);
       if (resp) {
         setLoading(false);
         refetch();
@@ -72,7 +72,7 @@ const ShoppingSideBar = () => {
   };
 
   return (
-    <div className="relative">
+    <div className="relative ">
       {/* Cart button */}
       {!isCartVisible && (
         <div
@@ -97,7 +97,7 @@ const ShoppingSideBar = () => {
         }`}
       >
         {/* Container to ensure proper layout */}
-        <div className="flex flex-col h-full">
+        <div className="flex flex-col h-full  shadow-2xl">
           {/* Cart Header */}
           <div className="p-4 flex items-center justify-between bg-[#84b93e] text-white">
             <h2 className="text-base font-medium">Your Shopping Cart</h2>
@@ -108,6 +108,11 @@ const ShoppingSideBar = () => {
 
           {/* Cart Items */}
           <div>
+            {carts?.length === 0 && (
+              <h2 className="text-xl font-medium text-gray-400 text-center mt-3">
+                Cart is Empty
+              </h2>
+            )}
             {carts?.map((cart) => (
               <CartCard
                 key={cart._id}
@@ -119,10 +124,12 @@ const ShoppingSideBar = () => {
             ))}
           </div>
 
-          <div className="bg-slate-100 p-5 flex gap-3 justify-between font-medium">
-            <h3>Sub Total:</h3>${" "}
-            {carts?.reduce((acc, cur) => acc + cur.totalPrice, 0).toFixed(2)}
-          </div>
+          {carts?.length > 0 && (
+            <div className="bg-slate-100 p-5 flex gap-3 justify-between font-medium">
+              <h3>Sub Total:</h3>${" "}
+              {carts?.reduce((acc, cur) => acc + cur.totalPrice, 0).toFixed(2)}
+            </div>
+          )}
 
           {/* Checkout Page Link Buttons at the bottom */}
           <div className="flex items-center justify-center gap-6 bg-slate-100 py-5">

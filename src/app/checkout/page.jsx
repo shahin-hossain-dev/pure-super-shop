@@ -19,7 +19,6 @@ const CheckOut = () => {
     data: carts,
     refetch,
     isFetching,
-    isLoading,
   } = useQuery({
     queryKey: ["carts", userEmail, update],
     queryFn: async () => {
@@ -91,6 +90,11 @@ const CheckOut = () => {
         <div className="rounded-lg">
           {/* this code for loop */}
           <div className="p-6 border-b bg-[#FAFAFA]">
+            {carts.length === 0 && (
+              <h2 className="text-xl font-medium text-center text-gray-400">
+                Cart is Empty{" "}
+              </h2>
+            )}
             <div>
               {carts?.map((cart) => (
                 <CartCard
@@ -131,8 +135,11 @@ const CheckOut = () => {
           </div>
         </div>
         <button
+          disabled={carts.length === 0 && true}
           onClick={handlePayment}
-          className="mt-6 w-full py-3 bg-[#84b93e] text-lg font-Barlow text-white rounded-lg"
+          className={`mt-6 w-full flex justify-center py-3 bg-[#84b93e] text-lg font-Barlow text-white rounded-lg ${
+            carts.length === 0 && "bg-gray-400"
+          }`}
         >
           {loading ? (
             <ImSpinner3 className="animate-spin text-center" />

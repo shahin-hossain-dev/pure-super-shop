@@ -12,5 +12,7 @@ export const GET = async (req, { params }) => {
       })
       .toArray();
     return NextResponse.json(lastPayment[lastPayment.length - 1]);
-  } catch (error) {}
+  } catch (error) {
+    return NextResponse.json({ message: "Something went wrong" });
+  }
 };

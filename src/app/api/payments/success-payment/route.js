@@ -10,7 +10,7 @@ export const POST = async (req) => {
 
   const streamData = await streamToText(req); //covert request text stream to readable text
   const paymentData = queryString.parse(streamData); //covert to query string
-  console.log("success payment", paymentData);
+  // console.log("success payment", paymentData);
 
   // more safe payment validation with ssl commerce data
   if (paymentData.status !== "VALID") {
@@ -27,11 +27,11 @@ export const POST = async (req) => {
   const updateResp = await paymentCollection.updateOne(query, update);
 
   if (updateResp.modifiedCount > 0) {
-    // await addToCartCollection.deleteMany({})
-    const email = await paymentCollection.findOne({
+    const payment = await paymentCollection.findOne({
       tranId: paymentData.tran_id,
     });
-    console.log(email);
+    // console.log("payment Data of user", payment);
+    await addToCartCollection.deleteMany({ userEmail: payment.userEmail });
     redirect(`${process.env.NEXT_PUBLIC_BASE_URL}/payments/success`);
   }
 };

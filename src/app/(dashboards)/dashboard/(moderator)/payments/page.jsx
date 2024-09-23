@@ -3,7 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import DataTable from "react-data-table-component";
 import Swal from "sweetalert2";
-import Image from 'next/image'
+import Image from "next/image";
 const Payments = () => {
   const {
     isPending,
@@ -20,9 +20,18 @@ const Payments = () => {
       return payments.data;
     },
   });
-  console.log(payments);
+  // console.log(payments);
   if (isPending) {
-    return <div className="h-screen flex justify-center items-center -mt-10"><Image src="/assets/Banner_Image/loading.gif" alt="loading" width="400" height="400"></Image></div>;
+    return (
+      <div className="h-screen flex justify-center items-center -mt-10">
+        <Image
+          src="/assets/Banner_Image/loading.gif"
+          alt="loading"
+          width="400"
+          height="400"
+        ></Image>
+      </div>
+    );
   }
 
   if (isError) {
@@ -45,7 +54,7 @@ const Payments = () => {
             `${process.env.NEXT_PUBLIC_BASE_URL}/dashboard/payments/api/delete/${id}`
           )
           .then((res) => {
-            console.log(res);
+            // console.log(res);
             if (res.data.status === 200) {
               Swal.fire({
                 title: "Deleted!",
