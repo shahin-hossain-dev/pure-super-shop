@@ -8,7 +8,7 @@ export const DELETE = async (req, { params }) => {
 
   try {
     const resp = await paymentCollection.deleteOne({
-      _id: ObjectId(params.deleteId),
+      _id: new ObjectId(params.deleteId),
     });
     return NextResponse.json({ message: "Deleted Successfully" });
   } catch (error) {

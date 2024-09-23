@@ -39,6 +39,7 @@ const Payments = () => {
   }
   //   handle delete
   const handlePaymentDelete = (id) => {
+    console.log(id);
     Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",
@@ -54,8 +55,8 @@ const Payments = () => {
             `${process.env.NEXT_PUBLIC_BASE_URL}/dashboard/payments/api/delete/${id}`
           )
           .then((res) => {
-            // console.log(res);
-            if (res.data.status === 200) {
+            console.log(res);
+            if (res.status === 200) {
               Swal.fire({
                 title: "Deleted!",
                 text: "Your product has been deleted.",
@@ -80,7 +81,7 @@ const Payments = () => {
     {
       name: "Products",
       selector: (row) =>
-        row.products.map((pd, idx) => (
+        row.products?.map((pd, idx) => (
           <p key={idx}>
             {pd.productName}, {pd.quantity}
           </p>
@@ -123,10 +124,10 @@ const Payments = () => {
       selector: (row) => (
         <div className="flex gap-2">
           <button
-            disabled={row.status === "Completed" ? true : false}
-            onClick={() => handlePaymentDelete(row.paymentId)}
+            disabled={row?.status === "Completed" ? true : false}
+            onClick={() => handlePaymentDelete(row._id)}
             className={`font-medium ${
-              row.status === "Completed"
+              row?.status === "Completed"
                 ? "text-gray-600 bg-gray-100 px-2 py-1 rounded-lg"
                 : "text-red-600 bg-red-100 py-1 px-2 rounded-lg"
             }`}
