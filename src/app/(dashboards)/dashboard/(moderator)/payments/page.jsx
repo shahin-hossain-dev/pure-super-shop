@@ -88,9 +88,7 @@ const Payments = () => {
     },
     {
       name: "Customer Email",
-      selector: (row) => (
-        <span title={row.customerEmail}>{row.customerEmail}</span>
-      ),
+      selector: (row) => <span title={row.customerEmail}>{row.userEmail}</span>,
     },
     {
       name: "Amount",
