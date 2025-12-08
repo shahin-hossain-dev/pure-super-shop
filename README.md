@@ -50,15 +50,13 @@
 
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/<your-username>/puresuper.git
-   cd puresuper
+   git clone https://github.com/shahin-hossain-dev/pure-super-shop
+   cd pure-super-shop
    ```
 
 2. **Install dependencies:**
    ```bash
    npm install
-   # or
-   yarn
    ```
 
 3. **Configure environment variables:**
@@ -76,8 +74,6 @@
 4. **Run the development server:**
    ```bash
    npm run dev
-   # or
-   yarn dev
    ```
    Open [http://localhost:3000](http://localhost:3000) to view the app.
 
